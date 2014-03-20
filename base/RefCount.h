@@ -20,6 +20,7 @@ public:
 
 /**
  * 引用计数模板
+ * 实现类似泛型的功能
  */
 template <class T,typename Deallocater= ObjectDeallocater<T> >
 class RefCount

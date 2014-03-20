@@ -5,10 +5,22 @@
 
 NS_YH_BEGIN
 
+template<typename T>
+class RefObjectDeallocater {
+public:
+    static void deallocate(T *p) { delete p; }
+};
+
+template<typename T>
+class RefArrayDeallocater {
+public:
+    static void deallocate(T *p) { delete[] p; }
+};
+
 /**
  * 普通指针包装成Object
  */
-template <class T>
+template <class T,typename Deallocater= RefObjectDeallocater<T> >
 class RefPtr : public Object
 {
 public:
@@ -27,7 +39,7 @@ public:
    ~RefPtr(){
 	   if(m_ptr)
 	   {
-		   delete m_ptr;
+		   Deallocater::deallocate(m_ptr);
 		   m_ptr=NULL;
 	   }
    }

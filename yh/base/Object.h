@@ -1,5 +1,5 @@
-#ifndef YH_BASE_YHOBJECT_H_
-#define YH_BASE_YHOBJECT_H_
+#ifndef YH_BASE_OBJECT_H_
+#define YH_BASE_OBJECT_H_
 
 #include "YHMacros.h"
 
@@ -78,7 +78,7 @@ public:
      * @js NA
      * @lua NA
      */
-    virtual bool isEqual(const YHObject* object);
+    virtual bool isEqual(const Object* object);
 
 public:
 	
@@ -101,4 +101,4 @@ protected:
 
 NS_YH_END
 
-#endif // YH_BASE_YHOBJECT_H_
+#endif // YH_BASE_OBJECT_H_

@@ -41,7 +41,7 @@ void Transaction::commit(void) // throw(SQLite::Exception)
     }
     else
     {
-        CCLOGERROR("Transaction already commited");
+//        CCLOGERROR("Transaction already commited");
     }
 }
 

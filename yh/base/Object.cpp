@@ -30,7 +30,7 @@ unsigned int Object::getReferenceCount() const
     return _referenceCount;
 }
 
-bool Object::isEqual(const YHObject *object)
+bool Object::isEqual(const Object *object)
 {
     return this == object;
 }

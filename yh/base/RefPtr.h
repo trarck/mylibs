@@ -1,5 +1,5 @@
-#ifndef YH_BASE_YHOBJECT_H_
-#define YH_BASE_YHOBJECT_H_
+#ifndef YH_BASE_REFPTR_H_
+#define YH_BASE_REFPTR_H_
 
 #include "Object.h"
 
@@ -55,9 +55,9 @@ public:
 
 private:
 
-   CCRef(const CCRef& other);
+   RefPtr(const RefPtr& other);
 
-   CCRef& operator= (const CCRef& other){return *this;};
+   RefPtr& operator= (const RefPtr& other);
 
 	T* m_ptr;
 };
@@ -65,4 +65,4 @@ private:
 
 NS_YH_END
 
-#endif // YH_BASE_YHOBJECT_H_
+#endif // YH_BASE_REFPTR_H_

@@ -170,12 +170,12 @@ bool Statement::executeStep(void) // throw(SQLite::Exception)
         {
             m_ok = false;
             m_done = false;
-            CCLOGERROR("Statement::executeStep err:%s",sqlite3_errmsg(m_stmtPtr));
+//            CCLOGERROR("Statement::executeStep err:%s",sqlite3_errmsg(m_stmtPtr));
         }
     }
     else
     {
-        CCLOGERROR("Statement need to be reseted");
+//        CCLOGERROR("Statement need to be reseted");
     }
 
     return m_ok; // true only if one row is accessible by getColumn(N)
@@ -196,18 +196,18 @@ int Statement::execute(void) // throw(SQLite::Exception)
         {
             m_ok = false;
             m_done = false;
-            CCLOGERROR("exec() does not expect results");
+//            CCLOGERROR("exec() does not expect results");
         }
         else
         {
             m_ok = false;
             m_done = false;
-            CCLOGERROR("Statement::exec err:%s",sqlite3_errmsg(m_stmtPtr));
+//            CCLOGERROR("Statement::exec err:%s",sqlite3_errmsg(m_stmtPtr));
         }
     }
     else
     {
-        CCLOGERROR("Statement need to be reseted");
+//        CCLOGERROR("Statement need to be reseted");
     }
 
     // Return the number of rows modified by those SQL statements (INSERT, UPDATE or DELETE)
@@ -218,8 +218,8 @@ int Statement::execute(void) // throw(SQLite::Exception)
 // (use the Column copy-constructor)
 Column Statement::getColumn(const int index) // throw(SQLite::Exception)
 {
-    CCAssert(true==m_ok, "No row to get a column from");
-    CCAssert(index >=0 && index < m_columnCount, "Column index out of range");
+    YHASSERT(true==m_ok, "No row to get a column from");
+    YHASSERT(index >=0 && index < m_columnCount, "Column index out of range");
 
     // Share the Statement Object handle with the new Column created
     return Column(m_stmtPtr, index);
@@ -228,8 +228,8 @@ Column Statement::getColumn(const int index) // throw(SQLite::Exception)
 //get column pointer,muse delele by call
 void  Statement::getColumn(const int index,Column** column)
 {
-    CCAssert(true==m_ok, "No row to get a column from");
-    CCAssert(index >=0 && index < m_columnCount, "Column index out of range");
+    YHASSERT(true==m_ok, "No row to get a column from");
+    YHASSERT(index >=0 && index < m_columnCount, "Column index out of range");
     
     *column=new Column(m_stmtPtr,index);
 }
@@ -239,11 +239,11 @@ bool Statement::isColumnNull(const int index) const // throw(SQLite::Exception)
 {
     if (false == m_ok)
     {
-        CCLOGERROR("No row to get a column from");
+//        CCLOGERROR("No row to get a column from");
     }
     else if ((index < 0) || (index >= m_columnCount))
     {
-        CCLOGERROR("Column index out of range");
+//        CCLOGERROR("Column index out of range");
     }
 
     return (SQLITE_NULL == sqlite3_column_type(m_stmtPtr, index));
@@ -254,7 +254,7 @@ void Statement::check(const int aRet) const // throw(SQLite::Exception)
 {
     if (SQLITE_OK != aRet)
     {
-        CCLOGERROR("%s",sqlite3_errmsg(m_stmtPtr));
+//        CCLOGERROR("%s",sqlite3_errmsg(m_stmtPtr));
     }
 }
 
@@ -277,7 +277,7 @@ Statement::Ptr::Ptr(sqlite3* apSQLite, std::string& aQuery) :
     int ret = sqlite3_prepare_v2(apSQLite, aQuery.c_str(), static_cast<int>(aQuery.size()), &m_stmt, NULL);
     if (SQLITE_OK != ret)
     {
-        CCLOGERROR("%s",sqlite3_errmsg(m_db));
+//        CCLOGERROR("%s",sqlite3_errmsg(m_db));
     }
     // Initialize the reference counter of the sqlite3_stmt :
     // used to share the m_stmtPtr between Statement and Column objects;
@@ -319,7 +319,7 @@ Statement::Ptr::~Ptr(void) throw() // nothrow
         // as no Statement not Column objet use it anymore
         int ret = sqlite3_finalize(m_stmt);
         // Never throw an exception in a destructor
-        CCAssert(SQLITE_OK == ret, sqlite3_errmsg(m_db));  // See SQLITECPP_ENABLE_ASSERT_HANDLER
+        YHASSERT(SQLITE_OK == ret, sqlite3_errmsg(m_db));  // See SQLITECPP_ENABLE_ASSERT_HANDLER
 
         // and delete the reference counter
         delete m_refCount;

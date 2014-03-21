@@ -1,7 +1,7 @@
 #ifndef YH_BASE_PLATFORM_DEFINE_H_
 #define YH_BASE_PLATFORM_DEFINE_H_
 
-#include "CCPlatformConfig.h"
+#include "PlatformConfig.h"
 
 /* Define NULL pointer value */
 #ifndef NULL
@@ -20,7 +20,7 @@
             void operator=(const TypeName&)
 
 //assert
-#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+#if YH_TARGET_PLATFORM == YH_PLATFORM_ANDROID
 	#include "android/log.h"
 
 	#define YH_NO_MESSAGE_PSEUDOASSERT(cond)                        \
@@ -52,7 +52,7 @@
 #endif //assert
 	
 //dll export
-#if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
+#if YH_TARGET_PLATFORM == YH_PLATFORM_WIN32
 	#ifdef __MINGW32__
 	#include <string.h>
 	#endif
@@ -64,7 +64,7 @@
 	//#endif
 
 	#define YH_DLL
-#elif CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
+#elif YH_TARGET_PLATFORM == YH_PLATFORM_LINUX
 	#if defined(_USRDLL)
 	#define YH_DLL __attribute__ ((visibility ("default")))
 	#else         /* use a DLL library */

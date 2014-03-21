@@ -5,7 +5,7 @@
 #define SQLITE_DETERMINISTIC 0x800
 #endif //SQLITE_DETERMINISTIC
 
-USING_NS_CC;
+USING_NS_YH;
 
 NS_YH_SQLITE_BEGIN
 
@@ -34,7 +34,6 @@ void SqliteDriver::connect(const std::string& dbPath,const int flag)
     {
         std::string strerr = sqlite3_errmsg(m_db);
         sqlite3_close(m_db); // close is required even in case of error on opening
-        CCLOGERROR("SqliteDriver::open %s err:%s",dbPath.c_str(),strerr.c_str());
 //        throw SQLite::Exception(strerr);
     }
 }
@@ -43,7 +42,7 @@ void SqliteDriver::close()
 {
     if (m_db) {
         int ret = sqlite3_close(m_db);
-        CCAssert(SQLITE_OK==ret, sqlite3_errmsg(m_db));  // See SQLITECPP_ENABLE_ASSERT_HANDLER
+        YHASSERT(SQLITE_OK==ret, sqlite3_errmsg(m_db));  // See SQLITECPP_ENABLE_ASSERT_HANDLER
         m_db=NULL;
     }
 }
@@ -78,7 +77,7 @@ void SqliteDriver::check(const int ret) const
 {
     if (SQLITE_OK != ret)
     {
-        CCLOGERROR("SqliteDriver::check err:%s",sqlite3_errmsg(m_db));
+//        CCLOGERROR("SqliteDriver::check err:%s",sqlite3_errmsg(m_db));
     }
 }
 

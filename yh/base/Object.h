@@ -1,13 +1,13 @@
 #ifndef YH_BASE_YHOBJECT_H_
 #define YH_BASE_YHOBJECT_H_
 
-#include "../YHMacros.h"
+#include "YHMacros.h"
 
 NS_YH_BEGIN
 
 
 /** Interface that defines how to clone an object */
-class CC_DLL Clonable
+class Clonable
 {
 public:
 	/** returns a copy of the object */
@@ -23,7 +23,7 @@ public:
  * 引用计数基类
  * 注意和RefCount不能同时使用
  */
-class CC_DLL Object
+class Object
 {
 public:
     /**

@@ -2,7 +2,7 @@
 #define YH_BASE_REFCOUNT_H_
 
 #include <stddef.h>
-#include "../YHMacros.h"
+#include "YHMacros.h"
 
 NS_YH_BEGIN
 
@@ -92,4 +92,4 @@ protected:
 
 NS_YH_END
 
-#endif // YHGE_BASE_REFCOUNT_H_
+#endif // YH_BASE_REFCOUNT_H_

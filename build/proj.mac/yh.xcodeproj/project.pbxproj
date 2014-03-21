@@ -1,0 +1,440 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		574FE59A18DC0FA300490B18 /* Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574FE56D18DC0FA300490B18 /* Log.cpp */; };
+		574FE59B18DC0FA300490B18 /* Log.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE56E18DC0FA300490B18 /* Log.h */; };
+		574FE59C18DC0FA300490B18 /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574FE56F18DC0FA300490B18 /* Object.cpp */; };
+		574FE59D18DC0FA300490B18 /* Object.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE57018DC0FA300490B18 /* Object.h */; };
+		574FE59E18DC0FA300490B18 /* PlatformConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE57118DC0FA300490B18 /* PlatformConfig.h */; };
+		574FE59F18DC0FA300490B18 /* PlatformDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE57218DC0FA300490B18 /* PlatformDefine.h */; };
+		574FE5A018DC0FA300490B18 /* RefCount.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574FE57318DC0FA300490B18 /* RefCount.cpp */; };
+		574FE5A118DC0FA300490B18 /* RefCount.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE57418DC0FA300490B18 /* RefCount.h */; };
+		574FE5A218DC0FA300490B18 /* RefPtr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574FE57518DC0FA300490B18 /* RefPtr.cpp */; };
+		574FE5A318DC0FA300490B18 /* RefPtr.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE57618DC0FA300490B18 /* RefPtr.h */; };
+		574FE5A418DC0FA300490B18 /* YHMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE57718DC0FA300490B18 /* YHMacros.h */; };
+		574FE5A518DC0FA300490B18 /* autolink.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE57918DC0FA300490B18 /* autolink.h */; };
+		574FE5A618DC0FA300490B18 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE57A18DC0FA300490B18 /* config.h */; };
+		574FE5A718DC0FA300490B18 /* features.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE57B18DC0FA300490B18 /* features.h */; };
+		574FE5A818DC0FA300490B18 /* forwards.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE57C18DC0FA300490B18 /* forwards.h */; };
+		574FE5A918DC0FA300490B18 /* json.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE57D18DC0FA300490B18 /* json.h */; };
+		574FE5AA18DC0FA300490B18 /* json_batchallocator.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE57E18DC0FA300490B18 /* json_batchallocator.h */; };
+		574FE5AB18DC0FA300490B18 /* json_macros.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE58118DC0FA300490B18 /* json_macros.h */; };
+		574FE5AC18DC0FA300490B18 /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574FE58218DC0FA300490B18 /* json_reader.cpp */; };
+		574FE5AD18DC0FA300490B18 /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574FE58318DC0FA300490B18 /* json_value.cpp */; };
+		574FE5AE18DC0FA300490B18 /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574FE58518DC0FA300490B18 /* json_writer.cpp */; };
+		574FE5AF18DC0FA300490B18 /* reader.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE58618DC0FA300490B18 /* reader.h */; };
+		574FE5B018DC0FA300490B18 /* value.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE58718DC0FA300490B18 /* value.h */; };
+		574FE5B118DC0FA300490B18 /* writer.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE58818DC0FA300490B18 /* writer.h */; };
+		574FE5B218DC0FA300490B18 /* Column.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574FE58B18DC0FA300490B18 /* Column.cpp */; };
+		574FE5B318DC0FA300490B18 /* Column.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE58C18DC0FA300490B18 /* Column.h */; };
+		574FE5B418DC0FA300490B18 /* SqliteDriver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574FE58D18DC0FA300490B18 /* SqliteDriver.cpp */; };
+		574FE5B518DC0FA300490B18 /* SqliteDriver.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE58E18DC0FA300490B18 /* SqliteDriver.h */; };
+		574FE5B618DC0FA300490B18 /* SqliteMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE58F18DC0FA300490B18 /* SqliteMacros.h */; };
+		574FE5B718DC0FA300490B18 /* Statement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574FE59018DC0FA300490B18 /* Statement.cpp */; };
+		574FE5B818DC0FA300490B18 /* Statement.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE59118DC0FA300490B18 /* Statement.h */; };
+		574FE5B918DC0FA300490B18 /* Transaction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574FE59218DC0FA300490B18 /* Transaction.cpp */; };
+		574FE5BA18DC0FA300490B18 /* Transaction.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE59318DC0FA300490B18 /* Transaction.h */; };
+		574FE5BB18DC0FA300490B18 /* checked.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE59618DC0FA300490B18 /* checked.h */; };
+		574FE5BC18DC0FA300490B18 /* core.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE59718DC0FA300490B18 /* core.h */; };
+		574FE5BD18DC0FA300490B18 /* unchecked.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE59818DC0FA300490B18 /* unchecked.h */; };
+		574FE5BE18DC0FA300490B18 /* utf8.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE59918DC0FA300490B18 /* utf8.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		574FE56318DC0F7300490B18 /* libyh.a */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libyh.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		574FE56D18DC0FA300490B18 /* Log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Log.cpp; sourceTree = "<group>"; };
+		574FE56E18DC0FA300490B18 /* Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
+		574FE56F18DC0FA300490B18 /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Object.cpp; sourceTree = "<group>"; };
+		574FE57018DC0FA300490B18 /* Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Object.h; sourceTree = "<group>"; };
+		574FE57118DC0FA300490B18 /* PlatformConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlatformConfig.h; sourceTree = "<group>"; };
+		574FE57218DC0FA300490B18 /* PlatformDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlatformDefine.h; sourceTree = "<group>"; };
+		574FE57318DC0FA300490B18 /* RefCount.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RefCount.cpp; sourceTree = "<group>"; };
+		574FE57418DC0FA300490B18 /* RefCount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefCount.h; sourceTree = "<group>"; };
+		574FE57518DC0FA300490B18 /* RefPtr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RefPtr.cpp; sourceTree = "<group>"; };
+		574FE57618DC0FA300490B18 /* RefPtr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefPtr.h; sourceTree = "<group>"; };
+		574FE57718DC0FA300490B18 /* YHMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHMacros.h; sourceTree = "<group>"; };
+		574FE57918DC0FA300490B18 /* autolink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = autolink.h; sourceTree = "<group>"; };
+		574FE57A18DC0FA300490B18 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		574FE57B18DC0FA300490B18 /* features.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = features.h; sourceTree = "<group>"; };
+		574FE57C18DC0FA300490B18 /* forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = forwards.h; sourceTree = "<group>"; };
+		574FE57D18DC0FA300490B18 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
+		574FE57E18DC0FA300490B18 /* json_batchallocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json_batchallocator.h; sourceTree = "<group>"; };
+		574FE57F18DC0FA300490B18 /* json_internalarray.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json_internalarray.inl; sourceTree = "<group>"; };
+		574FE58018DC0FA300490B18 /* json_internalmap.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json_internalmap.inl; sourceTree = "<group>"; };
+		574FE58118DC0FA300490B18 /* json_macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json_macros.h; sourceTree = "<group>"; };
+		574FE58218DC0FA300490B18 /* json_reader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_reader.cpp; sourceTree = "<group>"; };
+		574FE58318DC0FA300490B18 /* json_value.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_value.cpp; sourceTree = "<group>"; };
+		574FE58418DC0FA300490B18 /* json_valueiterator.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json_valueiterator.inl; sourceTree = "<group>"; };
+		574FE58518DC0FA300490B18 /* json_writer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_writer.cpp; sourceTree = "<group>"; };
+		574FE58618DC0FA300490B18 /* reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reader.h; sourceTree = "<group>"; };
+		574FE58718DC0FA300490B18 /* value.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = value.h; sourceTree = "<group>"; };
+		574FE58818DC0FA300490B18 /* writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = writer.h; sourceTree = "<group>"; };
+		574FE58B18DC0FA300490B18 /* Column.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Column.cpp; sourceTree = "<group>"; };
+		574FE58C18DC0FA300490B18 /* Column.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Column.h; sourceTree = "<group>"; };
+		574FE58D18DC0FA300490B18 /* SqliteDriver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SqliteDriver.cpp; sourceTree = "<group>"; };
+		574FE58E18DC0FA300490B18 /* SqliteDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqliteDriver.h; sourceTree = "<group>"; };
+		574FE58F18DC0FA300490B18 /* SqliteMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqliteMacros.h; sourceTree = "<group>"; };
+		574FE59018DC0FA300490B18 /* Statement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Statement.cpp; sourceTree = "<group>"; };
+		574FE59118DC0FA300490B18 /* Statement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Statement.h; sourceTree = "<group>"; };
+		574FE59218DC0FA300490B18 /* Transaction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Transaction.cpp; sourceTree = "<group>"; };
+		574FE59318DC0FA300490B18 /* Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transaction.h; sourceTree = "<group>"; };
+		574FE59618DC0FA300490B18 /* checked.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = checked.h; sourceTree = "<group>"; };
+		574FE59718DC0FA300490B18 /* core.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core.h; sourceTree = "<group>"; };
+		574FE59818DC0FA300490B18 /* unchecked.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unchecked.h; sourceTree = "<group>"; };
+		574FE59918DC0FA300490B18 /* utf8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utf8.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		574FE56018DC0F7300490B18 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		574FE55A18DC0F7300490B18 = {
+			isa = PBXGroup;
+			children = (
+				574FE56B18DC0FA300490B18 /* yh */,
+				574FE56A18DC0F8800490B18 /* frameworks */,
+				574FE56418DC0F7300490B18 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		574FE56418DC0F7300490B18 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				574FE56318DC0F7300490B18 /* libyh.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		574FE56A18DC0F8800490B18 /* frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = frameworks;
+			sourceTree = "<group>";
+		};
+		574FE56B18DC0FA300490B18 /* yh */ = {
+			isa = PBXGroup;
+			children = (
+				574FE56C18DC0FA300490B18 /* base */,
+				574FE57818DC0FA300490B18 /* jsoncpp */,
+				574FE58918DC0FA300490B18 /* platform */,
+				574FE58A18DC0FA300490B18 /* sqlite */,
+				574FE59418DC0FA300490B18 /* string */,
+			);
+			name = yh;
+			path = ../../yh;
+			sourceTree = "<group>";
+		};
+		574FE56C18DC0FA300490B18 /* base */ = {
+			isa = PBXGroup;
+			children = (
+				574FE56D18DC0FA300490B18 /* Log.cpp */,
+				574FE56E18DC0FA300490B18 /* Log.h */,
+				574FE56F18DC0FA300490B18 /* Object.cpp */,
+				574FE57018DC0FA300490B18 /* Object.h */,
+				574FE57118DC0FA300490B18 /* PlatformConfig.h */,
+				574FE57218DC0FA300490B18 /* PlatformDefine.h */,
+				574FE57318DC0FA300490B18 /* RefCount.cpp */,
+				574FE57418DC0FA300490B18 /* RefCount.h */,
+				574FE57518DC0FA300490B18 /* RefPtr.cpp */,
+				574FE57618DC0FA300490B18 /* RefPtr.h */,
+				574FE57718DC0FA300490B18 /* YHMacros.h */,
+			);
+			path = base;
+			sourceTree = "<group>";
+		};
+		574FE57818DC0FA300490B18 /* jsoncpp */ = {
+			isa = PBXGroup;
+			children = (
+				574FE57918DC0FA300490B18 /* autolink.h */,
+				574FE57A18DC0FA300490B18 /* config.h */,
+				574FE57B18DC0FA300490B18 /* features.h */,
+				574FE57C18DC0FA300490B18 /* forwards.h */,
+				574FE57D18DC0FA300490B18 /* json.h */,
+				574FE57E18DC0FA300490B18 /* json_batchallocator.h */,
+				574FE57F18DC0FA300490B18 /* json_internalarray.inl */,
+				574FE58018DC0FA300490B18 /* json_internalmap.inl */,
+				574FE58118DC0FA300490B18 /* json_macros.h */,
+				574FE58218DC0FA300490B18 /* json_reader.cpp */,
+				574FE58318DC0FA300490B18 /* json_value.cpp */,
+				574FE58418DC0FA300490B18 /* json_valueiterator.inl */,
+				574FE58518DC0FA300490B18 /* json_writer.cpp */,
+				574FE58618DC0FA300490B18 /* reader.h */,
+				574FE58718DC0FA300490B18 /* value.h */,
+				574FE58818DC0FA300490B18 /* writer.h */,
+			);
+			path = jsoncpp;
+			sourceTree = "<group>";
+		};
+		574FE58918DC0FA300490B18 /* platform */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = platform;
+			sourceTree = "<group>";
+		};
+		574FE58A18DC0FA300490B18 /* sqlite */ = {
+			isa = PBXGroup;
+			children = (
+				574FE58B18DC0FA300490B18 /* Column.cpp */,
+				574FE58C18DC0FA300490B18 /* Column.h */,
+				574FE58D18DC0FA300490B18 /* SqliteDriver.cpp */,
+				574FE58E18DC0FA300490B18 /* SqliteDriver.h */,
+				574FE58F18DC0FA300490B18 /* SqliteMacros.h */,
+				574FE59018DC0FA300490B18 /* Statement.cpp */,
+				574FE59118DC0FA300490B18 /* Statement.h */,
+				574FE59218DC0FA300490B18 /* Transaction.cpp */,
+				574FE59318DC0FA300490B18 /* Transaction.h */,
+			);
+			path = sqlite;
+			sourceTree = "<group>";
+		};
+		574FE59418DC0FA300490B18 /* string */ = {
+			isa = PBXGroup;
+			children = (
+				574FE59518DC0FA300490B18 /* utf8 */,
+				574FE59918DC0FA300490B18 /* utf8.h */,
+			);
+			path = string;
+			sourceTree = "<group>";
+		};
+		574FE59518DC0FA300490B18 /* utf8 */ = {
+			isa = PBXGroup;
+			children = (
+				574FE59618DC0FA300490B18 /* checked.h */,
+				574FE59718DC0FA300490B18 /* core.h */,
+				574FE59818DC0FA300490B18 /* unchecked.h */,
+			);
+			path = utf8;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		574FE56118DC0F7300490B18 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				574FE5BB18DC0FA300490B18 /* checked.h in Headers */,
+				574FE5B318DC0FA300490B18 /* Column.h in Headers */,
+				574FE59B18DC0FA300490B18 /* Log.h in Headers */,
+				574FE5A818DC0FA300490B18 /* forwards.h in Headers */,
+				574FE5A418DC0FA300490B18 /* YHMacros.h in Headers */,
+				574FE5A618DC0FA300490B18 /* config.h in Headers */,
+				574FE5A718DC0FA300490B18 /* features.h in Headers */,
+				574FE5BD18DC0FA300490B18 /* unchecked.h in Headers */,
+				574FE59D18DC0FA300490B18 /* Object.h in Headers */,
+				574FE5B618DC0FA300490B18 /* SqliteMacros.h in Headers */,
+				574FE5A918DC0FA300490B18 /* json.h in Headers */,
+				574FE5B118DC0FA300490B18 /* writer.h in Headers */,
+				574FE5AA18DC0FA300490B18 /* json_batchallocator.h in Headers */,
+				574FE5BE18DC0FA300490B18 /* utf8.h in Headers */,
+				574FE5AF18DC0FA300490B18 /* reader.h in Headers */,
+				574FE5B518DC0FA300490B18 /* SqliteDriver.h in Headers */,
+				574FE59F18DC0FA300490B18 /* PlatformDefine.h in Headers */,
+				574FE5B818DC0FA300490B18 /* Statement.h in Headers */,
+				574FE5B018DC0FA300490B18 /* value.h in Headers */,
+				574FE5A318DC0FA300490B18 /* RefPtr.h in Headers */,
+				574FE5BA18DC0FA300490B18 /* Transaction.h in Headers */,
+				574FE5A118DC0FA300490B18 /* RefCount.h in Headers */,
+				574FE5AB18DC0FA300490B18 /* json_macros.h in Headers */,
+				574FE5BC18DC0FA300490B18 /* core.h in Headers */,
+				574FE59E18DC0FA300490B18 /* PlatformConfig.h in Headers */,
+				574FE5A518DC0FA300490B18 /* autolink.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		574FE56218DC0F7300490B18 /* yh */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 574FE56718DC0F7300490B18 /* Build configuration list for PBXNativeTarget "yh" */;
+			buildPhases = (
+				574FE55F18DC0F7300490B18 /* Sources */,
+				574FE56018DC0F7300490B18 /* Frameworks */,
+				574FE56118DC0F7300490B18 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = yh;
+			productName = yh;
+			productReference = 574FE56318DC0F7300490B18 /* libyh.a */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		574FE55B18DC0F7300490B18 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = duanhouhai;
+			};
+			buildConfigurationList = 574FE55E18DC0F7300490B18 /* Build configuration list for PBXProject "yh" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 574FE55A18DC0F7300490B18;
+			productRefGroup = 574FE56418DC0F7300490B18 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				574FE56218DC0F7300490B18 /* yh */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		574FE55F18DC0F7300490B18 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				574FE5B418DC0FA300490B18 /* SqliteDriver.cpp in Sources */,
+				574FE5AC18DC0FA300490B18 /* json_reader.cpp in Sources */,
+				574FE5B218DC0FA300490B18 /* Column.cpp in Sources */,
+				574FE5AD18DC0FA300490B18 /* json_value.cpp in Sources */,
+				574FE5A018DC0FA300490B18 /* RefCount.cpp in Sources */,
+				574FE59C18DC0FA300490B18 /* Object.cpp in Sources */,
+				574FE5A218DC0FA300490B18 /* RefPtr.cpp in Sources */,
+				574FE5B718DC0FA300490B18 /* Statement.cpp in Sources */,
+				574FE59A18DC0FA300490B18 /* Log.cpp in Sources */,
+				574FE5AE18DC0FA300490B18 /* json_writer.cpp in Sources */,
+				574FE5B918DC0FA300490B18 /* Transaction.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		574FE56518DC0F7300490B18 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		574FE56618DC0F7300490B18 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		574FE56818DC0F7300490B18 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_EXTENSION = a;
+				EXECUTABLE_PREFIX = lib;
+				MACH_O_TYPE = staticlib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		574FE56918DC0F7300490B18 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_EXTENSION = a;
+				EXECUTABLE_PREFIX = lib;
+				MACH_O_TYPE = staticlib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		574FE55E18DC0F7300490B18 /* Build configuration list for PBXProject "yh" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				574FE56518DC0F7300490B18 /* Debug */,
+				574FE56618DC0F7300490B18 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		574FE56718DC0F7300490B18 /* Build configuration list for PBXNativeTarget "yh" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				574FE56818DC0F7300490B18 /* Debug */,
+				574FE56918DC0F7300490B18 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 574FE55B18DC0F7300490B18 /* Project object */;
+}

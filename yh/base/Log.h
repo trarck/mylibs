@@ -1,104 +1,49 @@
-#ifndef YH_BASE_OBJECT_H_
-#define YH_BASE_OBJECT_H_
+#ifndef YH_BASE_LOG_H_
+#define YH_BASE_LOG_H_
 
 #include "YHMacros.h"
 
 NS_YH_BEGIN
 
+#define __YHLOGWITHFUNCTION(s, ...) \
+yh::log("%s : " s ,__FUNCTION__,  ##__VA_ARGS__)
 
-/** Interface that defines how to clone an object */
-class Clonable
-{
-public:
-	/** returns a copy of the object */
-    virtual Clonable* clone() const = 0;
-    /**
-     * @js NA
-     * @lua NA
-     */
-	virtual ~Clonable() {};
-};
+#define YH_LOG_LEVEL_DEBUG 4
+#define YH_LOG_LEVEL_INFO 3
+#define YH_LOG_LEVEL_WARN 2
+#define YH_LOG_LEVEL_ERROR 1
 
-/**
- * 引用计数基类
- * 注意和RefCount不能同时使用
- */
-class Object
-{
-public:
-    /**
-     * Constructor
-     *
-     * The object's reference count is 1 after construction.
-     * @js NA
-     */
-    Object();
-    
-    /**
-     * @js NA
-     * @lua NA
-     */
-    virtual ~Object();
-    
-    /**
-     * Release the ownership immediately.
-     *
-     * This decrements the object's reference count.
-     *
-     * If the reference count reaches 0 after the descrement, this object is
-     * destructed.
-     *
-     * @see retain, autorelease
-     * @js NA
-     */
-    void release();
+#if !defined(YH_LOG_LEVEL) || YH_LOG_LEVEL ==0
+#define YHDEBUG(...)       do {} while (0)
+#define YHINFO(...)   do {} while (0)
+#define YHWARN(...)   do {} while (0)
+#define YHERROR(...)  do {} while (0)
 
-    /**
-     * Retains the ownership.
-     *
-     * This increases the object's reference count.
-     *
-     * @see release, autorelease
-     * @js NA
-     */
-    inline void retain()
-    {
-        ++_referenceCount;
-    }
+#elif YH_LOG_LEVEL == 1
+#define YHDEBUG(...)   do {} while (0)
+#define YHINFO(...) do {} while (0)
+#define YHWARN(...)  do {} while (0)
+#define YHERROR(...) __YHLOGWITHFUNCTION(__VA_ARGS__)
 
-    unsigned int getReferenceCount() const;
+#elif YH_LOG_LEVEL == 2
+#define YHDEBUG(...)   do {} while (0)
+#define YHINFO(...)  do {} while (0)
+#define YHWARN(format,...) yh::log(format, ##__VA_ARGS__)
+#define YHERROR(...)  __YHLOGWITHFUNCTION(__VA_ARGS__)
 
-    /**
-     * Returns a boolean value that indicates whether this object and a given
-     * object are equal.
-     *
-     * @param object    The object to be compared to this object.
-     *
-     * @returns True if this object and @p object are equal, otherwise false.
-     * @js NA
-     * @lua NA
-     */
-    virtual bool isEqual(const Object* object);
+#elif YH_LOG_LEVEL == 3
+#define YHDEBUG(...)   do {} while (0)
+#define YHINFO(format, ...)  yh::log(format, ##__VA_ARGS__)
+#define YHWARN(format,...) yh::log(format, ##__VA_ARGS__)
+#define YHERROR(...)  __YHLOGWITHFUNCTION(__VA_ARGS__)
 
-public:
-	
-	inline void setId(unsigned int id)
-	{
-	    _id = id;
-	}
-
-	inline unsigned int getId()
-	{
-	    return _id;
-	}
-	
-protected:
-    /// object id
-    unsigned int _id;
-    /// count of references
-    unsigned int _referenceCount;
-};
+#elif YH_LOG_LEVEL > 3
+#define YHDEBUG(format, ...)      yh::log(format, ##__VA_ARGS__)
+#define YHINFO(format,...)   yh::log(format, ##__VA_ARGS__)
+#define YHWARN(format,...) yh::log(format, ##__VA_ARGS__)
+#define YHERROR(...)  __YHLOGWITHFUNCTION(__VA_ARGS__)
+#endif // yh log
 
 NS_YH_END
 
-#endif // YH_BASE_OBJECT_H_
+#endif // YH_BASE_LOG_H_

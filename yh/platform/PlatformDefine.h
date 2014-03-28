@@ -1,5 +1,5 @@
-#ifndef YH_BASE_PLATFORM_DEFINE_H_
-#define YH_BASE_PLATFORM_DEFINE_H_
+#ifndef YH_PLATFORM_PLATFORM_DEFINE_H_
+#define YH_PLATFORM_PLATFORM_DEFINE_H_
 
 #include "PlatformConfig.h"
 
@@ -15,9 +15,24 @@
 //unused param
 #define YH_UNUSED_PARAM(unusedparam) (void)unusedparam
 
-#define DISALLOW_COPY_AND_ASSIGN(TypeName) \
+//disable copy and assign
+#define YH_DISALLOW_COPY_AND_ASSIGN(TypeName) \
             TypeName(const TypeName&);\
             void operator=(const TypeName&)
+
+//disable copy and assign
+#if defined(__GNUC__) && ((__GNUC__ >= 5) || ((__GNUG__ == 4) && (__GNUC_MINOR__ >= 4))) \
+|| (defined(__clang__) && (__clang_major__ >= 3))
+#define YH_DISABLE_COPY(Class) \
+private: \
+Class(const Class &) = delete; \
+Class &operator =(const Class &) = delete;
+#else
+#define YH_DISABLE_COPY(Class) \
+private: \
+Class(const Class &); \
+Class &operator =(const Class &);
+#endif
 
 //assert
 #if YH_TARGET_PLATFORM == YH_PLATFORM_ANDROID
@@ -74,5 +89,5 @@
 	#define YH_DLL
 #endif //dell export
 
-#endif  // YH_BASE_PLATFORM_DEFINE_H_
+#endif  // YH_PLATFORM_PLATFORM_DEFINE_H_
 

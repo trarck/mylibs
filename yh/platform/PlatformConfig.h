@@ -1,5 +1,5 @@
-#ifndef YH_BASE_PLATFORM_CONFIG_H_
-#define YH_BASE_PLATFORM_CONFIG_H_
+#ifndef YH_PLATFORM_PLATFORM_CONFIG_H_
+#define YH_PLATFORM_PLATFORM_CONFIG_H_
 
 //////////////////////////////////////////////////////////////////////////
 // pre configure
@@ -129,5 +129,5 @@
 #endif 
 #endif  // YH_PLATFORM_WIN32
 
-#endif  // YH_BASE_PLATFORM_CONFIG_H_
+#endif  // YH_PLATFORM_PLATFORM_CONFIG_H_
 

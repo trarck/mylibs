@@ -1,0 +1,5 @@
+#ifndef YH_IO_BINARYMACROS_H_
+#define YH_IO_BINARYMACROS_H_
+
+
+#endif //YH_IO_BINARYMACROS_H_

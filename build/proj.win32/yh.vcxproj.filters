@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="yh">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="yh\base">
+      <UniqueIdentifier>{011e5769-cbc0-482b-9be0-85d4f8fd3d54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="yh\io">
+      <UniqueIdentifier>{69f0b834-c2f7-4830-a4f7-fd976204eab2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="yh\jsoncpp">
+      <UniqueIdentifier>{d701611f-7022-49f6-ad13-10b8abe8a0aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="yh\platform">
+      <UniqueIdentifier>{9f1892a7-4501-423b-863b-5b7a840fc747}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="yh\sqlite">
+      <UniqueIdentifier>{6c765c18-b167-436c-89cc-19c277b2f128}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="yh\string">
+      <UniqueIdentifier>{eab36634-6699-4ba1-bfd2-dde34829785a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="yh\platform\win32">
+      <UniqueIdentifier>{60de55a5-2720-47e5-a193-6654cf5a0231}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="yh\string\utf8">
+      <UniqueIdentifier>{4e7a19ab-bc85-4c8f-9d17-70df6750b6f5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\yh\base\Internals.h">
+      <Filter>yh\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\base\Object.h">
+      <Filter>yh\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\base\RefCount.h">
+      <Filter>yh\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\base\RefPtr.h">
+      <Filter>yh\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\io\Buffer.h">
+      <Filter>yh\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\io\IOMacros.h">
+      <Filter>yh\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\jsoncpp\autolink.h">
+      <Filter>yh\jsoncpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\jsoncpp\config.h">
+      <Filter>yh\jsoncpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\jsoncpp\features.h">
+      <Filter>yh\jsoncpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\jsoncpp\forwards.h">
+      <Filter>yh\jsoncpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\jsoncpp\json.h">
+      <Filter>yh\jsoncpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\jsoncpp\json_batchallocator.h">
+      <Filter>yh\jsoncpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\jsoncpp\json_macros.h">
+      <Filter>yh\jsoncpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\jsoncpp\reader.h">
+      <Filter>yh\jsoncpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\jsoncpp\value.h">
+      <Filter>yh\jsoncpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\jsoncpp\writer.h">
+      <Filter>yh\jsoncpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\platform\PlatformConfig.h">
+      <Filter>yh\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\platform\PlatformDefine.h">
+      <Filter>yh\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\platform\YHStdC.h">
+      <Filter>yh\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\platform\win32\stdint.h">
+      <Filter>yh\platform\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\platform\win32\Win32StdC.h">
+      <Filter>yh\platform\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\sqlite\Column.h">
+      <Filter>yh\sqlite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\sqlite\SqliteDriver.h">
+      <Filter>yh\sqlite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\sqlite\SqliteMacros.h">
+      <Filter>yh\sqlite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\sqlite\Statement.h">
+      <Filter>yh\sqlite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\sqlite\Transaction.h">
+      <Filter>yh\sqlite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\string\utf8.h">
+      <Filter>yh\string</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\string\utf8\checked.h">
+      <Filter>yh\string\utf8</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\string\utf8\core.h">
+      <Filter>yh\string\utf8</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\string\utf8\unchecked.h">
+      <Filter>yh\string\utf8</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\platform\Log.h">
+      <Filter>yh\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\yh.h">
+      <Filter>yh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\NSMacros.h">
+      <Filter>yh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\YHMacros.h">
+      <Filter>yh</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\yh\base\Object.cpp">
+      <Filter>yh\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\base\RefCount.cpp">
+      <Filter>yh\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\base\RefPtr.cpp">
+      <Filter>yh\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\io\Buffer.cpp">
+      <Filter>yh\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\jsoncpp\json_reader.cpp">
+      <Filter>yh\jsoncpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\jsoncpp\json_value.cpp">
+      <Filter>yh\jsoncpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\jsoncpp\json_writer.cpp">
+      <Filter>yh\jsoncpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\platform\win32\Win32StdC.cpp">
+      <Filter>yh\platform\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\sqlite\Column.cpp">
+      <Filter>yh\sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\sqlite\SqliteDriver.cpp">
+      <Filter>yh\sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\sqlite\Statement.cpp">
+      <Filter>yh\sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\sqlite\Transaction.cpp">
+      <Filter>yh\sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\platform\win32\Log.cpp">
+      <Filter>yh\platform\win32</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

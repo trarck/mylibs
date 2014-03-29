@@ -1,7 +1,7 @@
 #ifndef YH_PLATFORM_WIN32_YHSTDC_H_
 #define YH_PLATFORM_WIN32_YHSTDC_H_
 
-#include "base/YHMacros.h"
+#include <yh/YHMacros.h>
 #include "../PlatformConfig.h"
 
 #include <float.h>

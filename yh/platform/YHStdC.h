@@ -6,7 +6,7 @@
 //stdc 
 #if YH_TARGET_PLATFORM == YH_PLATFORM_WIN32
 
-    #include "win32/YHStdC.h"
+    #include "win32/Win32StdC.h"
 
 #else //stdc other platforms
 

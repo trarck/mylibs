@@ -1,7 +1,7 @@
 #ifndef YH_BASE_OBJECT_H_
 #define YH_BASE_OBJECT_H_
 
-#include "YHMacros.h"
+#include "../YHMacros.h"
 
 NS_YH_BEGIN
 

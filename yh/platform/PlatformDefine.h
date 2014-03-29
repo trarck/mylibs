@@ -35,6 +35,10 @@ Class &operator =(const Class &);
 #endif
 
 //assert
+#if YH_DISABLE_ASSERT > 0
+    #error  "Cannot 1"
+	#define YH_ASSERT(cond)
+#else //YH_DISABLE_ASSERT > 0
 #if YH_TARGET_PLATFORM == YH_PLATFORM_ANDROID
 	#include "android/log.h"
 
@@ -53,19 +57,15 @@ Class &operator =(const Class &);
 	                            "file:%s function:%s line:%d, %s",      \
 	                            __FILE__, __FUNCTION__, __LINE__, msg); \
 	    }
-
+    
 	#define YH_ASSERT(cond) YH_NO_MESSAGE_PSEUDOASSERT(cond)
 
 #else //other platforms
 	#include <assert.h>
-	#if YH_DISABLE_ASSERT > 0
-	#define YH_ASSERT(cond)
-	#else
 	#define YH_ASSERT(cond) assert(cond)
-	#endif //YH_DISABLE_ASSERT > 0
-
 #endif //assert
-	
+#endif //YH_DISABLE_ASSERT > 0
+
 //dll export
 #if YH_TARGET_PLATFORM == YH_PLATFORM_WIN32
 	#ifdef __MINGW32__

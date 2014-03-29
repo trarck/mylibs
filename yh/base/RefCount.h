@@ -2,7 +2,7 @@
 #define YH_BASE_REFCOUNT_H_
 
 #include <stddef.h>
-#include "YHMacros.h"
+#include "../YHMacros.h"
 
 NS_YH_BEGIN
 

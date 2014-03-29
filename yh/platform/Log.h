@@ -1,12 +1,16 @@
 #ifndef YH_BASE_LOG_H_
 #define YH_BASE_LOG_H_
 
-#include "YHMacros.h"
+#include "../NSMacros.h"
 
 NS_YH_BEGIN
 
+static const int kMaxLogLen = 16*1024;
+
+void log(const char * pszFormat, ...);
+
 #define __YHLOGWITHFUNCTION(s, ...) \
-yh::log("%s : " s ,__FUNCTION__,  ##__VA_ARGS__)
+    yh::log("%s : " s ,__FUNCTION__,  ##__VA_ARGS__)
 
 #define YH_LOG_LEVEL_DEBUG 4
 #define YH_LOG_LEVEL_INFO 3

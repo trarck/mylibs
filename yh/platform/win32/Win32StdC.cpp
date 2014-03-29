@@ -1,4 +1,4 @@
-#include "YHStdC.h"
+#include "Win32StdC.h"
 
 #ifndef __MINGW32__
 

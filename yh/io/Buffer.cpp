@@ -25,24 +25,24 @@ size_t Buffer::readBytes(size_t position,void* buf,size_t size)
         size=m_size-position;
     }
     
-    memcpy(buf,m_data+position,size);
-    
-    return size;
-}
-
-
-size_t Buffer::readBytesSafe(size_t position,void* buf,size_t size)
-{
-    YHASSERT(position<m_size,"Buffer::readBytesSafe out index");
-    
-    if (position+size>m_size) {
-        size=m_size-position;
-    }
-    
     memmove(buf,m_data+position,size);
     
     return size;
 }
+
+
+//size_t Buffer::readBytesUnSafe(size_t position,void* buf,size_t size)
+//{
+//    YHASSERT(position+size<=m_size,"Buffer::readBytesSafe out index");
+//    
+////    if (position+size>m_size) {
+////        size=m_size-position;
+////    }
+//    
+//    memcpy(buf,m_data+position,size);
+//    
+//    return size;
+//}
 
 uint64_t Buffer::readUInt64LE(size_t position)
 {
@@ -89,5 +89,46 @@ size_t Buffer::writeBytes(size_t position,void* buf,size_t size)
     return size;
 }
 
+size_t Buffer::writeBytesUnSafe(size_t position,void* buf,size_t size)
+{
+    YHASSERT(position+size<=m_size,"Buffer::writeBytes out index");
+    
+//    if (position+size>m_size) {
+//        size=m_size-position;
+//    }
+    
+    memcpy(m_data+position,buf,size);
+    
+    return size;
+}
+
+size_t Buffer::writeUInt64LE(uint64_t value,size_t position)
+{
+    YHASSERT(position+8<=m_size,"Buffer::writeUInt64LE out index");
+    
+    
+    unsigned char* start=m_data+position;
+    
+    for (int i = 0; i < 8; i++)
+    {
+        *(start+i) =  (value >> (i*8)) & 0xFF;
+    }
+    
+    return 8;
+}
+
+size_t Buffer::writeUInt64BE(uint64_t value,size_t position)
+{
+    YHASSERT(position+8<=m_size,"Buffer::writeUInt64LE out index");
+    
+    unsigned char* start=m_data+position+7;
+    
+    for (int i = 0; i < 8; i++)
+    {
+        *(start--) =  (value >> (i*8)) & 0xFF;
+    }
+    
+    return 8;
+}
 
 NS_YH_END

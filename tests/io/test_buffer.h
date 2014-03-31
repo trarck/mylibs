@@ -1,25 +1,8 @@
-#ifndef YH_YH_H_
-#define YH_YH_H_
+#ifndef YH_TESTS_IO_TEST_BUFFER_H_
+#define YH_TESTS_IO_TEST_BUFFER_H_
 
-//base
-#include "NSMacros.h"
-#include "YHMacros.h"
-#include "base/Internals.h"
-#include "base/Object.h"
-#include "base/RefPtr.h"
-#include "base/RefCount.h"
+int testBuffer();
 
-//platform
-#include "platform/PlatformConfig.h"
-#include "platform/PlatformDefine.h"
-#include "platform/YHStdC.h"
-#include "platform/Log.h"
+int testBufferPerfermens();
 
-//jsoncpp
-#include "jsoncpp/json.h"
-
-//io
-#include "io/IOMacros.h"
-#include "io/Buffer.h"
-
-#endif //YH_YH_H_
+#endif //YH_TESTS_IO_TEST_BUFFER_H_

@@ -21,5 +21,7 @@
 //io
 #include "io/IOMacros.h"
 #include "io/Buffer.h"
+#include "io/InputStream.h"
+#include "io/OutputStream.h"
 
 #endif //YH_YH_H_

@@ -15,6 +15,12 @@ public:
     
     InputStream();
     
+    bool init();
+    
+    bool init(Buffer* buffer);
+    
+    bool initWithStream(InputStream* stream);
+    
     ~InputStream();
     
     size_t readBytes(void* buf,size_t size);
@@ -46,7 +52,11 @@ public:
     float readHalfFixed();
     
     float readFixed();
+    
+    void seek(size_t lenght);
 
+    bool eof();
+    
 public:
     
     inline void setBuffer(Buffer* buffer)

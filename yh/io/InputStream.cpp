@@ -16,6 +16,28 @@ InputStream::~InputStream()
     YH_SAFE_RELEASE_NULL(m_buffer);
 }
 
+bool InputStream::init()
+{
+    return true;
+}
+
+bool InputStream::init(Buffer* buffer)
+{
+    setBuffer(buffer);
+    return true;
+}
+
+bool InputStream::initWithStream(InputStream* stream)
+{
+    if (stream!=this) {
+        setBuffer(stream->getBuffer());
+        
+        return true;
+    }
+    
+    return false;
+}
+
 size_t InputStream::readBytes(void* buf,size_t size)
 {
     size_t readSize=m_buffer->readBytes(m_pos, buf, size);
@@ -125,6 +147,16 @@ float InputStream::readFixed()
     m_pos+=_BUFFER_INT_SIZE;
     
     return ret;
+}
+
+void InputStream::seek(size_t lenght)
+{
+    m_pos+=lenght;
+}
+
+bool InputStream::eof()
+{
+    return m_pos >= m_buffer->getSize();
 }
 
 NS_YH_END

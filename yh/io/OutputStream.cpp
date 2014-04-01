@@ -16,6 +16,27 @@ OutputStream::~OutputStream()
     YH_SAFE_RELEASE_NULL(m_buffer);
 }
 
+bool OutputStream::init()
+{
+    return true;
+}
+
+bool OutputStream::init(Buffer* buffer)
+{
+    setBuffer(buffer);
+    return true;
+}
+
+bool OutputStream::initWithStream(OutputStream* stream)
+{
+    if (stream!=this) {
+        setBuffer(stream->getBuffer());
+        return true;
+    }
+    
+    return false;
+}
+
 void OutputStream::writeBytes(void* buf,size_t size)
 {
     m_pos+=m_buffer->writeBytes(m_pos, buf, size);
@@ -133,6 +154,16 @@ void OutputStream::writeFixed(float value)
     }else{
         m_pos+=m_buffer->writeFixedBE(value,m_pos);
     }
+}
+
+void OutputStream::seek(size_t lenght)
+{
+    m_pos+=lenght;
+}
+
+bool OutputStream::eof()
+{
+    return m_pos>=m_buffer->getSize();
 }
 
 NS_YH_END

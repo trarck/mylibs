@@ -16,6 +16,12 @@ public:
     OutputStream();
     
     ~OutputStream();
+
+    bool init();
+    
+    bool init(Buffer* buffer);
+    
+    bool initWithStream(OutputStream* stream);
     
     void writeBytes(void* buf,size_t size);
     
@@ -80,6 +86,10 @@ public:
     {
         return m_endianness;
     }
+    
+    void seek(size_t lenght);
+    
+    bool eof();
     
 protected:
     

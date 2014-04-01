@@ -60,6 +60,10 @@
 		57E2C29E18EA60BE00124DF1 /* buffer_unittest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57E2C29C18EA609600124DF1 /* buffer_unittest.cpp */; };
 		57E2C29F18EA68C800124DF1 /* libgtest_main.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57E2C29718EA604B00124DF1 /* libgtest_main.a */; };
 		57E2C2A018EA68C800124DF1 /* libgtest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57E2C29818EA604B00124DF1 /* libgtest.a */; };
+		57E2C2A718EAAC1000124DF1 /* InputStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57E2C2A518EAAC1000124DF1 /* InputStream.cpp */; };
+		57E2C2A818EAAC1000124DF1 /* InputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 57E2C2A618EAAC1000124DF1 /* InputStream.h */; };
+		57E2C2AB18EAAC5800124DF1 /* OutputStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57E2C2A918EAAC5800124DF1 /* OutputStream.cpp */; };
+		57E2C2AC18EAAC5800124DF1 /* OutputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 57E2C2AA18EAAC5800124DF1 /* OutputStream.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +160,10 @@
 		57E2C29718EA604B00124DF1 /* libgtest_main.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgtest_main.a; path = ../../deps/gtest/libraries/mac/libgtest_main.a; sourceTree = "<group>"; };
 		57E2C29818EA604B00124DF1 /* libgtest.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgtest.a; path = ../../deps/gtest/libraries/mac/libgtest.a; sourceTree = "<group>"; };
 		57E2C29C18EA609600124DF1 /* buffer_unittest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buffer_unittest.cpp; sourceTree = "<group>"; };
+		57E2C2A518EAAC1000124DF1 /* InputStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputStream.cpp; sourceTree = "<group>"; };
+		57E2C2A618EAAC1000124DF1 /* InputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputStream.h; sourceTree = "<group>"; };
+		57E2C2A918EAAC5800124DF1 /* OutputStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OutputStream.cpp; sourceTree = "<group>"; };
+		57E2C2AA18EAAC5800124DF1 /* OutputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutputStream.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,11 +206,15 @@
 		571610B218E51F5800D2F48E /* io */ = {
 			isa = PBXGroup;
 			children = (
-				57E2C28618E94FE300124DF1 /* IeeeHalfPrecision.cpp */,
-				57E2C28718E94FE300124DF1 /* IeeeHalfPrecision.h */,
 				571610B318E51F5800D2F48E /* Buffer.cpp */,
 				571610B418E51F5800D2F48E /* Buffer.h */,
+				57E2C28618E94FE300124DF1 /* IeeeHalfPrecision.cpp */,
+				57E2C28718E94FE300124DF1 /* IeeeHalfPrecision.h */,
+				57E2C2A518EAAC1000124DF1 /* InputStream.cpp */,
+				57E2C2A618EAAC1000124DF1 /* InputStream.h */,
 				571610B518E51F5800D2F48E /* IOMacros.h */,
+				57E2C2A918EAAC5800124DF1 /* OutputStream.cpp */,
+				57E2C2AA18EAAC5800124DF1 /* OutputStream.h */,
 			);
 			path = io;
 			sourceTree = "<group>";
@@ -390,11 +402,13 @@
 				574FE5B618DC0FA300490B18 /* SqliteMacros.h in Headers */,
 				57E2C27818E904B700124DF1 /* NSMacros.h in Headers */,
 				574FE5A918DC0FA300490B18 /* json.h in Headers */,
+				57E2C2A818EAAC1000124DF1 /* InputStream.h in Headers */,
 				571610D018E5824E00D2F48E /* YHStdC.h in Headers */,
 				574FE5B118DC0FA300490B18 /* writer.h in Headers */,
 				57E2C27918E904B700124DF1 /* yh.h in Headers */,
 				574FE5AA18DC0FA300490B18 /* json_batchallocator.h in Headers */,
 				574FE5BE18DC0FA300490B18 /* utf8.h in Headers */,
+				57E2C2AC18EAAC5800124DF1 /* OutputStream.h in Headers */,
 				574FE5AF18DC0FA300490B18 /* reader.h in Headers */,
 				574FE5B518DC0FA300490B18 /* SqliteDriver.h in Headers */,
 				571610BA18E5534D00D2F48E /* Internals.h in Headers */,
@@ -513,6 +527,7 @@
 			files = (
 				574FE5B418DC0FA300490B18 /* SqliteDriver.cpp in Sources */,
 				574FE5AC18DC0FA300490B18 /* json_reader.cpp in Sources */,
+				57E2C2AB18EAAC5800124DF1 /* OutputStream.cpp in Sources */,
 				574FE5B218DC0FA300490B18 /* Column.cpp in Sources */,
 				571610B618E51F5800D2F48E /* Buffer.cpp in Sources */,
 				574FE5AD18DC0FA300490B18 /* json_value.cpp in Sources */,
@@ -523,6 +538,7 @@
 				574FE5A218DC0FA300490B18 /* RefPtr.cpp in Sources */,
 				574FE5B718DC0FA300490B18 /* Statement.cpp in Sources */,
 				574FE5AE18DC0FA300490B18 /* json_writer.cpp in Sources */,
+				57E2C2A718EAAC1000124DF1 /* InputStream.cpp in Sources */,
 				574FE5B918DC0FA300490B18 /* Transaction.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

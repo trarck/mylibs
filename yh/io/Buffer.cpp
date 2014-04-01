@@ -27,6 +27,14 @@ Buffer::Buffer(unsigned char* data,size_t size)
     
 }
 
+Buffer::Buffer(unsigned char* data,size_t size,bool dataOwner)
+:m_size(size)
+,m_data(data)
+,m_dataOwner(dataOwner)
+{
+    
+}
+
 Buffer::~Buffer()
 {
     if (m_data && m_dataOwner) {

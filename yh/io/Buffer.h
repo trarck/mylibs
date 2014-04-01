@@ -28,6 +28,8 @@ public:
     
     Buffer(unsigned char* data,size_t size);
     
+    Buffer(unsigned char* data,size_t size,bool dataOwner);
+    
     ~Buffer();
     
     /**

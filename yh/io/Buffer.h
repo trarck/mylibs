@@ -22,7 +22,11 @@ class Buffer:public Object
 {
 public:
     
+    Buffer();
+    
     Buffer(size_t size);
+    
+    Buffer(unsigned char* data,size_t size);
     
     ~Buffer();
     
@@ -38,7 +42,6 @@ public:
      */
     size_t readBytes(size_t position,void* buf,size_t size);
 
-    
     /**
      * @brief 不安全的读取一段数据
      * 主要是使用memcpy代替memmove
@@ -354,7 +357,7 @@ public:
 //                
 //        return bitwise_cast<uint32_t,float>(singleInt);
         
-        uint16_t halfInt=readUInt16LE(position);
+        uint16_t halfInt=readUInt16BE(position);
         
         float val;
         
@@ -549,7 +552,7 @@ public:
         
         *(m_data+position)=value;
         
-        return 1;
+        return _BUFFER_BYTE_SIZE;
     }
     
     /**
@@ -562,14 +565,14 @@ public:
      */
     inline size_t writeUInt16LE(uint16_t value,size_t position)
     {
-        YHASSERT(position+2<=m_size,"Buffer::writeUInt16LE out index");
+        YHASSERT(position+_BUFFER_SHORT_SIZE<=m_size,"Buffer::writeUInt16LE out index");
         
         unsigned char* start=m_data+position;
         
         *(start) = value & 0x00FF;
         *(start+1) = (value & 0xFF00) >> 8;
         
-        return 2;
+        return _BUFFER_SHORT_SIZE;
     }
     
     /**
@@ -582,14 +585,14 @@ public:
      */
     inline size_t writeUInt16BE(uint16_t value,size_t position)
     {
-        YHASSERT(position+2<=m_size,"Buffer::writeUInt16BE out index");
+        YHASSERT(position+_BUFFER_SHORT_SIZE<=m_size,"Buffer::writeUInt16BE out index");
         
         unsigned char* start=m_data+position;
         
         *(start) = (value & 0xFF00) >> 8;
         *(start+1) = value & 0x00FF;
         
-        return 2;
+        return _BUFFER_SHORT_SIZE;
     }
     
     /**
@@ -602,7 +605,7 @@ public:
      */
     inline size_t writeUInt32LE(uint32_t value,size_t position)
     {
-        YHASSERT(position+4<=m_size,"Buffer::writeUInt32LE out index");
+        YHASSERT(position+_BUFFER_INT_SIZE<=m_size,"Buffer::writeUInt32LE out index");
         
         unsigned char* start=m_data+position;
         
@@ -611,7 +614,7 @@ public:
         *(start+2) = (value >> 16 ) & 0xFF;
         *(start+3) = (value >> 24 ) & 0xFF;
         
-        return 4;
+        return _BUFFER_INT_SIZE;
     }
     
     /**
@@ -624,7 +627,7 @@ public:
      */
     inline size_t writeUInt32BE(uint32_t value,size_t position)
     {
-        YHASSERT(position+4<=m_size,"Buffer::writeUInt32BE out index");
+        YHASSERT(position+_BUFFER_INT_SIZE<=m_size,"Buffer::writeUInt32BE out index");
         
         unsigned char* start=m_data+position;
         
@@ -633,7 +636,7 @@ public:
         *(start+2) = (value >> 8 ) & 0xFF;
         *(start+3) = value & 0xFF;
         
-        return 4;
+        return _BUFFER_INT_SIZE;
     }
     
     /**
@@ -906,6 +909,46 @@ public:
         return writeUInt32BE(fixedInt, position);
     }
     
+    /**
+     * @brief 用固定值填充缓冲区
+     * 会写入开始位置，但不会写入结束位置
+     * @param value 要填充的数据
+     * @param start 开始位置，从开头算起。
+     * @param end 结束的位置，从开头算起。
+     */
+    void fill(unsigned char value,size_t start,size_t end);
+    
+    inline void fill(unsigned char value,size_t start)
+    {
+        fill(value, start, m_size);
+    }
+    
+    inline void fill(unsigned char value)
+    {
+        fill(value, 0, m_size);
+    }
+    
+    /**
+     * @brief 把当前缓存区的内容copy到目标缓存区
+     * 包含开始位置，但不包含结束位置
+     * @param target 目标缓存区
+     * @param targetStart 目标缓存区开始位置
+     * @param sourceStart 当前缓存区的开始位置。
+     * @param sourceEnd 当前缓存区结束位置。
+     */
+    void copy(Buffer* target,size_t targetStart,size_t sourceStart,size_t sourceEnd);
+    
+    /**
+     * @brief 在当前缓存区数据截取一段
+     *
+     * @param start 截取的开始位置。
+     * @param end 截取的结束位置。
+     * @param size 截取的大小。
+     *
+     * @return 截取段的开始指针。注意不是副本。也就是说不用删除。
+     */
+    unsigned char* slice(size_t start,size_t* size);
+    
 public:
     
     inline void setSize(size_t size)
@@ -923,11 +966,28 @@ public:
         return m_data;
     }
     
+    inline void setData(unsigned char* data)
+    {
+        m_data=data;
+    }
+    
+    inline void setDataOwner(bool dataOwner)
+    {
+        m_dataOwner = dataOwner;
+    }
+    
+    inline bool isDataOwner()
+    {
+        return m_dataOwner;
+    }
+    
 protected:
     
     size_t m_size;
     
     unsigned char* m_data;
+    
+    bool m_dataOwner;
 };
 
 NS_YH_END

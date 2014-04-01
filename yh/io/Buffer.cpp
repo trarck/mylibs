@@ -3,16 +3,33 @@
 
 NS_YH_BEGIN
 
+Buffer::Buffer()
+:m_size(0)
+,m_data(NULL)
+,m_dataOwner(false)
+{
+    
+}
 
 Buffer::Buffer(size_t size)
 :m_size(size)
+,m_data(NULL)
+,m_dataOwner(true)
 {
-    m_data=(unsigned char*)malloc( size * sizeof(unsigned char));
+    m_data=(unsigned char*) malloc( size * sizeof(unsigned char));
+}
+
+Buffer::Buffer(unsigned char* data,size_t size)
+:m_size(size)
+,m_data(data)
+,m_dataOwner(false)
+{
+    
 }
 
 Buffer::~Buffer()
 {
-    if (m_data) {
+    if (m_data && m_dataOwner) {
         delete m_data;
     }
 }
@@ -104,31 +121,83 @@ size_t Buffer::writeBytesUnSafe(size_t position,void* buf,size_t size)
 
 size_t Buffer::writeUInt64LE(uint64_t value,size_t position)
 {
-    YHASSERT(position+8<=m_size,"Buffer::writeUInt64LE out index");
+    YHASSERT(position+_BUFFER_LONG_SIZE<=m_size,"Buffer::writeUInt64LE out index");
     
     
     unsigned char* start=m_data+position;
     
-    for (int i = 0; i < 8; i++)
+    for (int i = 0; i < _BUFFER_LONG_SIZE; i++)
     {
         *(start+i) =  (value >> (i*8)) & 0xFF;
     }
     
-    return 8;
+    return _BUFFER_LONG_SIZE;
 }
 
 size_t Buffer::writeUInt64BE(uint64_t value,size_t position)
 {
-    YHASSERT(position+8<=m_size,"Buffer::writeUInt64LE out index");
+    YHASSERT(position+_BUFFER_LONG_SIZE<=m_size,"Buffer::writeUInt64LE out index");
     
     unsigned char* start=m_data+position+7;
     
-    for (int i = 0; i < 8; i++)
+    for (int i = 0; i < _BUFFER_LONG_SIZE; i++)
     {
         *(start--) =  (value >> (i*8)) & 0xFF;
     }
     
-    return 8;
+    return _BUFFER_LONG_SIZE;
+}
+
+void Buffer::fill(unsigned char value,size_t start,size_t end)
+{
+    if (start<m_size) {
+        
+        if (end>m_size) {
+            end=m_size;
+        }
+        
+        size_t len=end-start;
+        
+        if (len>0) {
+            memset(m_data+start, value, len);
+        }
+    }
+}
+
+void Buffer::copy(Buffer* target,size_t targetStart,size_t sourceStart,size_t sourceEnd)
+{
+    size_t targetLength=target->getSize();
+    
+    if (targetStart >= target->getSize() || sourceStart >= sourceEnd){
+        //do nothing
+        return;
+    }
+    
+    if (sourceStart > m_size){
+        YHINFO("Buffer::copy out of range index");
+        return;
+    }
+    
+    //检查目录缓存区大小是否可以容纳，不能则截取
+    if (sourceEnd - sourceStart > targetLength - targetStart)
+        sourceEnd = sourceStart + targetLength - targetStart;
+    
+    size_t to_copy = MIN(MIN(sourceEnd - sourceStart,
+                               targetLength - targetStart),
+                           m_size - sourceStart);
+    
+    memmove(target->getData()+targetStart, m_data+sourceStart, to_copy);
+}
+
+unsigned char* Buffer::slice(size_t start,size_t* size)
+{
+    YHASSERT(start<m_size, "Buffer::slice out of range index");
+    
+    if (start+(*size)>m_size) {
+        *size=m_size-start;
+    }
+    
+    return m_data+start;
 }
 
 NS_YH_END

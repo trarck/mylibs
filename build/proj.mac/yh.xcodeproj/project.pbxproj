@@ -56,6 +56,10 @@
 		57E2C28518E905FB00124DF1 /* test_buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57E2C28318E905FB00124DF1 /* test_buffer.cpp */; };
 		57E2C28818E94FE300124DF1 /* IeeeHalfPrecision.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57E2C28618E94FE300124DF1 /* IeeeHalfPrecision.cpp */; };
 		57E2C28918E94FE300124DF1 /* IeeeHalfPrecision.h in Headers */ = {isa = PBXBuildFile; fileRef = 57E2C28718E94FE300124DF1 /* IeeeHalfPrecision.h */; };
+		57E2C29118EA5FF400124DF1 /* libyh.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 574FE56318DC0F7300490B18 /* libyh.a */; };
+		57E2C29E18EA60BE00124DF1 /* buffer_unittest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57E2C29C18EA609600124DF1 /* buffer_unittest.cpp */; };
+		57E2C29F18EA68C800124DF1 /* libgtest_main.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57E2C29718EA604B00124DF1 /* libgtest_main.a */; };
+		57E2C2A018EA68C800124DF1 /* libgtest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57E2C29818EA604B00124DF1 /* libgtest.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,10 +70,26 @@
 			remoteGlobalIDString = 574FE56218DC0F7300490B18;
 			remoteInfo = yh;
 		};
+		57E2C28C18EA5FF400124DF1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 574FE55B18DC0F7300490B18 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 574FE56218DC0F7300490B18;
+			remoteInfo = yh;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		5716109118E428BE00D2F48E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		57E2C29218EA5FF400124DF1 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -132,6 +152,10 @@
 		57E2C28418E905FB00124DF1 /* test_buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = test_buffer.h; sourceTree = "<group>"; };
 		57E2C28618E94FE300124DF1 /* IeeeHalfPrecision.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IeeeHalfPrecision.cpp; sourceTree = "<group>"; };
 		57E2C28718E94FE300124DF1 /* IeeeHalfPrecision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IeeeHalfPrecision.h; sourceTree = "<group>"; };
+		57E2C29618EA5FF400124DF1 /* unittest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = unittest; sourceTree = BUILT_PRODUCTS_DIR; };
+		57E2C29718EA604B00124DF1 /* libgtest_main.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgtest_main.a; path = ../../deps/gtest/libraries/mac/libgtest_main.a; sourceTree = "<group>"; };
+		57E2C29818EA604B00124DF1 /* libgtest.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgtest.a; path = ../../deps/gtest/libraries/mac/libgtest.a; sourceTree = "<group>"; };
+		57E2C29C18EA609600124DF1 /* buffer_unittest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buffer_unittest.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +171,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		57E2C29018EA5FF400124DF1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				57E2C29F18EA68C800124DF1 /* libgtest_main.a in Frameworks */,
+				57E2C2A018EA68C800124DF1 /* libgtest.a in Frameworks */,
+				57E2C29118EA5FF400124DF1 /* libyh.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +235,7 @@
 			children = (
 				574FE56318DC0F7300490B18 /* libyh.a */,
 				5716109318E428BE00D2F48E /* testyh */,
+				57E2C29618EA5FF400124DF1 /* unittest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -208,6 +243,7 @@
 		574FE56A18DC0F8800490B18 /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				57E2C29B18EA605800124DF1 /* gtest */,
 			);
 			name = frameworks;
 			sourceTree = "<group>";
@@ -318,10 +354,20 @@
 		57E2C28018E9057300124DF1 /* io */ = {
 			isa = PBXGroup;
 			children = (
+				57E2C29C18EA609600124DF1 /* buffer_unittest.cpp */,
 				57E2C28318E905FB00124DF1 /* test_buffer.cpp */,
 				57E2C28418E905FB00124DF1 /* test_buffer.h */,
 			);
 			path = io;
+			sourceTree = "<group>";
+		};
+		57E2C29B18EA605800124DF1 /* gtest */ = {
+			isa = PBXGroup;
+			children = (
+				57E2C29718EA604B00124DF1 /* libgtest_main.a */,
+				57E2C29818EA604B00124DF1 /* libgtest.a */,
+			);
+			name = gtest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -405,6 +451,24 @@
 			productReference = 574FE56318DC0F7300490B18 /* libyh.a */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
+		57E2C28A18EA5FF400124DF1 /* unittest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 57E2C29318EA5FF400124DF1 /* Build configuration list for PBXNativeTarget "unittest" */;
+			buildPhases = (
+				57E2C28D18EA5FF400124DF1 /* Sources */,
+				57E2C29018EA5FF400124DF1 /* Frameworks */,
+				57E2C29218EA5FF400124DF1 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				57E2C28B18EA5FF400124DF1 /* PBXTargetDependency */,
+			);
+			name = unittest;
+			productName = testyh;
+			productReference = 57E2C29618EA5FF400124DF1 /* unittest */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -428,6 +492,7 @@
 			targets = (
 				574FE56218DC0F7300490B18 /* yh */,
 				5716109218E428BE00D2F48E /* testyh */,
+				57E2C28A18EA5FF400124DF1 /* unittest */,
 			);
 		};
 /* End PBXProject section */
@@ -462,6 +527,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		57E2C28D18EA5FF400124DF1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				57E2C29E18EA60BE00124DF1 /* buffer_unittest.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -469,6 +542,11 @@
 			isa = PBXTargetDependency;
 			target = 574FE56218DC0F7300490B18 /* yh */;
 			targetProxy = 5716109E18E428E600D2F48E /* PBXContainerItemProxy */;
+		};
+		57E2C28B18EA5FF400124DF1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 574FE56218DC0F7300490B18 /* yh */;
+			targetProxy = 57E2C28C18EA5FF400124DF1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -570,6 +648,7 @@
 		574FE56818DC0F7300490B18 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				EXECUTABLE_EXTENSION = a;
 				EXECUTABLE_PREFIX = lib;
 				GCC_PREPROCESSOR_DEFINITIONS = "YH_DEBUG=1";
@@ -586,6 +665,7 @@
 		574FE56918DC0F7300490B18 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				EXECUTABLE_EXTENSION = a;
 				EXECUTABLE_PREFIX = lib;
 				HEADER_SEARCH_PATHS = (
@@ -595,6 +675,63 @@
 				);
 				MACH_O_TYPE = staticlib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		57E2C29418EA5FF400124DF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					i386,
+					x86_64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"YH_DEBUG=1",
+					"YH_LOG_LEVEL=4",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../../",
+					"$(SRCROOT)/../../deps/gtest/include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/duanhouhai/development/trarck/mylibs/deps/gtest/libraries/mac,
+				);
+				OTHER_CFLAGS = "-DDEBUG=1";
+				PRODUCT_NAME = unittest;
+			};
+			name = Debug;
+		};
+		57E2C29518EA5FF400124DF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					i386,
+					x86_64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../../",
+					"$(SRCROOT)/../../deps/gtest/include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/duanhouhai/development/trarck/mylibs/deps/gtest/libraries/mac,
+				);
+				OTHER_CFLAGS = (
+					"-DNDEBUG=1",
+					"-Wno-unused-variable",
+				);
+				PRODUCT_NAME = unittest;
 			};
 			name = Release;
 		};
@@ -624,6 +761,15 @@
 			buildConfigurations = (
 				574FE56818DC0F7300490B18 /* Debug */,
 				574FE56918DC0F7300490B18 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		57E2C29318EA5FF400124DF1 /* Build configuration list for PBXNativeTarget "unittest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				57E2C29418EA5FF400124DF1 /* Debug */,
+				57E2C29518EA5FF400124DF1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

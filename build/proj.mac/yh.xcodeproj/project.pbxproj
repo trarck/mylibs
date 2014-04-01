@@ -64,6 +64,7 @@
 		57E2C2A818EAAC1000124DF1 /* InputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 57E2C2A618EAAC1000124DF1 /* InputStream.h */; };
 		57E2C2AB18EAAC5800124DF1 /* OutputStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57E2C2A918EAAC5800124DF1 /* OutputStream.cpp */; };
 		57E2C2AC18EAAC5800124DF1 /* OutputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 57E2C2AA18EAAC5800124DF1 /* OutputStream.h */; };
+		57E2C2AE18EAB31500124DF1 /* stream_unittest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57E2C2AD18EAB31500124DF1 /* stream_unittest.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,6 +165,7 @@
 		57E2C2A618EAAC1000124DF1 /* InputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputStream.h; sourceTree = "<group>"; };
 		57E2C2A918EAAC5800124DF1 /* OutputStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OutputStream.cpp; sourceTree = "<group>"; };
 		57E2C2AA18EAAC5800124DF1 /* OutputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutputStream.h; sourceTree = "<group>"; };
+		57E2C2AD18EAB31500124DF1 /* stream_unittest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stream_unittest.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -367,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				57E2C29C18EA609600124DF1 /* buffer_unittest.cpp */,
+				57E2C2AD18EAB31500124DF1 /* stream_unittest.cpp */,
 				57E2C28318E905FB00124DF1 /* test_buffer.cpp */,
 				57E2C28418E905FB00124DF1 /* test_buffer.h */,
 			);
@@ -548,6 +551,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57E2C29E18EA60BE00124DF1 /* buffer_unittest.cpp in Sources */,
+				57E2C2AE18EAB31500124DF1 /* stream_unittest.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -64,6 +64,12 @@ public:
         
         return size;
     }
+    
+    inline unsigned char readByte(size_t position)
+    {
+        YHASSERT(position<m_size, "Buffer::readByte out index");
+        return *(m_data+position);
+    }
 
     ////////////////////////////////////////////////////////////////
     // unsigned
@@ -538,6 +544,22 @@ public:
      * @return 实际写入的大小。如果大小为0，则写入错误
      */
     size_t writeBytesUnSafe(size_t position,void* buf,size_t size);
+    
+    /**
+     * @brief 写入一个字节
+     * @param value 要写入的数据
+     * @param position 要写入的偏移位置，从开头算起。
+     *
+     * @return 实际写入的大小。如果大小为0，则写入错误
+     */
+    inline size_t writeByte(unsigned char value,size_t position)
+    {
+        YHASSERT(position<m_size,"Buffer::writeByte out index");
+        
+        *(m_data+position)=value;
+        
+        return _BUFFER_BYTE_SIZE;
+    }
     
     /**
      * @brief 写入无符号的8位整型

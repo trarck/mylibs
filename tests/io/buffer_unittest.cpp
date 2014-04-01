@@ -1,23 +1,14 @@
 
 #include <stdio.h>
 #include <yh/yh.h>
+#include <gtest/gtest.h>
 
 USING_NS_YH;
 
-template <typename T>
-void testAssert(T v1,T v2,const std::string& msg)
-{
-    if (v1!=v2) {
-        printf("test fail:%s\n",msg.c_str());
-    }
-}
-
-
-int testBigEndian()
-{
-    YHDEBUG("**********test big Endian start**********");
+//test read
+TEST(BufferTest, ReadBigEndian) {
     
-#define BUFFER_SIZE 23
+    #define BUFFER_SIZE 23
     
     Buffer* buffer=new Buffer(BUFFER_SIZE);
     
@@ -37,58 +28,51 @@ int testBigEndian()
     
     
     uint8_t u8=buffer->readUInt8(7);
-    testAssert<uint8_t>(u8,0xFC,"test uint8");
+    EXPECT_EQ(u8,0xFC);
     
-    uint16_t u16be=buffer->readUInt16BE(6);
-    testAssert<uint16_t>(u16be,0xFFFC,"test uint16");
+    uint16_t u16=buffer->readUInt16BE(6);
+    EXPECT_EQ(u16,0xFFFC);
     
-    uint32_t u32be=buffer->readUInt32BE(4);
-    testAssert<uint32_t>(u32be,0xFFFFFFFC,"test uint32");
+    uint32_t u32=buffer->readUInt32BE(4);
+    EXPECT_EQ(u32,0xFFFFFFFC);
     
-    uint64_t u64be=buffer->readUInt64BE(0);
-    testAssert<uint64_t>(u64be,0xFFFFFFFFFFFFFFFC,"test uint64");
+    uint64_t u64=buffer->readUInt64BE(0);
+    EXPECT_EQ(u64,0xFFFFFFFFFFFFFFFC);
     
     int8_t i8=buffer->readInt8(7);
-    testAssert<int8_t>(i8,-4,"test int8");
+    EXPECT_EQ(i8,-4);
     
-    int16_t i16be=buffer->readInt16BE(6);
-    testAssert<int16_t>(i16be,-4,"test int16");
+    int16_t i16=buffer->readInt16BE(6);
+    EXPECT_EQ(i16,-4);
     
-    int32_t i32be=buffer->readInt32BE(4);
-    testAssert<int32_t>(i32be,-4,"test int32");
+    int32_t i32=buffer->readInt32BE(4);
+    EXPECT_EQ(i32,-4);
     
-    int64_t i64be=buffer->readInt64BE(0);
-    testAssert<int64_t>(i64be,-4,"test int64");
+    int64_t i64=buffer->readInt64BE(0);
+    EXPECT_EQ(i64,-4);
     
     float halfFloat=buffer->readFloat16BE(8);
-    testAssert<float>(halfFloat,100.0f,"test half float");
+    EXPECT_EQ(halfFloat,100);
     
     float singleFloat=buffer->readFloatBE(10);
-    testAssert<float>(singleFloat,100.0f,"test single float");
+    EXPECT_EQ(singleFloat,100);
     
     double doubleFloat=buffer->readDoubleBE(14);
-    testAssert<double>(doubleFloat,100.0f,"test double float");
+    EXPECT_EQ(doubleFloat,100);
     
     buffer->release();
     
-    
-    YHDEBUG("**********test big Endian end**********");
-    
-    return 1;
 }
 
-
-int testLittleEndian()
-{
-    YHDEBUG("**********test little Endian start**********");
-  
+TEST(BufferTest, ReadLittleEndian) {
+    
 #define BUFFER_SIZE_L 23
     
-    Buffer* buffer=new Buffer(BUFFER_SIZE);
+    Buffer* buffer=new Buffer(BUFFER_SIZE_L);
     
     unsigned char buf[BUFFER_SIZE]={
         0xFC,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,//for uint 252 int -4
-
+        
         0x40,0x56,//float16 100
         
         0x00,0x00,0xC8,0x42,//float 100
@@ -99,120 +83,162 @@ int testLittleEndian()
         0x00
     };
     
-    buffer->writeBytes(0,buf,BUFFER_SIZE);
+    buffer->writeBytes(0,buf,BUFFER_SIZE_L);
     
     
     uint8_t u8=buffer->readUInt8(0);
-    testAssert<uint8_t>(u8,0xFC,"test uint8");
+    EXPECT_EQ(u8,0xFC);
     
-    uint16_t u16le=buffer->readUInt16LE(0);
-    testAssert<uint16_t>(u16le,0xFFFC,"test uint16");
+    uint16_t u16=buffer->readUInt16LE(0);
+    EXPECT_EQ(u16,0xFFFC);
     
-    uint32_t u32le=buffer->readUInt32LE(0);
-    testAssert<uint32_t>(u32le,0xFFFFFFFC,"test uint32");
+    uint32_t u32=buffer->readUInt32LE(0);
+    EXPECT_EQ(u32,0xFFFFFFFC);
     
-    uint64_t u64le=buffer->readUInt64LE(0);
-    testAssert<uint64_t>(u64le,0xFFFFFFFFFFFFFFFC,"test uint64");
+    uint64_t u64=buffer->readUInt64LE(0);
+    EXPECT_EQ(u64,0xFFFFFFFFFFFFFFFC);
     
     int8_t i8=buffer->readInt8(0);
-    testAssert<int8_t>(i8,-4,"test int8");
+    EXPECT_EQ(i8,-4);
     
-    int16_t i16le=buffer->readInt16LE(0);
-    testAssert<int16_t>(i16le,-4,"test int16");
+    int16_t i16=buffer->readInt16LE(0);
+    EXPECT_EQ(i16,-4);
     
-    int32_t i32le=buffer->readInt32LE(0);
-    testAssert<int32_t>(i32le,-4,"test int32");
+    int32_t i32=buffer->readInt32LE(0);
+    EXPECT_EQ(i32,-4);
     
-    int64_t i64le=buffer->readInt64LE(0);
-    testAssert<int64_t>(i64le,-4,"test int64");
+    int64_t i64=buffer->readInt64LE(0);
+    EXPECT_EQ(i64,-4);
     
     
     float halfFloat=buffer->readFloat16LE(8);
-    testAssert<float>(halfFloat,100.0f,"test half float");
+    EXPECT_EQ(halfFloat,100);
     
     float singleFloat=buffer->readFloatLE(10);
-    testAssert<float>(singleFloat,100.0f,"test single float");
+    EXPECT_EQ(singleFloat,100);
     
     double doubleFloat=buffer->readDoubleLE(14);
-    testAssert<double>(doubleFloat,100.0f,"test double float");
+    EXPECT_EQ(doubleFloat,100);
     
     buffer->release();
-    
-    
-    YHDEBUG("**********test little Endian end**********");
-    
-    return 1;
 }
 
-int testBuffer()
-{
-    YHDEBUG("**********test buffer**********");
-
-    
-    testBigEndian();
-    
-    testLittleEndian();
-    
-    return 1;
-}
-
-int testBufferPerfermens()
-{
-    YHDEBUG("**********test buffer perfermens**********");
+//test write
+TEST(BufferTest, writeBigEndian) {
     
     
-	Buffer* buffer=new Buffer(42);
-    
-    unsigned char buf[42]={
-        0x01,0x02,0x03,0x04,
-        0x05,0x06,0x07,0x08,
-        0x09,0x0A,0x0B,0x0C,
-        0xFF,//-1
-        0xFC,0xFF,//16le -4
-        0xFF,0xFC,//16be -4
+    unsigned char buf[]={
+        0x12,
+        0x34,0x56,
+        0x12,0x34,0x56,0x78,
+        0x11,0x22,0x33,0x44,0x55,0x66,0x77,0x88,//15
         
-        0xFC,0xFF,0xFF,0xFF,//32le -4
-        0xFF,0xFF,0xFF,0xFC,//32be -4
+        0xFC,
+        0xFF,0xFC,
+        0xFF,0xFF,0xFF,0xFC,//22
+        0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFC,//30
         
-        0xFC,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,//64le -4
-        0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFC,//64be -4
+        0x56,0x40,//float16 100
         
+        0x42,0xC8,0x00,0x00,//float 100
         
+        0x40,0x59,0x00,0x00,0x00,0x00,0x00,0x00//double 100
         
-        0x00
     };
     
-    buffer->writeBytes(0,buf,100);
+    int buffSize=sizeof(buf);
     
-    struct timeval start;
+    Buffer* buffer=new Buffer(buffSize);
     
-    struct timeval end;
+    int pos=0;
     
-    int n=10000000;
-    uint32_t u32le;
+    pos+=buffer->writeUInt8(0x12, pos);
+    pos+=buffer->writeUInt16BE(0x3456, pos);
+    pos+=buffer->writeUInt32BE(0x12345678, pos);
+    pos+=buffer->writeUInt64BE(0x1122334455667788, pos);
     
-    gettimeofday(&start, 0);
-    for (int i=0; i<n; ++i) {
-        u32le=buffer->readUInt32LE(i%38);
+    pos+=buffer->writeInt8(-4, pos);
+    pos+=buffer->writeInt16BE(-4, pos);
+    pos+=buffer->writeInt32BE(-4, pos);
+    pos+=buffer->writeInt64BE(-4, pos);
+    
+    pos+=buffer->writeFloat16BE(100, pos);
+    pos+=buffer->writeFloatBE(100, pos);
+    pos+=buffer->writeDoubleBE(100, pos);
+    
+    //check buffer content
+    unsigned char* pData=buffer->getData();
+    
+//    for (int i=0; i<buffSize; ++i) {
+//        printf("%x,",*(pData+i));
+//    }
+//    printf("\n");
+    
+    for (int i=0; i<buffSize; ++i) {
+//        printf("%x,",buf[i]);
+        EXPECT_EQ(buf[i], *(pData+i))<<"i="<<i;
     }
-    
-    gettimeofday(&end, 0);
-    
-    printf("use:%ld,%d\n",end.tv_sec-start.tv_sec,end.tv_usec-start.tv_usec);
-    
-    gettimeofday(&start, 0);
-    for (int i=0; i<n; ++i) {
-        u32le=buffer->readUInt32LE2(i%38);
-    }
-    
-    gettimeofday(&end, 0);
-    
-    printf("use:%ld,%d\n",end.tv_sec-start.tv_sec,end.tv_usec-start.tv_usec);
-    
     
     buffer->release();
     
-    return 1;
 }
 
-
+TEST(BufferTest, writeLittleEndian) {
+    
+    
+    unsigned char buf[]={
+        0x12,
+        0x56,0x34,
+        0x78,0x56,0x34,0x12,
+        0x88,0x77,0x66,0x55,0x44,0x33,0x22,0x11,//15
+        
+        0xFC,
+        0xFC,0xFF,
+        0xFC,0xFF,0xFF,0xFF,//22
+        0xFC,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,//30
+        
+        0x40,0x56,//float16 100
+        
+        0x00,0x00,0xC8,0x42,//float 100
+        
+        0x00,0x00,0x00,0x00,0x00,0x00,0x59,0x40//double 100
+        
+    };
+    
+    int buffSize=sizeof(buf);
+    
+    Buffer* buffer=new Buffer(buffSize);
+    
+    int pos=0;
+    
+    pos+=buffer->writeUInt8(0x12, pos);
+    pos+=buffer->writeUInt16LE(0x3456, pos);
+    pos+=buffer->writeUInt32LE(0x12345678, pos);
+    pos+=buffer->writeUInt64LE(0x1122334455667788, pos);
+    
+    pos+=buffer->writeInt8(-4, pos);
+    pos+=buffer->writeInt16LE(-4, pos);
+    pos+=buffer->writeInt32LE(-4, pos);
+    pos+=buffer->writeInt64LE(-4, pos);
+    
+    pos+=buffer->writeFloat16LE(100, pos);
+    pos+=buffer->writeFloatLE(100, pos);
+    pos+=buffer->writeDoubleLE(100, pos);
+    
+    //check buffer content
+    unsigned char* pData=buffer->getData();
+    
+//    for (int i=0; i<buffSize; ++i) {
+//        printf("%x,",*(pData+i));
+//    }
+//    
+//    printf("\n");
+    
+    for (int i=0; i<buffSize; ++i) {
+        //        printf("%x,",buf[i]);
+        EXPECT_EQ(buf[i], *(pData+i))<<"i="<<i;
+    }
+    
+    buffer->release();
+    
+}

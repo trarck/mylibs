@@ -65,6 +65,7 @@
 		57E2C2AB18EAAC5800124DF1 /* OutputStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57E2C2A918EAAC5800124DF1 /* OutputStream.cpp */; };
 		57E2C2AC18EAAC5800124DF1 /* OutputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 57E2C2AA18EAAC5800124DF1 /* OutputStream.h */; };
 		57E2C2AE18EAB31500124DF1 /* stream_unittest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57E2C2AD18EAB31500124DF1 /* stream_unittest.cpp */; };
+		57E2C2CB18F3F02200124DF1 /* OptionParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57E2C2C918F3F02200124DF1 /* OptionParser.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +167,8 @@
 		57E2C2A918EAAC5800124DF1 /* OutputStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OutputStream.cpp; sourceTree = "<group>"; };
 		57E2C2AA18EAAC5800124DF1 /* OutputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutputStream.h; sourceTree = "<group>"; };
 		57E2C2AD18EAB31500124DF1 /* stream_unittest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stream_unittest.cpp; sourceTree = "<group>"; };
+		57E2C2C918F3F02200124DF1 /* OptionParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OptionParser.cpp; path = ../yh/shell/OptionParser.cpp; sourceTree = "<group>"; };
+		57E2C2CA18F3F02200124DF1 /* OptionParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OptionParser.h; path = ../yh/shell/OptionParser.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -359,6 +362,8 @@
 		57E2C27F18E9057300124DF1 /* tests */ = {
 			isa = PBXGroup;
 			children = (
+				57E2C2C918F3F02200124DF1 /* OptionParser.cpp */,
+				57E2C2CA18F3F02200124DF1 /* OptionParser.h */,
 				57E2C28018E9057300124DF1 /* io */,
 			);
 			name = tests;
@@ -520,6 +525,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				571610A118E4290100D2F48E /* main.cpp in Sources */,
+				57E2C2CB18F3F02200124DF1 /* OptionParser.cpp in Sources */,
 				57E2C28518E905FB00124DF1 /* test_buffer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

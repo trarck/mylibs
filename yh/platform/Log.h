@@ -16,32 +16,33 @@ void log(const char * pszFormat, ...);
 #define YH_LOG_LEVEL_INFO 3
 #define YH_LOG_LEVEL_WARN 2
 #define YH_LOG_LEVEL_ERROR 1
+#define YH_LOG_LEVEL_NONE 0
 
-#if !defined(YH_LOG_LEVEL) || YH_LOG_LEVEL ==0
+#if !defined(YH_LOG_LEVEL) || YH_LOG_LEVEL == YH_LOG_LEVEL_NONE
 #define YHDEBUG(...)       do {} while (0)
 #define YHINFO(...)   do {} while (0)
 #define YHWARN(...)   do {} while (0)
 #define YHERROR(...)  do {} while (0)
 
-#elif YH_LOG_LEVEL == 1
+#elif YH_LOG_LEVEL == YH_LOG_LEVEL_ERROR
 #define YHDEBUG(...)   do {} while (0)
 #define YHINFO(...) do {} while (0)
 #define YHWARN(...)  do {} while (0)
 #define YHERROR(...) __YHLOGWITHFUNCTION(__VA_ARGS__)
 
-#elif YH_LOG_LEVEL == 2
+#elif YH_LOG_LEVEL == YH_LOG_LEVEL_WARN
 #define YHDEBUG(...)   do {} while (0)
 #define YHINFO(...)  do {} while (0)
 #define YHWARN(format,...) yh::log(format, ##__VA_ARGS__)
 #define YHERROR(...)  __YHLOGWITHFUNCTION(__VA_ARGS__)
 
-#elif YH_LOG_LEVEL == 3
+#elif YH_LOG_LEVEL == YH_LOG_LEVEL_INFO
 #define YHDEBUG(...)   do {} while (0)
 #define YHINFO(format, ...)  yh::log(format, ##__VA_ARGS__)
 #define YHWARN(format,...) yh::log(format, ##__VA_ARGS__)
 #define YHERROR(...)  __YHLOGWITHFUNCTION(__VA_ARGS__)
 
-#elif YH_LOG_LEVEL > 3
+#elif YH_LOG_LEVEL > YH_LOG_LEVEL_INFO
 #define YHDEBUG(format, ...)      yh::log(format, ##__VA_ARGS__)
 #define YHINFO(format,...)   yh::log(format, ##__VA_ARGS__)
 #define YHWARN(format,...) yh::log(format, ##__VA_ARGS__)

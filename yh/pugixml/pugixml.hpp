@@ -37,6 +37,8 @@
 #	include <string>
 #endif
 
+#include "../NSMacros.h"
+
 // Macro for deprecated features
 #ifndef PUGIXML_DEPRECATED
 #	if defined(__GNUC__)
@@ -81,6 +83,8 @@
 #	define PUGIXML_CHAR char
 #endif
 
+NS_YH_BEGIN
+
 namespace pugi
 {
 	// Character type used for all internal storage and operations; depends on PUGIXML_WCHAR_MODE
@@ -91,7 +95,9 @@ namespace pugi
 	typedef std::basic_string<PUGIXML_CHAR, std::char_traits<PUGIXML_CHAR>, std::allocator<PUGIXML_CHAR> > string_t;
 #endif
 }
+NS_YH_END
 
+NS_YH_BEGIN
 // The PugiXML namespace
 namespace pugi
 {
@@ -1283,6 +1289,8 @@ namespace pugi
 	allocation_function PUGIXML_FUNCTION get_memory_allocation_function();
 	deallocation_function PUGIXML_FUNCTION get_memory_deallocation_function();
 }
+
+NS_YH_END
 
 #if !defined(PUGIXML_NO_STL) && (defined(_MSC_VER) || defined(__ICC))
 namespace std

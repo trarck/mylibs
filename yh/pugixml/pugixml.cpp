@@ -106,17 +106,17 @@ using std::memmove;
 #endif
 
 #ifdef PUGIXML_HEADER_ONLY
-#	define PUGI__NS_BEGIN namespace pugi { namespace impl {
-#	define PUGI__NS_END } }
+#	define PUGI__NS_BEGIN namespace yh { namespace pugi { namespace impl {
+#	define PUGI__NS_END } } }
 #	define PUGI__FN inline
 #	define PUGI__FN_NO_INLINE inline
 #else
 #	if defined(_MSC_VER) && _MSC_VER < 1300 // MSVC6 seems to have an amusing bug with anonymous namespaces inside namespaces
-#		define PUGI__NS_BEGIN namespace pugi { namespace impl {
-#		define PUGI__NS_END } }
-#	else
-#		define PUGI__NS_BEGIN namespace pugi { namespace impl { namespace {
+#		define PUGI__NS_BEGIN namespace yh {namespace pugi { namespace impl {
 #		define PUGI__NS_END } } }
+#	else
+#		define PUGI__NS_BEGIN namespace yh {namespace pugi { namespace impl { namespace {
+#		define PUGI__NS_END } } } }
 #	endif
 #	define PUGI__FN
 #	define PUGI__FN_NO_INLINE PUGI__NO_INLINE
@@ -476,6 +476,8 @@ PUGI__NS_BEGIN
 	}
 PUGI__NS_END
 
+NS_YH_BEGIN
+
 namespace pugi
 {
 	/// A 'name=value' XML attribute structure.
@@ -519,6 +521,7 @@ namespace pugi
 		xml_attribute_struct*	first_attribute;		///< First attribute
 	};
 }
+NS_YH_END
 
 PUGI__NS_BEGIN
 	struct xml_extra_buffer
@@ -3937,6 +3940,8 @@ PUGI__NS_BEGIN
 	}
 PUGI__NS_END
 
+NS_YH_BEGIN
+
 namespace pugi
 {
 	PUGI__FN xml_writer_file::xml_writer_file(void* file_): file(file_)
@@ -5792,6 +5797,7 @@ namespace pugi
 		return impl::xml_memory::deallocate;
 	}
 }
+NS_YH_END
 
 #if !defined(PUGIXML_NO_STL) && (defined(_MSC_VER) || defined(__ICC))
 namespace std
@@ -10011,6 +10017,7 @@ PUGI__NS_BEGIN
 	}
 PUGI__NS_END
 
+NS_YH_BEGIN
 namespace pugi
 {
 #ifndef PUGIXML_NO_EXCEPTIONS
@@ -10576,6 +10583,7 @@ namespace pugi
 		return query.evaluate_node_set(*this);
 	}
 }
+NS_YH_END
 
 #endif
 

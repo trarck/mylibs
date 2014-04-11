@@ -16,6 +16,10 @@
 		571610CB18E5824E00D2F48E /* PlatformConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 571610C418E5824E00D2F48E /* PlatformConfig.h */; };
 		571610CC18E5824E00D2F48E /* PlatformDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = 571610C518E5824E00D2F48E /* PlatformDefine.h */; };
 		571610D018E5824E00D2F48E /* YHStdC.h in Headers */ = {isa = PBXBuildFile; fileRef = 571610CA18E5824E00D2F48E /* YHStdC.h */; };
+		5716E7AD18F7F44200A141B7 /* pugiconfig.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 5716E7AA18F7F44200A141B7 /* pugiconfig.hpp */; };
+		5716E7AE18F7F44200A141B7 /* pugixml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5716E7AB18F7F44200A141B7 /* pugixml.cpp */; };
+		5716E7AF18F7F44200A141B7 /* pugixml.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 5716E7AC18F7F44200A141B7 /* pugixml.hpp */; };
+		5716E7B218F7F76E00A141B7 /* xml_unittest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5716E7B118F7F76E00A141B7 /* xml_unittest.cpp */; };
 		574FE59C18DC0FA300490B18 /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574FE56F18DC0FA300490B18 /* Object.cpp */; };
 		574FE59D18DC0FA300490B18 /* Object.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE57018DC0FA300490B18 /* Object.h */; };
 		574FE5A018DC0FA300490B18 /* RefCount.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574FE57318DC0FA300490B18 /* RefCount.cpp */; };
@@ -116,6 +120,10 @@
 		571610C418E5824E00D2F48E /* PlatformConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlatformConfig.h; sourceTree = "<group>"; };
 		571610C518E5824E00D2F48E /* PlatformDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlatformDefine.h; sourceTree = "<group>"; };
 		571610CA18E5824E00D2F48E /* YHStdC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHStdC.h; sourceTree = "<group>"; };
+		5716E7AA18F7F44200A141B7 /* pugiconfig.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pugiconfig.hpp; sourceTree = "<group>"; };
+		5716E7AB18F7F44200A141B7 /* pugixml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pugixml.cpp; sourceTree = "<group>"; };
+		5716E7AC18F7F44200A141B7 /* pugixml.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pugixml.hpp; sourceTree = "<group>"; };
+		5716E7B118F7F76E00A141B7 /* xml_unittest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = xml_unittest.cpp; sourceTree = "<group>"; };
 		574FE56318DC0F7300490B18 /* libyh.a */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libyh.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		574FE56F18DC0FA300490B18 /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Object.cpp; sourceTree = "<group>"; };
 		574FE57018DC0FA300490B18 /* Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Object.h; sourceTree = "<group>"; };
@@ -236,6 +244,24 @@
 			path = platform;
 			sourceTree = "<group>";
 		};
+		5716E7A918F7F44200A141B7 /* pugixml */ = {
+			isa = PBXGroup;
+			children = (
+				5716E7AA18F7F44200A141B7 /* pugiconfig.hpp */,
+				5716E7AB18F7F44200A141B7 /* pugixml.cpp */,
+				5716E7AC18F7F44200A141B7 /* pugixml.hpp */,
+			);
+			path = pugixml;
+			sourceTree = "<group>";
+		};
+		5716E7B018F7F76E00A141B7 /* xml */ = {
+			isa = PBXGroup;
+			children = (
+				5716E7B118F7F76E00A141B7 /* xml_unittest.cpp */,
+			);
+			path = xml;
+			sourceTree = "<group>";
+		};
 		574FE55A18DC0F7300490B18 = {
 			isa = PBXGroup;
 			children = (
@@ -270,8 +296,9 @@
 			children = (
 				574FE56C18DC0FA300490B18 /* base */,
 				571610B218E51F5800D2F48E /* io */,
-				571610C318E5824E00D2F48E /* platform */,
 				574FE57818DC0FA300490B18 /* jsoncpp */,
+				571610C318E5824E00D2F48E /* platform */,
+				5716E7A918F7F44200A141B7 /* pugixml */,
 				574FE58A18DC0FA300490B18 /* sqlite */,
 				574FE59418DC0FA300490B18 /* string */,
 				57E2C27518E904B700124DF1 /* NSMacros.h */,
@@ -362,9 +389,10 @@
 		57E2C27F18E9057300124DF1 /* tests */ = {
 			isa = PBXGroup;
 			children = (
+				57E2C28018E9057300124DF1 /* io */,
+				5716E7B018F7F76E00A141B7 /* xml */,
 				57E2C2C918F3F02200124DF1 /* OptionParser.cpp */,
 				57E2C2CA18F3F02200124DF1 /* OptionParser.h */,
-				57E2C28018E9057300124DF1 /* io */,
 			);
 			name = tests;
 			path = ../../tests;
@@ -404,6 +432,7 @@
 				571610B818E51F5800D2F48E /* IOMacros.h in Headers */,
 				574FE5A618DC0FA300490B18 /* config.h in Headers */,
 				57E2C27A18E904B700124DF1 /* YHMacros.h in Headers */,
+				5716E7AD18F7F44200A141B7 /* pugiconfig.hpp in Headers */,
 				574FE5A718DC0FA300490B18 /* features.h in Headers */,
 				574FE5BD18DC0FA300490B18 /* unchecked.h in Headers */,
 				574FE59D18DC0FA300490B18 /* Object.h in Headers */,
@@ -429,6 +458,7 @@
 				574FE5A118DC0FA300490B18 /* RefCount.h in Headers */,
 				574FE5AB18DC0FA300490B18 /* json_macros.h in Headers */,
 				574FE5BC18DC0FA300490B18 /* core.h in Headers */,
+				5716E7AF18F7F44200A141B7 /* pugixml.hpp in Headers */,
 				57E2C27318E9007E00124DF1 /* Log.h in Headers */,
 				574FE5A518DC0FA300490B18 /* autolink.h in Headers */,
 				57E2C28918E94FE300124DF1 /* IeeeHalfPrecision.h in Headers */,
@@ -536,6 +566,7 @@
 			files = (
 				574FE5B418DC0FA300490B18 /* SqliteDriver.cpp in Sources */,
 				574FE5AC18DC0FA300490B18 /* json_reader.cpp in Sources */,
+				5716E7AE18F7F44200A141B7 /* pugixml.cpp in Sources */,
 				57E2C2AB18EAAC5800124DF1 /* OutputStream.cpp in Sources */,
 				574FE5B218DC0FA300490B18 /* Column.cpp in Sources */,
 				571610B618E51F5800D2F48E /* Buffer.cpp in Sources */,
@@ -556,6 +587,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5716E7B218F7F76E00A141B7 /* xml_unittest.cpp in Sources */,
 				57E2C29E18EA60BE00124DF1 /* buffer_unittest.cpp in Sources */,
 				57E2C2AE18EAB31500124DF1 /* stream_unittest.cpp in Sources */,
 			);
@@ -711,8 +743,9 @@
 					i386,
 					x86_64,
 				);
-				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++98";
 				CLANG_CXX_LIBRARY = "compiler-default";
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"YH_DEBUG=1",
@@ -740,8 +773,9 @@
 					i386,
 					x86_64,
 				);
-				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++98";
 				CLANG_CXX_LIBRARY = "compiler-default";
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

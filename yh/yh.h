@@ -18,6 +18,9 @@
 //jsoncpp
 #include "jsoncpp/json.h"
 
+//pugixml
+#include "pugixml/pugixml.hpp"
+
 //io
 #include "io/IOMacros.h"
 #include "io/Buffer.h"

@@ -16,7 +16,10 @@
     <ClInclude Include="..\..\yh\base\RefCount.h" />
     <ClInclude Include="..\..\yh\base\RefPtr.h" />
     <ClInclude Include="..\..\yh\io\Buffer.h" />
+    <ClInclude Include="..\..\yh\io\IeeeHalfPrecision.h" />
+    <ClInclude Include="..\..\yh\io\InputStream.h" />
     <ClInclude Include="..\..\yh\io\IOMacros.h" />
+    <ClInclude Include="..\..\yh\io\OutputStream.h" />
     <ClInclude Include="..\..\yh\jsoncpp\autolink.h" />
     <ClInclude Include="..\..\yh\jsoncpp\config.h" />
     <ClInclude Include="..\..\yh\jsoncpp\features.h" />
@@ -34,6 +37,8 @@
     <ClInclude Include="..\..\yh\platform\win32\stdint.h" />
     <ClInclude Include="..\..\yh\platform\win32\Win32StdC.h" />
     <ClInclude Include="..\..\yh\platform\YHStdC.h" />
+    <ClInclude Include="..\..\yh\pugixml\pugiconfig.hpp" />
+    <ClInclude Include="..\..\yh\pugixml\pugixml.hpp" />
     <ClInclude Include="..\..\yh\sqlite\Column.h" />
     <ClInclude Include="..\..\yh\sqlite\SqliteDriver.h" />
     <ClInclude Include="..\..\yh\sqlite\SqliteMacros.h" />
@@ -51,11 +56,15 @@
     <ClCompile Include="..\..\yh\base\RefCount.cpp" />
     <ClCompile Include="..\..\yh\base\RefPtr.cpp" />
     <ClCompile Include="..\..\yh\io\Buffer.cpp" />
+    <ClCompile Include="..\..\yh\io\IeeeHalfPrecision.cpp" />
+    <ClCompile Include="..\..\yh\io\InputStream.cpp" />
+    <ClCompile Include="..\..\yh\io\OutputStream.cpp" />
     <ClCompile Include="..\..\yh\jsoncpp\json_reader.cpp" />
     <ClCompile Include="..\..\yh\jsoncpp\json_value.cpp" />
     <ClCompile Include="..\..\yh\jsoncpp\json_writer.cpp" />
     <ClCompile Include="..\..\yh\platform\win32\Log.cpp" />
     <ClCompile Include="..\..\yh\platform\win32\Win32StdC.cpp" />
+    <ClCompile Include="..\..\yh\pugixml\pugixml.cpp" />
     <ClCompile Include="..\..\yh\sqlite\Column.cpp" />
     <ClCompile Include="..\..\yh\sqlite\SqliteDriver.cpp" />
     <ClCompile Include="..\..\yh\sqlite\Statement.cpp" />

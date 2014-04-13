@@ -29,6 +29,9 @@
     <Filter Include="yh\string\utf8">
       <UniqueIdentifier>{4e7a19ab-bc85-4c8f-9d17-70df6750b6f5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="yh\pugixml">
+      <UniqueIdentifier>{7b9f5092-72d9-480b-b68d-afbf6a022448}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\yh\base\Internals.h">
@@ -133,6 +136,21 @@
     <ClInclude Include="..\..\yh\YHMacros.h">
       <Filter>yh</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\yh\io\IeeeHalfPrecision.h">
+      <Filter>yh\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\io\InputStream.h">
+      <Filter>yh\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\io\OutputStream.h">
+      <Filter>yh\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\pugixml\pugiconfig.hpp">
+      <Filter>yh\pugixml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\pugixml\pugixml.hpp">
+      <Filter>yh\pugixml</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\yh\base\Object.cpp">
@@ -173,6 +191,18 @@
     </ClCompile>
     <ClCompile Include="..\..\yh\platform\win32\Log.cpp">
       <Filter>yh\platform\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\io\IeeeHalfPrecision.cpp">
+      <Filter>yh\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\io\InputStream.cpp">
+      <Filter>yh\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\io\OutputStream.cpp">
+      <Filter>yh\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\pugixml\pugixml.cpp">
+      <Filter>yh\pugixml</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

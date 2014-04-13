@@ -77,3 +77,6 @@ Device-Release/
 
 # Ignore vim swaps
 *.swp
+/deps/gtest/libraries/win32/gtest.lib
+
+/deps/gtest/libraries/win32/gtest_main.lib

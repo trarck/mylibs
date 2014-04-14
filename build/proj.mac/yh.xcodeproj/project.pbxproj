@@ -157,6 +157,9 @@
 		574FE59718DC0FA300490B18 /* core.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core.h; sourceTree = "<group>"; };
 		574FE59818DC0FA300490B18 /* unchecked.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unchecked.h; sourceTree = "<group>"; };
 		574FE59918DC0FA300490B18 /* utf8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utf8.h; sourceTree = "<group>"; };
+		5784F63918FB76F3007744E5 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		5784F64118FB7AC5007744E5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		5784F64318FB7AC5007744E5 /* dds.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = dds.1; sourceTree = "<group>"; };
 		57E2C27018E9007E00124DF1 /* Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
 		57E2C27218E9007E00124DF1 /* Log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Log.cpp; sourceTree = "<group>"; };
 		57E2C27518E904B700124DF1 /* NSMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSMacros.h; sourceTree = "<group>"; };
@@ -265,9 +268,11 @@
 		574FE55A18DC0F7300490B18 = {
 			isa = PBXGroup;
 			children = (
+				5784F63918FB76F3007744E5 /* libc++.dylib */,
 				5716108C18E4280200D2F48E /* mac */,
 				574FE56B18DC0FA300490B18 /* yh */,
 				574FE56A18DC0F8800490B18 /* frameworks */,
+				5784F64018FB7AC5007744E5 /* dds */,
 				574FE56418DC0F7300490B18 /* Products */,
 				57E2C27F18E9057300124DF1 /* tests */,
 			);
@@ -376,6 +381,15 @@
 				574FE59818DC0FA300490B18 /* unchecked.h */,
 			);
 			path = utf8;
+			sourceTree = "<group>";
+		};
+		5784F64018FB7AC5007744E5 /* dds */ = {
+			isa = PBXGroup;
+			children = (
+				5784F64118FB7AC5007744E5 /* main.cpp */,
+				5784F64318FB7AC5007744E5 /* dds.1 */,
+			);
+			path = dds;
 			sourceTree = "<group>";
 		};
 		57E2C27118E9007E00124DF1 /* mac */ = {
@@ -612,6 +626,8 @@
 		5716109A18E428BE00D2F48E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"YH_DEBUG=1",
@@ -629,6 +645,8 @@
 		5716109B18E428BE00D2F48E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -707,6 +725,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				EXECUTABLE_EXTENSION = a;
 				EXECUTABLE_PREFIX = lib;
 				GCC_PREPROCESSOR_DEFINITIONS = "YH_DEBUG=1";
@@ -724,6 +744,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				EXECUTABLE_EXTENSION = a;
 				EXECUTABLE_PREFIX = lib;
 				HEADER_SEARCH_PATHS = (
@@ -743,9 +765,10 @@
 					i386,
 					x86_64,
 				);
-				CLANG_CXX_LANGUAGE_STANDARD = "c++98";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"YH_DEBUG=1",
@@ -762,6 +785,7 @@
 					/Users/duanhouhai/development/trarck/mylibs/deps/gtest/libraries/mac,
 				);
 				OTHER_CFLAGS = "-DDEBUG=1";
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
 				PRODUCT_NAME = unittest;
 			};
 			name = Debug;
@@ -773,9 +797,10 @@
 					i386,
 					x86_64,
 				);
-				CLANG_CXX_LANGUAGE_STANDARD = "c++98";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -791,6 +816,7 @@
 					"-DNDEBUG=1",
 					"-Wno-unused-variable",
 				);
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
 				PRODUCT_NAME = unittest;
 			};
 			name = Release;

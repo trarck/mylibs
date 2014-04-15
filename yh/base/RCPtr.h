@@ -6,9 +6,9 @@
 NS_YH_BEGIN
 
 /**
- * ÆÕÍ¨Object°ü×°³ÉÖµ¶ÔÏó¡£
- * ÓÃÓÚstd vector mapµÄÔªËØ¡£
- * ÀàËÆÖÇÄÜÖ¸Õë
+ * ObjectåŒ…è£…æˆå€¼å¯¹è±¡ã€‚
+ * ç”¨äºŽstd vector mapçš„å…ƒç´ ã€‚
+ * ç±»ä¼¼æ™ºèƒ½æŒ‡é’ˆ
  */
 
 /**

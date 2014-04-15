@@ -8,97 +8,103 @@ Array::Array()
     init();
 }
 
-Array* Array::create()
+
+Array::~Array()
 {
-    Array* array = new Array();
-
-    if (array && array->initWithCapacity(7))
-    {
-//        array->autorelease();
-    }
-    else
-    {
-        YH_SAFE_DELETE(array);
-    }
-    
-    return array;
+    YHDEBUG("deallocing Array: %p - len: %d", this, count() );
 }
-
-Array* Array::createWithObject(Object* object)
-{
-    Array* array = new Array();
-
-    if (array && array->initWithObject(object))
-    {
-//        array->autorelease();
-    }
-    else
-    {
-        YH_SAFE_DELETE(array);
-    }
-
-    return array;
-}
-
-Array* Array::create(Object* object, ...)
-{
-    va_list args;
-    va_start(args,object);
-
-    Array* array = create();
-    if (array && object)
-    {
-        array->addObject(object);
-        Object *i = va_arg(args, Object*);
-        while (i) 
-        {
-            array->addObject(i);
-            i = va_arg(args, Object*);
-        }
-    }
-    else
-    {
-        YH_SAFE_DELETE(array);
-    }
-
-    va_end(args);
-
-    return array;
-}
-
-Array* Array::createWithCapacity(int capacity)
-{
-    YHASSERT(capacity>=0, "Invalid capacity");
-
-    Array* array = new Array();
-    
-    if (array && array->initWithCapacity(capacity))
-    {
-//        array->autorelease();
-    }
-    else
-    {
-        YH_SAFE_DELETE(array);
-    }
-    
-    return array;
-}
-
-Array* Array::createWithContentsOfFile(const std::string& fileName)
-{
-    Array* ret = Array::createWithContentsOfFileThreadSafe(fileName);
-    if (ret != NULL)
-    {
-//        ret->autorelease();
-    }
-    return ret;
-}
-
-Array* Array::createWithContentsOfFileThreadSafe(const std::string& fileName)
-{
-//    return FileUtils::getInstance()->createArrayWithContentsOfFile(fileName);
-    return NULL;
-}
+//
+//Array* Array::create()
+//{
+//    Array* array = new Array();
+//
+//    if (array && array->initWithCapacity(7))
+//    {
+////        array->autorelease();
+//    }
+//    else
+//    {
+//        YH_SAFE_DELETE(array);
+//    }
+//    
+//    return array;
+//}
+//
+//Array* Array::createWithObject(Object* object)
+//{
+//    Array* array = new Array();
+//
+//    if (array && array->initWithObject(object))
+//    {
+////        array->autorelease();
+//    }
+//    else
+//    {
+//        YH_SAFE_DELETE(array);
+//    }
+//
+//    return array;
+//}
+//
+//Array* Array::create(Object* object, ...)
+//{
+//    va_list args;
+//    va_start(args,object);
+//
+//    Array* array = create();
+//    if (array && object)
+//    {
+//        array->addObject(object);
+//        Object *i = va_arg(args, Object*);
+//        while (i) 
+//        {
+//            array->addObject(i);
+//            i = va_arg(args, Object*);
+//        }
+//    }
+//    else
+//    {
+//        YH_SAFE_DELETE(array);
+//    }
+//
+//    va_end(args);
+//
+//    return array;
+//}
+//
+//Array* Array::createWithCapacity(int capacity)
+//{
+//    YHASSERT(capacity>=0, "Invalid capacity");
+//
+//    Array* array = new Array();
+//    
+//    if (array && array->initWithCapacity(capacity))
+//    {
+////        array->autorelease();
+//    }
+//    else
+//    {
+//        YH_SAFE_DELETE(array);
+//    }
+//    
+//    return array;
+//}
+//
+//Array* Array::createWithContentsOfFile(const std::string& fileName)
+//{
+//    Array* ret = Array::createWithContentsOfFileThreadSafe(fileName);
+//    if (ret != NULL)
+//    {
+////        ret->autorelease();
+//    }
+//    return ret;
+//}
+//
+//Array* Array::createWithContentsOfFileThreadSafe(const std::string& fileName)
+//{
+////    return FileUtils::getInstance()->createArrayWithContentsOfFile(fileName);
+//    return NULL;
+//}
 
 bool Array::init()
 {
@@ -291,11 +297,6 @@ void Array::reverseObjects()
 void Array::reduceMemoryFootprint()
 {
     // N/A
-}
-
-Array::~Array()
-{
-    YHDEBUG("deallocing Array: %p - len: %d", this, count() );
 }
 
 Array* Array::clone() const

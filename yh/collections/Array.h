@@ -21,44 +21,49 @@ for( Array::iterator __it__ = (__array__)->rbegin();             \
 __it__ != (__array__)->rend() && ((__object__) = *__it__) != NULL;                        \
 ++__it__ )
 
+/**
+ * 可变数组
+ * 直接使用Object做为Vector的对象，如果要取得具体内容，使用类型转换。
+ * 不推荐使用，推荐使用Vector
+ */
 class Array : public Object
 {
 public:
-    /**
-     * @brief Creates an empty array.s
-     */
-    static Array* create();
-    /** 
-     * @brief Create an array with objects 
-     */
-    static Array* create(Object* object, ...);
-    /**
-     * @brief Create an array with one object 
-     */
-    static Array* createWithObject(Object* object);
-    /** 
-     * @brief Create an array with a default capacity 
-     */
-    static Array* createWithCapacity(int capacity);
-    /** Create an array with from an existing array 
-     */
-    static Array* createWithArray(Array* otherArray)
-    {
-        return otherArray->clone();
-    }
-    
-    /**
-     @brief   Generate a Array pointer by file
-     @param   pFileName  The file name of *.plist file
-     @return  The Array pointer generated from the file
-     */
-    static Array* createWithContentsOfFile(const std::string& pFileName);
-    
-    /*
-     *@brief The same meaning as arrayWithContentsOfFile(), but it doesn't call autorelease, so the
-     * invoker should call release().
-     */
-    static Array* createWithContentsOfFileThreadSafe(const std::string& pFileName);
+//    /**
+//     * @brief Creates an empty array.s
+//     */
+//    static Array* create();
+//    /** 
+//     * @brief Create an array with objects 
+//     */
+//    static Array* create(Object* object, ...);
+//    /**
+//     * @brief Create an array with one object 
+//     */
+//    static Array* createWithObject(Object* object);
+//    /** 
+//     * @brief Create an array with a default capacity 
+//     */
+//    static Array* createWithCapacity(int capacity);
+//    /** Create an array with from an existing array 
+//     */
+//    static Array* createWithArray(Array* otherArray)
+//    {
+//        return otherArray->clone();
+//    }
+//    
+//    /**
+//     @brief   Generate a Array pointer by file
+//     @param   pFileName  The file name of *.plist file
+//     @return  The Array pointer generated from the file
+//     */
+//    static Array* createWithContentsOfFile(const std::string& pFileName);
+//    
+//    /*
+//     *@brief The same meaning as arrayWithContentsOfFile(), but it doesn't call autorelease, so the
+//     * invoker should call release().
+//     */
+//    static Array* createWithContentsOfFileThreadSafe(const std::string& pFileName);
 
     Array();
     
@@ -86,7 +91,6 @@ public:
      @breif Initializes an array with an existing array
      */
     bool initWithArray(Array* otherArray);
-
 
     /** 
      @brief Returns element count of the array

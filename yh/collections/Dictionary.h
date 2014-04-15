@@ -1,371 +1,291 @@
-#ifndef YH_COLLECTIONS_MAP_H_
-#define YH_COLLECTIONS_MAP_H_
+#ifndef YH_COLLECTIONS_DICTIONARY_H_
+#define YH_COLLECTIONS_DICTIONARY_H_
 
-#include <vector>
 #include "../YHMacros.h"
+#include "Map.h"
+#include "../base/Object.h"
 
-#ifndef USE_STD_UNORDERED_MAP
-#define USE_STD_UNORDERED_MAP 0
-#endif
-
-#if USE_STD_UNORDERED_MAP
-#include <unordered_map>
-#else
-#include <map>
-#endif
 
 NS_YH_BEGIN
 
 /**
- * @addtogroup data_structures
- * @{
+ * 字典
+ * 直接使用Object做为Vector的对象，如果要取得具体内容，使用类型转换。
+ * 不推荐使用，推荐使用Map
+ * 还没有完全实现
  */
-
-template <class K, class V>
-class Map
+class Dictionary : public Object
 {
 public:
-    // ------------------------------------------
-    // Iterators
-    // ------------------------------------------
-#if USE_STD_UNORDERED_MAP
-    typedef std::unordered_map<K, V> RefMap;
-#else
-    typedef std::map<K, V> RefMap;
-#endif
-    
-    typedef typename RefMap::iterator iterator;
-    typedef typename RefMap::const_iterator const_iterator;
-    
-    iterator begin() { return _data.begin(); }
-    const_iterator begin() const { return _data.begin(); }
-    
-    iterator end() { return _data.end(); }
-    const_iterator end() const { return _data.end(); }
-    
-//    const_iterator cbegin() const { return _data.cbegin(); }
-//    const_iterator cend() const { return _data.cend(); }
-    
-    /** Default constructor */
-    Map<K, V>()
-    : _data()
-    {
-//        static_assert(std::is_convertible<V, Object*>::value, "Invalid Type for cocos2d::Map<K, V>!");
-//        YHDEBUG("In the default constructor of Map!");
-    }
-    
-    /** Contructor with capacity */
-    explicit Map<K, V>(size_t capacity)
-    : _data()
-    {
-//        static_assert(std::is_convertible<V, Object*>::value, "Invalid Type for cocos2d::Map<K, V>!");
-//        YHDEBUG("In the constructor with capacity of Map!");
-        _data.reserve(capacity);
-    }
-    
-    /** Copy constructor */
-    Map<K, V>(const Map<K, V>& other)
-    {
-//        static_assert(std::is_convertible<V, Object*>::value, "Invalid Type for cocos2d::Map<K, V>!");
-//        YHDEBUG("In the copy constructor of Map!");
-        _data = other._data;
-        addRefForAllObjects();
-    }
-    
-//    /** Move constructor */
-//    Map<K, V>(Map<K, V>&& other)
-//    {
-//        static_assert(std::is_convertible<V, Object*>::value, "Invalid Type for cocos2d::Map<K, V>!");
-//        YHDEBUG("In the move constructor of Map!");
-//        _data = std::move(other._data);
-//    }
-    
-    /** Destructor
-     *  It will release all objects in map.
+    /**
+     * The constructor of Dictionary.
      */
-    ~Map<K, V>()
-    {
-        YHDEBUG("In the destructor of Map!");
-        clear();
-    }
+    Dictionary();
     
-    /** Sets capacity of the map */
-    void reserve(size_t capacity)
-    {
-#if USE_STD_UNORDERED_MAP
-        _data.reserve(capacity);
-#endif
-    }
-    
-    /** Returns the number of buckets in the Map container. */
-    size_t bucketCount() const
-    {
-#if USE_STD_UNORDERED_MAP
-        return _data.bucket_count();
-#else
-        return 0;
-#endif
-    }
-    
-    /** Returns the number of elements in bucket n. */
-    size_t bucketSize(size_t n) const
-    {
-#if USE_STD_UNORDERED_MAP
-        return _data.bucket_size(n);
-#else
-        return 0;
-#endif
-    }
-    
-    /** Returns the bucket number where the element with key k is located. */
-    size_t bucket(const K& k) const
-    {
-#if USE_STD_UNORDERED_MAP
-        return _data.bucket(k);
-#else
-        return 0;
-#endif
-    }
-    
-    /** The number of elements in the map. */
-    size_t size() const
-    {
-        return _data.size();
-    }
-    
-    /** Returns a bool value indicating whether the map container is empty, i.e. whether its size is 0.
-     *  @note This function does not modify the content of the container in any way.
-     *        To clear the content of an array object, member function unordered_map::clear exists.
+    /**
+     * The destructor of Dictionary
+     * @js NA
+     * @lua NA
      */
-    bool empty() const
-    {
-        return _data.empty();
-    }
+    ~Dictionary();
     
-    /** Returns all keys in the map */
-    std::vector<K> keys() const
-    {
-        std::vector<K> keys;
-
-        if (!_data.empty())
-        {
-            keys.reserve(_data.size());
-            
-            for (iterator iter = _data.cbegin(); iter != _data.cend(); ++iter)
-            {
-                keys.push_back(iter->first);
-            }
-        }
-        return keys;
-    }
-    
-    /** Returns all keys that matches the object */
-    std::vector<K> keys(V object) const
-    {
-        std::vector<K> keys;
-        
-        if (!_data.empty())
-        {
-            keys.reserve(_data.size() / 10);
-            
-            for (iterator iter = _data.cbegin(); iter != _data.cend(); ++iter)
-            {
-                if (iter->second == object)
-                {
-                    keys.push_back(iter->first);
-                }
-            }
-        }
-        
-        keys.shrink_to_fit();
-        
-        return keys;
-    }
-    
-    /** @brief Returns a reference to the mapped value of the element with key k in the map.
-     *  @note If key does not match the key of any element in the container, the function return NULL.
-     *  @param key Key value of the element whose mapped value is accessed.
-     *       Member type K is the keys for the elements in the container. defined in Map<K, V> as an alias of its first template parameter (Key).
+    /** Initializes the dictionary. It returns true if the initializations was successful.
      */
-    const V at(const K& key) const
-    {
-        iterator iter = _data.find(key);
-        if (iter != _data.end())
-            return iter->second;
-        return NULL;
-    }
-    
-    V at(const K& key)
-    {
-        iterator iter = _data.find(key);
-        if (iter != _data.end())
-            return iter->second;
-        return NULL;
-    }
-    
-    /** @brief Searches the container for an element with 'key' as key and returns an iterator to it if found,
-     *         otherwise it returns an iterator to Map<K, V>::end (the element past the end of the container).
-     *  @param key Key to be searched for.
-     *         Member type 'K' is the type of the keys for the elements in the container,
-     *         defined in Map<K, V> as an alias of its first template parameter (Key).
+    bool init();
+    /**
+     *  Get the count of elements in Dictionary.
      *
+     *  @return  The count of elements.
      */
-    const_iterator find(const K& key) const
-    {
-        return _data.find(key);
-    }
+    unsigned int count();
     
-    iterator find(const K& key)
-    {
-        return _data.find(key);
-    }
-    
-    /** @brief Inserts new elements in the map.
-     *  @note If the container has already contained the key, this function will erase the old pair(key, object)  and insert the new pair.
-     *  @param key The key to be inserted.
-     *  @param object The object to be inserted.
+    /**
+     *  Return all keys of elements.
+     *
+     *  @return  The array contains all keys of elements. It's an autorelease object yet.
      */
-    void insert(const K& key, V object)
-    {
-        YHASSERT(object != NULL, "Object is NULL!");
-        erase(key);
-        _data.insert(std::make_pair(key, object));
-        object->retain();
-    }
+    Array* allKeys();
     
-    /** @brief Removes an element with an iterator from the Map<K, V> container.
-     *  @param position Iterator pointing to a single element to be removed from the Map<K, V>.
-     *         Member type const_iterator is a forward iterator type.
+    /**
+     *  Get all keys according to the specified object.
+     *  @warning  We use '==' to compare two objects
+     *  @return   The array contains all keys for the specified object. It's an autorelease object yet.
      */
-    iterator erase(const_iterator position)
-    {
-        YHASSERT(position != _data.cend(), "Invalid iterator!");
-        position->second->release();
-        return _data.erase(position);
-    }
+    Array* allKeysForObject(Object* object);
     
-    /** @brief Removes an element with an iterator from the Map<K, V> container.
-     *  @param k Key of the element to be erased.
-     *         Member type 'K' is the type of the keys for the elements in the container,
-     *         defined in Map<K, V> as an alias of its first template parameter (Key).
+    /**
+     *  Get the object according to the specified string key.
+     *
+     *  @note The dictionary needs to use string as key. If integer is passed, an assert will appear.
+     *  @param key  The string key for searching.
+     *  @return The object matches the key. You need to force convert it to the type you know.
+     *  @code
+     *     // Assume that the elements are String* pointers. Convert it by following code.
+     *     String* pStr = static_cast<String*>(pDict->objectForKey("key1"));
+     *     // Do something about pStr.
+     *     // If you don't know the object type, properly you need to use dynamic_cast<SomeType*> to check it.
+     *     String* pStr2 = dynamic_cast<String*>(pDict->objectForKey("key1"));
+     *     if (pStr2 != NULL) {
+     *          // Do something about pStr2
+     *     }
+     *  @endcode
+     *  @see objectForKey(intptr_t)
+     * @js NA
      */
-    size_t erase(const K& k)
-    {
-        iterator iter = _data.find(k);
-        if (iter != _data.end())
-        {
-            iter->second->release();
-            _data.erase(iter);
-            return 1;
-        }
-        
-        return 0;
-    }
+    Object* objectForKey(const std::string& key);
     
-    /** @brief Removes some elements with a vector which contains keys in the map.
-     *  @param keys Keys of elements to be erased.
+    /**
+     *  Get the object according to the specified integer key.
+     *
+     *  @note The dictionary needs to use integer as key. If string is passed, an assert will appear.
+     *  @param key  The integer key for searching.
+     *  @return The object matches the key.
+     *  @see objectForKey(const std::string&)
+     * @js NA
      */
-    void erase(const std::vector<K>& keys)
-    {
-        for(typename std::vector<K>::iterator iter=keys.begin();iter!=keys.end();++iter) {
-            this->erase(*iter);
-        }
-    }
+    Object* objectForKey(intptr_t key);
     
-    /** All the elements in the Map<K,V> container are dropped:
-     *  their reference count will be decreased, and they are removed from the container,
-     *  leaving it with a size of 0.
+    /** Get the value according to the specified string key.
+     *
+     *  @note Be careful to use this function since it assumes the objects in the dictionary are __String pointer.
+     *  @param key  The string key for searching
+     *  @return An instance of String.
+     *          It will return an empty string if the objects aren't __String pointer or the key wasn't found.
+     *  @see valueForKey(intptr_t)
+     *  @js NA
      */
-    void clear()
-    {
-        for (iterator iter = _data.begin(); iter != _data.end(); ++iter)
-        {
-            iter->second->release();
-        }
-        
-        _data.clear();
-    }
+    const __String* valueForKey(const std::string& key);
     
-    /** @brief Gets a random object in the map
-     *  @return Returns the random object if the map isn't empty, otherwise it returns NULL.
+    /** Get the value according to the specified integer key.
+     *
+     *  @note Be careful to use this function since it assumes the objects in the dictionary are __String pointer.
+     *  @param key  The string key for searching.
+     *  @return An instance of String.
+     *          It will return an empty string if the objects aren't __String pointer or the key wasn't found.
+     *  @see valueForKey(intptr_t)
+     *  @js NA
      */
-    V getRandomObject() const
+    const __String* valueForKey(intptr_t key);
+    
+    /** Insert an object to dictionary, and match it with the specified string key.
+     *
+     *  @note Whe the first time this method is invoked, the key type will be set to string.
+     *        After that you can't setObject with an integer key.
+     *        If the dictionary contains the key you passed, the object matching the key will be released and removed from dictionary.
+     *        Then the new object will be inserted after that.
+     *
+     *  @param pObject  The Object to be inserted.
+     *  @param key      The string key for searching.
+     *  @see setObject(Object*, intptr_t)
+     * @js NA
+     */
+    void setObject(Object* pObject, const std::string& key);
+    
+    /** Insert an object to dictionary, and match it with the specified string key.
+     *
+     *  @note Then the first time this method is invoked, the key type will be set to string.
+     *        After that you can't setObject with an integer key.
+     *        If the dictionary contains the key you passed, the object matching the key will be released and removed from dictionary.
+     *        Then the new object will be inserted after that.
+     *  @param pObject  The Object to be inserted.
+     *  @param key      The string key for searching.
+     *  @see setObject(Object*, const std::string&)
+     *  @js NA
+     */
+    void setObject(Object* pObject, intptr_t key);
+    
+    /**
+     *  Remove an object by the specified string key.
+     *
+     *  @param key  The string key for searching.
+     *  @see removeObjectForKey(intptr_t), removeObjectsForKeys(Array*),
+     *       removeObjectForElememt(DictElement*), removeAllObjects().
+     *  @js NA
+     */
+    void removeObjectForKey(const std::string& key);
+    
+    /**
+     *  Remove an object by the specified integer key.
+     *
+     *  @param key  The integer key for searching.
+     *  @see removeObjectForKey(const std::string&), removeObjectsForKeys(Array*),
+     *       removeObjectForElememt(DictElement*), removeAllObjects().
+     *  @js NA
+     */
+    void removeObjectForKey(intptr_t key);
+    
+    /**
+     *  Remove objects by an array of keys.
+     *
+     *  @param pKeyArray  The array contains keys to be removed.
+     *  @see removeObjectForKey(const std::string&), removeObjectForKey(intptr_t),
+     *       removeObjectForElememt(DictElement*), removeAllObjects().
+     *  @js NA
+     */
+    void removeObjectsForKeys(Array* pKey__Array);
+    
+    /**
+     *  Remove an object by an element.
+     *
+     *  @param pElement  The element need to be removed.
+     *  @see removeObjectForKey(const std::string&), removeObjectForKey(intptr_t),
+     *       removeObjectsForKeys(Array*), removeAllObjects().
+     * @js NA
+     * @lua NA
+     */
+    void removeObjectForElememt(DictElement* pElement);
+    
+    /**
+     *  Remove all objects in the dictionary.
+     *
+     *  @see removeObjectForKey(const std::string&), removeObjectForKey(intptr_t),
+     *       removeObjectsForKeys(Array*), removeObjectForElememt(DictElement*).
+     * @js NA
+     */
+    void removeAllObjects();
+    
+    /**
+     *  Return a random object in the dictionary.
+     *
+     *  @return The random object.
+     *  @see objectForKey(intptr_t), objectForKey(const std::string&)
+     *  @js NA
+     *  @lua NA
+     */
+    Object* randomObject();
+    
+    /**
+     *  Create a dictionary.
+     *  @return A dictionary which is an autorelease object.
+     *  @see createWithDictionary(Dictionary*), createWithContentsOfFile(const char*), createWithContentsOfFileThreadSafe(const char*).
+     *  @js NA
+     */
+    static Dictionary* create();
+    
+    /**
+     *  Create a dictionary with an existing dictionary.
+     *
+     *  @param srcDict The exist dictionary.
+     *  @return A dictionary which is an autorelease object.
+     *  @see create(), createWithContentsOfFile(const char*), createWithContentsOfFileThreadSafe(const char*).
+     *  @js NA
+     */
+    static Dictionary* createWithDictionary(Dictionary* srcDict);
+    
+    /**
+     *  Create a dictionary with a plist file.
+     *  @param  pFileName  The name of the plist file.
+     *  @return A dictionary which is an autorelease object.
+     *  @see create(), createWithDictionary(Dictionary*), createWithContentsOfFileThreadSafe(const char*).
+     *  @js NA
+     */
+    static Dictionary* createWithContentsOfFile(const char *pFileName);
+    
+    /**
+     *  Write a dictionary to a plist file.
+     *  @param fullPath The full path of the plist file. You can get writeable path by getWritablePath()
+     *  @return true if successed, false if failed
+     *  @js NA
+     *  @lua NA
+     */
+    bool writeToFile(const char *fullPath);
+    
+    /**
+     *  Create a dictionary with a plist file.
+     *
+     *  @note the return object isn't an autorelease object.
+     *        This can make sure not using autorelease pool in a new thread.
+     *        Therefore, you need to manage the lifecycle of the return object.
+     *        It means that when you don't need it, CC_SAFE_RELEASE needs to be invoked.
+     *
+     *  @param  pFileName  The name of the plist file.
+     *  @return A dictionary which isn't an autorelease object.
+     *  @js NA
+     *  @lua NA
+     */
+    static Dictionary* createWithContentsOfFileThreadSafe(const char *pFileName);
+    
+    /* override functions
+     *  @js NA
+     *  @lua NA
+     */
+    virtual void acceptVisitor(DataVisitor &visitor);
+    /**
+     *  @js NA
+     *  @lua NA
+     */
+    virtual Dictionary* clone() const;
+    
+private:
+    /**
+     *  For internal usage, invoked by setObject.
+     */
+    void setObjectUnSafe(Object* pObject, const std::string& key);
+    void setObjectUnSafe(Object* pObject, const intptr_t key);
+    
+public:
+    /**
+     *  All the elements in dictionary.
+     *
+     *  @note For internal usage, we need to declare this member variable as public since it's used in UT_HASH.
+     */
+    DictElement* _elements;
+private:
+    
+    /** The support type of dictionary, it's confirmed when setObject is invoked. */
+    enum DictType
     {
-        if (!_data.empty())
-        {
-            size_t randIdx = rand() % _data.size();
-            const_iterator randIter = _data.begin();
-            std::advance(randIter , randIdx);
-            return randIter->second;
-        }
-        return NULL;
-    }
+        kDictUnknown = 0,
+        kDictStr,
+        kDictInt
+    };
     
-    // Don't uses operator since we could not decide whether it needs 'retain'/'release'.
-    //    V& operator[] ( const K& key )
-    //    {
-    //        CCLOG("copy: [] ref");
-    //        return _data[key];
-    //    }
-    //
-    //    V& operator[] ( K&& key )
-    //    {
-    //        CCLOG("move [] ref");
-    //        return _data[key];
-    //    }
-    
-    //    const V& operator[] ( const K& key ) const
-    //    {
-    //        CCLOG("const copy []");
-    //        return _data.at(key);
-    //    }
-    //
-    //    const V& operator[] ( K&& key ) const
-    //    {
-    //        CCLOG("const move []");
-    //        return _data.at(key);
-    //    }
-    
-    /** Copy assignment operator */
-    Map<K, V>& operator= ( const Map<K, V>& other )
-    {
-        if (this != &other) {
-            YHDEBUG("In the copy assignment operator of Map!");
-            clear();
-            _data = other._data;
-            addRefForAllObjects();
-        }
-        return *this;
-    }
-    
-//    /** Move assignment operator */
-//    Map<K, V>& operator= ( Map<K, V>&& other )
-//    {
-//        if (this != &other) {
-//            YHDEBUG("In the move assignment operator of Map!");
-//            clear();
-//            _data = std::move(other._data);
-//        }
-//        return *this;
-//    }
-    
-protected:
-    
-    /** Retains all the objects in the map */
-    void addRefForAllObjects()
-    {
-        for (iterator iter = _data.begin(); iter != _data.end(); ++iter)
-        {
-            iter->second->retain();
-        }
-    }
-    
-    RefMap _data;
+    /**
+     *  The type of dictionary, it's assigned to kDictUnknown by default.
+     */
+    DictType _dictType;
 };
-
-// end of data_structure group
-/// @}
 
 NS_YH_END
 
-#endif // YH_COLLECTIONS_MAP_H_
+#endif // YH_COLLECTIONS_DICTIONARY_H_

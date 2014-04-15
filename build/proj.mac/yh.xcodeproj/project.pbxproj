@@ -63,6 +63,10 @@
 		5784F68C18FD0CF6007744E5 /* YHString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5784F68A18FD0CF6007744E5 /* YHString.cpp */; };
 		5784F68D18FD0CF6007744E5 /* YHString.h in Headers */ = {isa = PBXBuildFile; fileRef = 5784F68B18FD0CF6007744E5 /* YHString.h */; };
 		5784F68F18FD31DF007744E5 /* nullptr.h in Headers */ = {isa = PBXBuildFile; fileRef = 5784F68E18FD31DF007744E5 /* nullptr.h */; };
+		5784F69418FD32EB007744E5 /* ObjectValue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5784F69018FD32EB007744E5 /* ObjectValue.cpp */; };
+		5784F69518FD32EB007744E5 /* ObjectValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 5784F69118FD32EB007744E5 /* ObjectValue.h */; };
+		5784F69618FD32EB007744E5 /* SimpleValue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5784F69218FD32EB007744E5 /* SimpleValue.cpp */; };
+		5784F69718FD32EB007744E5 /* SimpleValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 5784F69318FD32EB007744E5 /* SimpleValue.h */; };
 		57E2C27318E9007E00124DF1 /* Log.h in Headers */ = {isa = PBXBuildFile; fileRef = 57E2C27018E9007E00124DF1 /* Log.h */; };
 		57E2C27418E9007E00124DF1 /* Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57E2C27218E9007E00124DF1 /* Log.cpp */; };
 		57E2C27818E904B700124DF1 /* NSMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 57E2C27518E904B700124DF1 /* NSMacros.h */; };
@@ -179,6 +183,10 @@
 		5784F68A18FD0CF6007744E5 /* YHString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YHString.cpp; sourceTree = "<group>"; };
 		5784F68B18FD0CF6007744E5 /* YHString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHString.h; sourceTree = "<group>"; };
 		5784F68E18FD31DF007744E5 /* nullptr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nullptr.h; sourceTree = "<group>"; };
+		5784F69018FD32EB007744E5 /* ObjectValue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ObjectValue.cpp; sourceTree = "<group>"; };
+		5784F69118FD32EB007744E5 /* ObjectValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectValue.h; sourceTree = "<group>"; };
+		5784F69218FD32EB007744E5 /* SimpleValue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleValue.cpp; sourceTree = "<group>"; };
+		5784F69318FD32EB007744E5 /* SimpleValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleValue.h; sourceTree = "<group>"; };
 		57E2C27018E9007E00124DF1 /* Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
 		57E2C27218E9007E00124DF1 /* Log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Log.cpp; sourceTree = "<group>"; };
 		57E2C27518E904B700124DF1 /* NSMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSMacros.h; sourceTree = "<group>"; };
@@ -422,6 +430,10 @@
 			isa = PBXGroup;
 			children = (
 				5784F65B18FBB8ED007744E5 /* Map.h */,
+				5784F69018FD32EB007744E5 /* ObjectValue.cpp */,
+				5784F69118FD32EB007744E5 /* ObjectValue.h */,
+				5784F69218FD32EB007744E5 /* SimpleValue.cpp */,
+				5784F69318FD32EB007744E5 /* SimpleValue.h */,
 				5784F65C18FBB8ED007744E5 /* Vector.h */,
 			);
 			path = collections;
@@ -476,6 +488,7 @@
 			files = (
 				571610B718E51F5800D2F48E /* Buffer.h in Headers */,
 				574FE5BB18DC0FA300490B18 /* checked.h in Headers */,
+				5784F69718FD32EB007744E5 /* SimpleValue.h in Headers */,
 				574FE5B318DC0FA300490B18 /* Column.h in Headers */,
 				574FE5A818DC0FA300490B18 /* forwards.h in Headers */,
 				5784F68F18FD31DF007744E5 /* nullptr.h in Headers */,
@@ -511,6 +524,7 @@
 				574FE5A118DC0FA300490B18 /* RefCount.h in Headers */,
 				574FE5AB18DC0FA300490B18 /* json_macros.h in Headers */,
 				5784F67D18FCD5FE007744E5 /* RCPtr.h in Headers */,
+				5784F69518FD32EB007744E5 /* ObjectValue.h in Headers */,
 				574FE5BC18DC0FA300490B18 /* core.h in Headers */,
 				5716E7AF18F7F44200A141B7 /* pugixml.hpp in Headers */,
 				57E2C27318E9007E00124DF1 /* Log.h in Headers */,
@@ -620,6 +634,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5784F69418FD32EB007744E5 /* ObjectValue.cpp in Sources */,
 				574FE5B418DC0FA300490B18 /* SqliteDriver.cpp in Sources */,
 				574FE5AC18DC0FA300490B18 /* json_reader.cpp in Sources */,
 				5716E7AE18F7F44200A141B7 /* pugixml.cpp in Sources */,
@@ -634,6 +649,7 @@
 				574FE59C18DC0FA300490B18 /* Object.cpp in Sources */,
 				57E2C28818E94FE300124DF1 /* IeeeHalfPrecision.cpp in Sources */,
 				5784F68C18FD0CF6007744E5 /* YHString.cpp in Sources */,
+				5784F69618FD32EB007744E5 /* SimpleValue.cpp in Sources */,
 				574FE5A218DC0FA300490B18 /* RefPtr.cpp in Sources */,
 				574FE5B718DC0FA300490B18 /* Statement.cpp in Sources */,
 				574FE5AE18DC0FA300490B18 /* json_writer.cpp in Sources */,

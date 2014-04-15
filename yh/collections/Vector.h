@@ -8,6 +8,12 @@
 
 NS_YH_BEGIN
 
+
+/**
+ * 对标准的std::vector时行封装。实现变长数组。
+ * 内容必须为Obejct或其子类
+ * 通常使用值的方式传递。如果为了性能，可用RefPtr包装一个Vector的指针对象。
+ */
 template<class T>
 class Vector
 {
@@ -153,7 +159,7 @@ public:
     /** Returns index of a certain object, return UINT_MAX if doesn't contain the object */
     size_t getIndex(T object) const
     {
-        iterator iter = std::find(_data.begin(), _data.end(), object);
+        const_iterator iter = std::find(_data.begin(), _data.end(), object);
         if (iter != _data.end())
             return iter - _data.begin();
 
@@ -264,6 +270,15 @@ public:
         object->retain();
     }
     
+    void insert(size_t position, iterator begin,iterator end)
+    {
+        _data.insert(position, begin,end);
+        //add reatain
+        for(iterator iter=begin;iter!=end;++iter){
+            iter->retain();
+        }
+    }
+    
     // Removes Objects
 
     /** Removes the last element in the vector, 
@@ -272,7 +287,7 @@ public:
     void popBack()
     {
         YHASSERT(!_data.empty(), "no objects added");
-        iterator last = _data.back();
+        T last = _data.back();
         _data.pop_back();
         last->release();
     }
@@ -348,10 +363,13 @@ public:
     /** Swap two elements */
     void swap(T object1, T object2)
     {
+        //TODO check c++11
+        
         size_t idx1 = getIndex(object1);
         size_t idx2 = getIndex(object2);
 
-        std::swap( _data[idx1], _data[idx2] );
+        swap(idx1, idx2);
+//        std::swap( _data[idx1], _data[idx2] );
     }
     
     /** Swap two elements with certain indexes */
@@ -359,7 +377,11 @@ public:
     {
         YHASSERT(index1 >=0 && index1 < size() && index2 >= 0 && index2 < size(), "Invalid indices");
 
-        std::swap( _data[index1], _data[index2] );
+        T temp=_data[index1];
+        _data[index1]=_data[index2];
+        _data[index2]=temp;
+        
+//        std::swap( _data[index1], _data[index2] );
     }
 
     /** Replace object at index with another object. */

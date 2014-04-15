@@ -17,10 +17,10 @@
 NS_YH_BEGIN
 
 /**
- * @addtogroup data_structures
- * @{
+ * 对标准的std::map进行封装。实现字典。
+ * 内容必须为Obejct或其子类
+ * 通常使用值的方式传递。如果为了性能，可用RefPtr包装一个Vector的指针对象。
  */
-
 template <class K, class V>
 class Map
 {

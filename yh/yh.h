@@ -21,6 +21,9 @@
 //pugixml
 #include "pugixml/pugixml.hpp"
 
+//plist
+#include "plist/Plist.h"
+
 //io
 #include "io/IOMacros.h"
 #include "io/Buffer.h"

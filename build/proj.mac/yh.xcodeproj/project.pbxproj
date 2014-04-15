@@ -62,6 +62,7 @@
 		5784F67D18FCD5FE007744E5 /* RCPtr.h in Headers */ = {isa = PBXBuildFile; fileRef = 5784F67C18FCD5FE007744E5 /* RCPtr.h */; };
 		5784F68C18FD0CF6007744E5 /* YHString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5784F68A18FD0CF6007744E5 /* YHString.cpp */; };
 		5784F68D18FD0CF6007744E5 /* YHString.h in Headers */ = {isa = PBXBuildFile; fileRef = 5784F68B18FD0CF6007744E5 /* YHString.h */; };
+		5784F68F18FD31DF007744E5 /* nullptr.h in Headers */ = {isa = PBXBuildFile; fileRef = 5784F68E18FD31DF007744E5 /* nullptr.h */; };
 		57E2C27318E9007E00124DF1 /* Log.h in Headers */ = {isa = PBXBuildFile; fileRef = 57E2C27018E9007E00124DF1 /* Log.h */; };
 		57E2C27418E9007E00124DF1 /* Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57E2C27218E9007E00124DF1 /* Log.cpp */; };
 		57E2C27818E904B700124DF1 /* NSMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 57E2C27518E904B700124DF1 /* NSMacros.h */; };
@@ -177,6 +178,7 @@
 		5784F67C18FCD5FE007744E5 /* RCPtr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCPtr.h; sourceTree = "<group>"; };
 		5784F68A18FD0CF6007744E5 /* YHString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YHString.cpp; sourceTree = "<group>"; };
 		5784F68B18FD0CF6007744E5 /* YHString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHString.h; sourceTree = "<group>"; };
+		5784F68E18FD31DF007744E5 /* nullptr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nullptr.h; sourceTree = "<group>"; };
 		57E2C27018E9007E00124DF1 /* Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
 		57E2C27218E9007E00124DF1 /* Log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Log.cpp; sourceTree = "<group>"; };
 		57E2C27518E904B700124DF1 /* NSMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSMacros.h; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 			children = (
 				57E2C27118E9007E00124DF1 /* mac */,
 				57E2C27018E9007E00124DF1 /* Log.h */,
+				5784F68E18FD31DF007744E5 /* nullptr.h */,
 				571610C418E5824E00D2F48E /* PlatformConfig.h */,
 				571610C518E5824E00D2F48E /* PlatformDefine.h */,
 				571610CA18E5824E00D2F48E /* YHStdC.h */,
@@ -475,6 +478,7 @@
 				574FE5BB18DC0FA300490B18 /* checked.h in Headers */,
 				574FE5B318DC0FA300490B18 /* Column.h in Headers */,
 				574FE5A818DC0FA300490B18 /* forwards.h in Headers */,
+				5784F68F18FD31DF007744E5 /* nullptr.h in Headers */,
 				571610B818E51F5800D2F48E /* IOMacros.h in Headers */,
 				574FE5A618DC0FA300490B18 /* config.h in Headers */,
 				57E2C27A18E904B700124DF1 /* YHMacros.h in Headers */,

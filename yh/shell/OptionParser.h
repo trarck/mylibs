@@ -106,7 +106,7 @@ struct StringOption : public ValuedOption
     const char *value;
 
     StringOption(char shortflag, const char *longflag, const char *help, const char *metavar)
-      : ValuedOption(OptionKindString, shortflag, longflag, help, metavar), value(nullptr)
+      : ValuedOption(OptionKindString, shortflag, longflag, help, metavar), value(NULL)
     {}
 
     virtual ~StringOption() {}
@@ -224,7 +224,7 @@ class OptionParser
   public:
     explicit OptionParser(const char *usage)
       : helpOption('h', "help", "Display help information"),
-        usage(usage), ver(nullptr), descr(nullptr), descrWidth(80), helpWidth(80),
+        usage(usage), ver(NULL), descr(NULL), descrWidth(80), helpWidth(80),
         nextArgument(0), restArgument(-1)
     {}
 

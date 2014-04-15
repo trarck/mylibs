@@ -3,6 +3,8 @@
 
 #include "PlatformConfig.h"
 
+#include "nullptr.h"
+
 //stdc 
 #if YH_TARGET_PLATFORM == YH_PLATFORM_WIN32
 

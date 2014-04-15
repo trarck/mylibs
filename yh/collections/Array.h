@@ -7,18 +7,31 @@
 
 NS_YH_BEGIN
 
-template<class T>
+
+#define YH_ARRAY_FOREACH(__array__, __object__)                  \
+if (__array__) \
+for( Array::iterator __it__ = (__array__)->begin();              \
+__it__ != (__array__)->end() && ((__object__) = *__it__) != NULL;                     \
+++__it__)
+
+
+#define YH_ARRAY_FOREACH_REVERSE(__array__, __object__)          \
+if (__array__) \
+for( Array::iterator __it__ = (__array__)->rbegin();             \
+__it__ != (__array__)->rend() && ((__object__) = *__it__) != NULL;                        \
+++__it__ )
+
 class Array : public Object
 {
 public:
-    /** 
+    /**
      * @brief Creates an empty array.s
      */
     static Array* create();
     /** 
      * @brief Create an array with objects 
      */
-    static Array* create(Object* object, ...) CC_REQUIRES_NULL_TERMINATION;
+    static Array* create(Object* object, ...);
     /**
      * @brief Create an array with one object 
      */
@@ -26,10 +39,14 @@ public:
     /** 
      * @brief Create an array with a default capacity 
      */
-    static Array* createWithCapacity(ssize_t capacity);
+    static Array* createWithCapacity(int capacity);
     /** Create an array with from an existing array 
      */
-    static Array* createWithArray(Array* otherArray);
+    static Array* createWithArray(Array* otherArray)
+    {
+        return otherArray->clone();
+    }
+    
     /**
      @brief   Generate a Array pointer by file
      @param   pFileName  The file name of *.plist file
@@ -38,228 +55,198 @@ public:
     static Array* createWithContentsOfFile(const std::string& pFileName);
     
     /*
-     @brief The same meaning as arrayWithContentsOfFile(), but it doesn't call autorelease, so the
-     invoker should call release().
+     *@brief The same meaning as arrayWithContentsOfFile(), but it doesn't call autorelease, so the
+     * invoker should call release().
      */
     static Array* createWithContentsOfFileThreadSafe(const std::string& pFileName);
 
+    Array();
+    
     /**
      */
     ~Array();
 
-    /** Initializes an array 
+    /** 
+     * @brief Initializes an array
      */
     bool init();
-    /** Initializes an array with one object 
+    /** 
+     @brief Initializes an array with one object
      */
     bool initWithObject(Object* object);
-    /** Initializes an array with some objects 
+    /** 
+     @brief Initializes an array with some objects
      */
-    bool initWithObjects(Object* object, ...) CC_REQUIRES_NULL_TERMINATION;
-    /** Initializes an array with capacity 
+    bool initWithObjects(Object* object, ...);
+    /** 
+     @brief Initializes an array with capacity
      */
-    bool initWithCapacity(ssize_t capacity);
-    /** Initializes an array with an existing array 
+    bool initWithCapacity(int capacity);
+    /** 
+     @breif Initializes an array with an existing array
      */
     bool initWithArray(Array* otherArray);
 
-    // Querying an Array
 
-    /** Returns element count of the array 
+    /** 
+     @brief Returns element count of the array
      */
-    ssize_t count() const
+    size_t count() const
     {
-        return data.size();
+        return m_data.size();
     }
-    /** Returns capacity of the array 
+    
+    /** 
+     @return Returns capacity of the array
      */
-    ssize_t capacity() const
+    size_t capacity() const
     {
-        return data.capacity();
+        return m_data.capacity();
     }
-    /** Returns index of a certain object, return UINT_MAX if doesn't contain the object 
+    /** 
+     @return Returns index of a certain object, return UINT_MAX if doesn't contain the object
      */
-    ssize_t getIndexOfObject(Object* object) const;
-    /**
-     */
+    int getIndexOfObject(Object* object) const;
 
-    /** Returns an element with a certain index 
+    /** 
+     @return Returns an element with a certain index
      */
-    Object* getObjectAtIndex(ssize_t index)
+    Object* getObjectAtIndex(int index)
     {
-        CCASSERT(index>=0 && index < count(), "index out of range in getObjectAtIndex()");
-        return data[index].get();
+        YHASSERT(index>=0 && index < count(), "index out of range in getObjectAtIndex()");
+        return m_data.at(index);
     }
 
-    /** Returns the last element of the array 
+    /** 
+     @return Returns the last element of the array
      */
     Object* getLastObject()
     {
-        return data.back().get();
+        return m_data.back();
     }
 
-    /** Returns a random element 
-     * @js NA
-     * @lua NA
+    /** 
+     @return Returns a random element
      */
     Object* getRandomObject();
 
-    /** Returns a Boolean value that indicates whether object is present in array. 
-     * @js NA
+    /** 
+     @return Returns a Boolean value that indicates whether object is present in array.
      */
     bool containsObject(Object* object) const;
-    /** @since 1.1 
-     * @js NA
-     */
+
     bool isEqualToArray(Array* otherArray);
+    
+    
     // Adding Objects
 
-    /** Add a certain object 
-     * @js NA
+    /** 
+     @brief Add a certain object
      */
     void addObject(Object* object);
-    /**
-     * @js NA
-     */
-    /** Add all elements of an existing array 
-     * @js NA
+
+    /** 
+     @brief Add all elements of an existing array
      */
     void addObjectsFromArray(Array* otherArray);
-    /** Insert a certain object at a certain index 
-     * @js NA
+    /** 
+     @brief Insert a certain object at a certain index
      */
-    void insertObject(Object* object, ssize_t index);
-    /** sets a certain object at a certain index 
-     * @js NA
-     * @lua NA
+    void insertObject(Object* object, int index);
+    /** 
+     @brief sets a certain object at a certain index
      */
-    void setObject(Object* object, ssize_t index);
-    /** sets a certain object at a certain index without retaining. Use it with caution 
-     * @js NA
-     * @lua NA
+    void setObject(Object* object, int index);
+    /** 
+     @brief sets a certain object at a certain index without retaining. Use it with caution
      */
-    void fastSetObject(Object* object, ssize_t index)
+    void fastSetObject(Object* object, int index)
     {
         setObject(object, index);
     }
 
     // Removing Objects
 
-    /** Remove last object 
-     * @js NA
+    /** 
+     @brief Remove last object
      */
     void removeLastObject(bool releaseObj = true);
-    /** Remove a certain object 
-     * @js NA
+    /** 
+     @brief Remove a certain object
      */
     void removeObject(Object* object, bool releaseObj = true);
-    /** Remove an element with a certain index 
-     * @js NA
+    /** 
+     @brief Remove an element with a certain index
      */
-    void removeObjectAtIndex(ssize_t index, bool releaseObj = true);
-    /** Remove all elements 
-     * @js NA
+    void removeObjectAtIndex(size_t index, bool releaseObj = true);
+    /** 
+     @brief Remove all elements
      */
     void removeObjectsInArray(Array* otherArray);
-    /** Remove all objects 
-     * @js NA
+    /** 
+     @brief Remove all objects
      */
     void removeAllObjects();
-    /** Fast way to remove a certain object 
-     * @js NA
+    /** 
+     @brief Fast way to remove a certain object
      */
     void fastRemoveObject(Object* object);
-    /** Fast way to remove an element with a certain index 
-     * @js NA
+    /** 
+     * Fast way to remove an element with a certain index
      */
-    void fastRemoveObjectAtIndex(ssize_t index);
+    void fastRemoveObjectAtIndex(int index);
 
     // Rearranging Content
 
-    /** Swap two elements 
-     * @js NA
+    /** 
+     Swap two elements
      */
     void exchangeObject(Object* object1, Object* object2);
-    /** Swap two elements with certain indexes 
-     * @js NA
+    /** 
+     * Swap two elements with certain indexes
      */
-    void exchangeObjectAtIndex(ssize_t index1, ssize_t index2);
+    void exchangeObjectAtIndex(size_t index1, size_t index2);
 
-    /** Replace object at index with another object. 
-     * @js NA
+    /** 
+     * Replace object at index with another object.
      */
-    void replaceObjectAtIndex(ssize_t index, Object* object, bool releaseObject = true);
+    void replaceObjectAtIndex(int index, Object* object, bool releaseObject = true);
 
-    /** Revers the array 
-     * @js NA
+    /** 
+     * Revers the array
      */
     void reverseObjects();
-    /* Shrinks the array so the memory footprint corresponds with the number of items 
-     * @js NA
+    /* 
+     * Shrinks the array so the memory footprint corresponds with the number of items
      */
     void reduceMemoryFootprint();
   
-    /* override functions 
-     * @js NA
-     */
-    virtual void acceptVisitor(DataVisitor &visitor);
     /**
-     * @js NA
-     * @lua NA
      */
     virtual Array* clone() const;
 
     // ------------------------------------------
     // Iterators
     // ------------------------------------------
-#if CC_USE_ARRAY_VECTOR
-    typedef std::vector<RCPtr<Object>>::iterator iterator;
-    typedef std::vector<RCPtr<Object>>::const_iterator const_iterator;
+    typedef Vector<Object*>::iterator iterator;
+    typedef Vector<Object*>::const_iterator const_iterator;
+    
     /**
-     * @js NA
-     * @lua NA
      */
-    iterator begin() { return data.begin(); }
+    iterator begin() { return m_data.begin(); }
     /**
-     * @js NA
-     * @lua NA
      */
-    iterator end() { return data.end(); }
-    const_iterator cbegin() { return data.cbegin(); }
-    /**
-     * @js NA
-     * @lua NA
-     */
-    const_iterator cend() { return data.cend(); }
+    iterator end() { return m_data.end(); }
+    
+    inline const Vector<Object*>& getData() const
+    {
+        return m_data;
+    }
+    
+protected:
+    Vector<Object*> m_data;
 
-    std::vector<RCPtr<Object>> data;
-
-#else
-    /**
-     * @js NA
-     * @lua NA
-     */
-    Object** begin() { return &data->arr[0]; }
-    /**
-     * @js NA
-     * @lua NA
-     */
-    Object** end() { return &data->arr[data->num]; }
-
-    ccArray* data;
-
-#endif
-
-//protected:
-    /**
-     * @js NA
-     * @lua NA
-     */
-    Array();
 };
-
-// end of data_structure group
-/// @}
 
 NS_YH_END
 

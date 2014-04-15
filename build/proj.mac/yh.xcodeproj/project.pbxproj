@@ -52,6 +52,16 @@
 		574FE5BC18DC0FA300490B18 /* core.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE59718DC0FA300490B18 /* core.h */; };
 		574FE5BD18DC0FA300490B18 /* unchecked.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE59818DC0FA300490B18 /* unchecked.h */; };
 		574FE5BE18DC0FA300490B18 /* utf8.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE59918DC0FA300490B18 /* utf8.h */; };
+		5784F64F18FB7D94007744E5 /* Plist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5784F64D18FB7D94007744E5 /* Plist.cpp */; };
+		5784F65018FB7D94007744E5 /* Plist.h in Headers */ = {isa = PBXBuildFile; fileRef = 5784F64E18FB7D94007744E5 /* Plist.h */; };
+		5784F65318FBB09B007744E5 /* plist_unittest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5784F65118FBB096007744E5 /* plist_unittest.cpp */; };
+		5784F65618FBB35F007744E5 /* Plist2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5784F65418FBB35F007744E5 /* Plist2.cpp */; };
+		5784F65718FBB35F007744E5 /* Plist2.h in Headers */ = {isa = PBXBuildFile; fileRef = 5784F65518FBB35F007744E5 /* Plist2.h */; };
+		5784F65F18FBB8ED007744E5 /* Map.h in Headers */ = {isa = PBXBuildFile; fileRef = 5784F65B18FBB8ED007744E5 /* Map.h */; };
+		5784F66018FBB8ED007744E5 /* Vector.h in Headers */ = {isa = PBXBuildFile; fileRef = 5784F65C18FBB8ED007744E5 /* Vector.h */; };
+		5784F67D18FCD5FE007744E5 /* RCPtr.h in Headers */ = {isa = PBXBuildFile; fileRef = 5784F67C18FCD5FE007744E5 /* RCPtr.h */; };
+		5784F68C18FD0CF6007744E5 /* YHString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5784F68A18FD0CF6007744E5 /* YHString.cpp */; };
+		5784F68D18FD0CF6007744E5 /* YHString.h in Headers */ = {isa = PBXBuildFile; fileRef = 5784F68B18FD0CF6007744E5 /* YHString.h */; };
 		57E2C27318E9007E00124DF1 /* Log.h in Headers */ = {isa = PBXBuildFile; fileRef = 57E2C27018E9007E00124DF1 /* Log.h */; };
 		57E2C27418E9007E00124DF1 /* Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57E2C27218E9007E00124DF1 /* Log.cpp */; };
 		57E2C27818E904B700124DF1 /* NSMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 57E2C27518E904B700124DF1 /* NSMacros.h */; };
@@ -157,9 +167,16 @@
 		574FE59718DC0FA300490B18 /* core.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core.h; sourceTree = "<group>"; };
 		574FE59818DC0FA300490B18 /* unchecked.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unchecked.h; sourceTree = "<group>"; };
 		574FE59918DC0FA300490B18 /* utf8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utf8.h; sourceTree = "<group>"; };
-		5784F63918FB76F3007744E5 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
-		5784F64118FB7AC5007744E5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		5784F64318FB7AC5007744E5 /* dds.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = dds.1; sourceTree = "<group>"; };
+		5784F64D18FB7D94007744E5 /* Plist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Plist.cpp; sourceTree = "<group>"; };
+		5784F64E18FB7D94007744E5 /* Plist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plist.h; sourceTree = "<group>"; };
+		5784F65118FBB096007744E5 /* plist_unittest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = plist_unittest.cpp; sourceTree = "<group>"; };
+		5784F65418FBB35F007744E5 /* Plist2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Plist2.cpp; sourceTree = "<group>"; };
+		5784F65518FBB35F007744E5 /* Plist2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plist2.h; sourceTree = "<group>"; };
+		5784F65B18FBB8ED007744E5 /* Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Map.h; sourceTree = "<group>"; };
+		5784F65C18FBB8ED007744E5 /* Vector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector.h; sourceTree = "<group>"; };
+		5784F67C18FCD5FE007744E5 /* RCPtr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCPtr.h; sourceTree = "<group>"; };
+		5784F68A18FD0CF6007744E5 /* YHString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YHString.cpp; sourceTree = "<group>"; };
+		5784F68B18FD0CF6007744E5 /* YHString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHString.h; sourceTree = "<group>"; };
 		57E2C27018E9007E00124DF1 /* Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
 		57E2C27218E9007E00124DF1 /* Log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Log.cpp; sourceTree = "<group>"; };
 		57E2C27518E904B700124DF1 /* NSMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSMacros.h; sourceTree = "<group>"; };
@@ -260,6 +277,7 @@
 		5716E7B018F7F76E00A141B7 /* xml */ = {
 			isa = PBXGroup;
 			children = (
+				5784F65118FBB096007744E5 /* plist_unittest.cpp */,
 				5716E7B118F7F76E00A141B7 /* xml_unittest.cpp */,
 			);
 			path = xml;
@@ -268,11 +286,9 @@
 		574FE55A18DC0F7300490B18 = {
 			isa = PBXGroup;
 			children = (
-				5784F63918FB76F3007744E5 /* libc++.dylib */,
 				5716108C18E4280200D2F48E /* mac */,
 				574FE56B18DC0FA300490B18 /* yh */,
 				574FE56A18DC0F8800490B18 /* frameworks */,
-				5784F64018FB7AC5007744E5 /* dds */,
 				574FE56418DC0F7300490B18 /* Products */,
 				57E2C27F18E9057300124DF1 /* tests */,
 			);
@@ -300,9 +316,11 @@
 			isa = PBXGroup;
 			children = (
 				574FE56C18DC0FA300490B18 /* base */,
+				5784F65818FBB8ED007744E5 /* collections */,
 				571610B218E51F5800D2F48E /* io */,
 				574FE57818DC0FA300490B18 /* jsoncpp */,
 				571610C318E5824E00D2F48E /* platform */,
+				5784F64C18FB7D94007744E5 /* plist */,
 				5716E7A918F7F44200A141B7 /* pugixml */,
 				574FE58A18DC0FA300490B18 /* sqlite */,
 				574FE59418DC0FA300490B18 /* string */,
@@ -320,6 +338,7 @@
 				571610B918E5534D00D2F48E /* Internals.h */,
 				574FE56F18DC0FA300490B18 /* Object.cpp */,
 				574FE57018DC0FA300490B18 /* Object.h */,
+				5784F67C18FCD5FE007744E5 /* RCPtr.h */,
 				574FE57318DC0FA300490B18 /* RefCount.cpp */,
 				574FE57418DC0FA300490B18 /* RefCount.h */,
 				574FE57518DC0FA300490B18 /* RefPtr.cpp */,
@@ -368,6 +387,8 @@
 			isa = PBXGroup;
 			children = (
 				574FE59518DC0FA300490B18 /* utf8 */,
+				5784F68A18FD0CF6007744E5 /* YHString.cpp */,
+				5784F68B18FD0CF6007744E5 /* YHString.h */,
 				574FE59918DC0FA300490B18 /* utf8.h */,
 			);
 			path = string;
@@ -383,13 +404,24 @@
 			path = utf8;
 			sourceTree = "<group>";
 		};
-		5784F64018FB7AC5007744E5 /* dds */ = {
+		5784F64C18FB7D94007744E5 /* plist */ = {
 			isa = PBXGroup;
 			children = (
-				5784F64118FB7AC5007744E5 /* main.cpp */,
-				5784F64318FB7AC5007744E5 /* dds.1 */,
+				5784F64D18FB7D94007744E5 /* Plist.cpp */,
+				5784F64E18FB7D94007744E5 /* Plist.h */,
+				5784F65418FBB35F007744E5 /* Plist2.cpp */,
+				5784F65518FBB35F007744E5 /* Plist2.h */,
 			);
-			path = dds;
+			path = plist;
+			sourceTree = "<group>";
+		};
+		5784F65818FBB8ED007744E5 /* collections */ = {
+			isa = PBXGroup;
+			children = (
+				5784F65B18FBB8ED007744E5 /* Map.h */,
+				5784F65C18FBB8ED007744E5 /* Vector.h */,
+			);
+			path = collections;
 			sourceTree = "<group>";
 		};
 		57E2C27118E9007E00124DF1 /* mac */ = {
@@ -455,6 +487,8 @@
 				574FE5A918DC0FA300490B18 /* json.h in Headers */,
 				57E2C2A818EAAC1000124DF1 /* InputStream.h in Headers */,
 				571610D018E5824E00D2F48E /* YHStdC.h in Headers */,
+				5784F68D18FD0CF6007744E5 /* YHString.h in Headers */,
+				5784F65718FBB35F007744E5 /* Plist2.h in Headers */,
 				574FE5B118DC0FA300490B18 /* writer.h in Headers */,
 				57E2C27918E904B700124DF1 /* yh.h in Headers */,
 				574FE5AA18DC0FA300490B18 /* json_batchallocator.h in Headers */,
@@ -468,12 +502,16 @@
 				571610CB18E5824E00D2F48E /* PlatformConfig.h in Headers */,
 				571610CC18E5824E00D2F48E /* PlatformDefine.h in Headers */,
 				574FE5A318DC0FA300490B18 /* RefPtr.h in Headers */,
+				5784F65018FB7D94007744E5 /* Plist.h in Headers */,
 				574FE5BA18DC0FA300490B18 /* Transaction.h in Headers */,
 				574FE5A118DC0FA300490B18 /* RefCount.h in Headers */,
 				574FE5AB18DC0FA300490B18 /* json_macros.h in Headers */,
+				5784F67D18FCD5FE007744E5 /* RCPtr.h in Headers */,
 				574FE5BC18DC0FA300490B18 /* core.h in Headers */,
 				5716E7AF18F7F44200A141B7 /* pugixml.hpp in Headers */,
 				57E2C27318E9007E00124DF1 /* Log.h in Headers */,
+				5784F65F18FBB8ED007744E5 /* Map.h in Headers */,
+				5784F66018FBB8ED007744E5 /* Vector.h in Headers */,
 				574FE5A518DC0FA300490B18 /* autolink.h in Headers */,
 				57E2C28918E94FE300124DF1 /* IeeeHalfPrecision.h in Headers */,
 			);
@@ -581,14 +619,17 @@
 				574FE5B418DC0FA300490B18 /* SqliteDriver.cpp in Sources */,
 				574FE5AC18DC0FA300490B18 /* json_reader.cpp in Sources */,
 				5716E7AE18F7F44200A141B7 /* pugixml.cpp in Sources */,
+				5784F65618FBB35F007744E5 /* Plist2.cpp in Sources */,
 				57E2C2AB18EAAC5800124DF1 /* OutputStream.cpp in Sources */,
 				574FE5B218DC0FA300490B18 /* Column.cpp in Sources */,
+				5784F64F18FB7D94007744E5 /* Plist.cpp in Sources */,
 				571610B618E51F5800D2F48E /* Buffer.cpp in Sources */,
 				574FE5AD18DC0FA300490B18 /* json_value.cpp in Sources */,
 				574FE5A018DC0FA300490B18 /* RefCount.cpp in Sources */,
 				57E2C27418E9007E00124DF1 /* Log.cpp in Sources */,
 				574FE59C18DC0FA300490B18 /* Object.cpp in Sources */,
 				57E2C28818E94FE300124DF1 /* IeeeHalfPrecision.cpp in Sources */,
+				5784F68C18FD0CF6007744E5 /* YHString.cpp in Sources */,
 				574FE5A218DC0FA300490B18 /* RefPtr.cpp in Sources */,
 				574FE5B718DC0FA300490B18 /* Statement.cpp in Sources */,
 				574FE5AE18DC0FA300490B18 /* json_writer.cpp in Sources */,
@@ -603,6 +644,7 @@
 			files = (
 				5716E7B218F7F76E00A141B7 /* xml_unittest.cpp in Sources */,
 				57E2C29E18EA60BE00124DF1 /* buffer_unittest.cpp in Sources */,
+				5784F65318FBB09B007744E5 /* plist_unittest.cpp in Sources */,
 				57E2C2AE18EAB31500124DF1 /* stream_unittest.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -725,7 +767,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++98";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				EXECUTABLE_EXTENSION = a;
 				EXECUTABLE_PREFIX = lib;
@@ -733,7 +775,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRCROOT)/../../yh",
+					"$(SRCROOT)/../../",
 				);
 				MACH_O_TYPE = staticlib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -744,14 +786,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++98";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				EXECUTABLE_EXTENSION = a;
 				EXECUTABLE_PREFIX = lib;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRCROOT)/../../yh",
+					"$(SRCROOT)/../../",
 				);
 				MACH_O_TYPE = staticlib;
 				PRODUCT_NAME = "$(TARGET_NAME)";

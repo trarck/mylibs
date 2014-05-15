@@ -1,7 +1,7 @@
 #ifndef YH_DATASTRUCTURE_LINKEDLIST_H_
 #define YH_DATASTRUCTURE_LINKEDLIST_H_
 
-#include "DSMacros.h"
+#include "DataStructureMacros.h"
 #include "Iterator.h"
 
 NS_YH_DS_BEGIN

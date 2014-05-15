@@ -1,7 +1,7 @@
 #ifndef YH_DATASTRUCTURE_ITERATOR_H_
 #define YH_DATASTRUCTURE_ITERATOR_H_
 
-#include "DSMacros.h"
+#include "DataStructureMacros.h"
 
 NS_YH_DS_BEGIN
 

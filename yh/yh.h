@@ -15,6 +15,9 @@
 #include "platform/YHStdC.h"
 #include "platform/Log.h"
 
+//datastructure
+#include "LinkedList.h"
+
 //jsoncpp
 #include "jsoncpp/json.h"
 

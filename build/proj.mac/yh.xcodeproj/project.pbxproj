@@ -52,12 +52,12 @@
 		574FE5BC18DC0FA300490B18 /* core.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE59718DC0FA300490B18 /* core.h */; };
 		574FE5BD18DC0FA300490B18 /* unchecked.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE59818DC0FA300490B18 /* unchecked.h */; };
 		574FE5BE18DC0FA300490B18 /* utf8.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FE59918DC0FA300490B18 /* utf8.h */; };
-		574FF73C19246E5300DC1791 /* DSMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FF73719246E5300DC1791 /* DSMacros.h */; };
 		574FF73D19246E5300DC1791 /* Iterator-implement.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FF73819246E5300DC1791 /* Iterator-implement.h */; };
 		574FF73E19246E5300DC1791 /* Iterator.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FF73919246E5300DC1791 /* Iterator.h */; };
 		574FF73F19246E5300DC1791 /* LinkedList-implement.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FF73A19246E5300DC1791 /* LinkedList-implement.h */; };
 		574FF74019246E5300DC1791 /* LinkedList.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FF73B19246E5300DC1791 /* LinkedList.h */; };
 		574FF7441924711700DC1791 /* list_unittest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 574FF742192470B600DC1791 /* list_unittest.cpp */; };
+		574FF74619249DFA00DC1791 /* DataStructureMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 574FF74519249DFA00DC1791 /* DataStructureMacros.h */; };
 		5784F64F18FB7D94007744E5 /* Plist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5784F64D18FB7D94007744E5 /* Plist.cpp */; };
 		5784F65018FB7D94007744E5 /* Plist.h in Headers */ = {isa = PBXBuildFile; fileRef = 5784F64E18FB7D94007744E5 /* Plist.h */; };
 		5784F65318FBB09B007744E5 /* plist_unittest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5784F65118FBB096007744E5 /* plist_unittest.cpp */; };
@@ -178,12 +178,12 @@
 		574FE59718DC0FA300490B18 /* core.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core.h; sourceTree = "<group>"; };
 		574FE59818DC0FA300490B18 /* unchecked.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unchecked.h; sourceTree = "<group>"; };
 		574FE59918DC0FA300490B18 /* utf8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utf8.h; sourceTree = "<group>"; };
-		574FF73719246E5300DC1791 /* DSMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSMacros.h; sourceTree = "<group>"; };
 		574FF73819246E5300DC1791 /* Iterator-implement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Iterator-implement.h"; sourceTree = "<group>"; };
 		574FF73919246E5300DC1791 /* Iterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Iterator.h; sourceTree = "<group>"; };
 		574FF73A19246E5300DC1791 /* LinkedList-implement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LinkedList-implement.h"; sourceTree = "<group>"; };
 		574FF73B19246E5300DC1791 /* LinkedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedList.h; sourceTree = "<group>"; };
 		574FF742192470B600DC1791 /* list_unittest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = list_unittest.cpp; sourceTree = "<group>"; };
+		574FF74519249DFA00DC1791 /* DataStructureMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataStructureMacros.h; sourceTree = "<group>"; };
 		5784F64D18FB7D94007744E5 /* Plist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Plist.cpp; sourceTree = "<group>"; };
 		5784F64E18FB7D94007744E5 /* Plist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plist.h; sourceTree = "<group>"; };
 		5784F65118FBB096007744E5 /* plist_unittest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = plist_unittest.cpp; sourceTree = "<group>"; };
@@ -431,7 +431,7 @@
 		574FF73619246E5300DC1791 /* datastructure */ = {
 			isa = PBXGroup;
 			children = (
-				574FF73719246E5300DC1791 /* DSMacros.h */,
+				574FF74519249DFA00DC1791 /* DataStructureMacros.h */,
 				574FF73819246E5300DC1791 /* Iterator-implement.h */,
 				574FF73919246E5300DC1791 /* Iterator.h */,
 				574FF73A19246E5300DC1791 /* LinkedList-implement.h */,
@@ -532,6 +532,7 @@
 				57E2C27A18E904B700124DF1 /* YHMacros.h in Headers */,
 				5716E7AD18F7F44200A141B7 /* pugiconfig.hpp in Headers */,
 				574FE5A718DC0FA300490B18 /* features.h in Headers */,
+				574FF74619249DFA00DC1791 /* DataStructureMacros.h in Headers */,
 				574FE5BD18DC0FA300490B18 /* unchecked.h in Headers */,
 				574FE59D18DC0FA300490B18 /* Object.h in Headers */,
 				574FE5B618DC0FA300490B18 /* SqliteMacros.h in Headers */,
@@ -558,7 +559,6 @@
 				571610CC18E5824E00D2F48E /* PlatformDefine.h in Headers */,
 				574FE5A318DC0FA300490B18 /* RefPtr.h in Headers */,
 				5784F65018FB7D94007744E5 /* Plist.h in Headers */,
-				574FF73C19246E5300DC1791 /* DSMacros.h in Headers */,
 				574FE5BA18DC0FA300490B18 /* Transaction.h in Headers */,
 				574FE5A118DC0FA300490B18 /* RefCount.h in Headers */,
 				574FE5AB18DC0FA300490B18 /* json_macros.h in Headers */,

@@ -32,6 +32,9 @@
     <Filter Include="yh\pugixml">
       <UniqueIdentifier>{7b9f5092-72d9-480b-b68d-afbf6a022448}</UniqueIdentifier>
     </Filter>
+    <Filter Include="yh\datastructure">
+      <UniqueIdentifier>{c7b7573f-da7b-47fa-94fe-6161a1d2ee21}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\yh\base\Internals.h">
@@ -150,6 +153,21 @@
     </ClInclude>
     <ClInclude Include="..\..\yh\pugixml\pugixml.hpp">
       <Filter>yh\pugixml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\datastructure\DataStructureMacros.h">
+      <Filter>yh\datastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\datastructure\Iterator.h">
+      <Filter>yh\datastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\datastructure\Iterator-implement.h">
+      <Filter>yh\datastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\datastructure\LinkedList.h">
+      <Filter>yh\datastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\datastructure\LinkedList-implement.h">
+      <Filter>yh\datastructure</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

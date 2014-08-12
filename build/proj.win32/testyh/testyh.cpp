@@ -6,45 +6,91 @@
 #include <yh/yh.h>
 
 USING_NS_YH;
+typedef yh::ds::LinkedList<int> MyList;
+
+typedef std::vector<int> MyListA;
+
+static MyList gl;
+
+void funa()
+{
+	for (MyList::iterator iter=gl.begin();iter!=gl.end();++iter)
+	{
+		printf("a:%d",*iter);
+		if (*iter==4)
+		{
+			iter=gl.erase(iter);
+			--iter;
+			//break;
+		}
+	}
+}
+
+void funb()
+{
+	for (MyList::iterator iter=gl.begin();iter!=gl.end();++iter)
+	{
+		printf("b:%d",*iter);
+		if (*iter==5)
+		{
+			iter=gl.erase(iter);
+			--iter;
+		}
+	}
+}
 
 int _tmain(int argc, _TCHAR* argv[])
 {
     YHDEBUG("hello world");
 
-    
-	Buffer* buffer=new Buffer(12);
+	for (int i = 1; i < 10; i++)
+	{
+		gl.push_back(i);
+	}
+	
+	//int j=0;
+	//for (MyList::Iterator iter=l.begin();iter!=l.end();++iter)
+	//{
+	//	
+	//	if (*iter==4)
+	//	{
+	//		MyList::Iterator tmp=iter;
+	//		iter=l.erase(iter);
+	//		l.erase(tmp+1);
+	//		//l.erase(iter+2);
+	//	}
+	//	j++;
+	//	printf("%d",*iter);
+	//}
+	//printf("\n");
+	//for (MyList::Iterator iter=l.begin();iter!=l.end();++iter)
+	//{
+	//	printf("%d",*iter);
+	//}
 
-    unsigned char buf[12]={
-        0x01,0x02,0x03,0x04,
-        0x05,0x06,0x07,0x08,
-        0x09,0x0A,0x0B,0x0C
-    };
+	//MyList copy=gl;
 
-    buffer->writeBytes(0,buf,100);
+	for (MyList::reverse_iterator iter=gl.rbegin();iter!=gl.rend();++iter)
+	{
+		printf("%d",*iter);
+		//MyList::iterator next=iter+1;
+		if (*iter==4)
+		{
+			
+			funa();
+			
+			funb();
+		}
+		
+		//iter=next;
+	}
 
+	printf("\n");
 
-    uint8_t u8=buffer->readUInt8(0);
-    YHDEBUG("u8=%x",u8);
-
-    uint16_t u16le=buffer->readUInt16LE(1);
-    YHDEBUG("u16le=%04x",u16le);
-
-    uint16_t u16be=buffer->readUInt16BE(1);
-    YHDEBUG("u16le=%04x",u16be);
-
-    uint32_t u32le=buffer->readUInt32LE(2);
-    YHDEBUG("u32le=%08x",u32le);
-
-    uint32_t u32be=buffer->readUInt32BE(2);
-    YHDEBUG("u32be=%08x",u32be);
-
-    uint64_t u64le=buffer->readUInt64LE(3);
-    YHDEBUG("u64le=%016llx",u64le);
-
-    uint64_t u64be=buffer->readUInt64BE(4);
-    YHDEBUG("u64be=%016llx",u64be);
-
-    buffer->release();
+	for (MyList::iterator iter=gl.begin();iter!=gl.end();++iter)
+	{
+		printf("%d",*iter);
+	}
     
     getchar();
     return 0;

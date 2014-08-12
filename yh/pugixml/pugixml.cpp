@@ -5803,17 +5803,17 @@ NS_YH_END
 namespace std
 {
 	// Workarounds for (non-standard) iterator category detection for older versions (MSVC7/IC8 and earlier)
-	PUGI__FN std::bidirectional_iterator_tag _Iter_cat(const pugi::xml_node_iterator&)
+	PUGI__FN std::bidirectional_iterator_tag _Iter_cat(const yh::pugi::xml_node_iterator&)
 	{
 		return std::bidirectional_iterator_tag();
 	}
 
-	PUGI__FN std::bidirectional_iterator_tag _Iter_cat(const pugi::xml_attribute_iterator&)
+	PUGI__FN std::bidirectional_iterator_tag _Iter_cat(const yh::pugi::xml_attribute_iterator&)
 	{
 		return std::bidirectional_iterator_tag();
 	}
 
-	PUGI__FN std::bidirectional_iterator_tag _Iter_cat(const pugi::xml_named_node_iterator&)
+	PUGI__FN std::bidirectional_iterator_tag _Iter_cat(const yh::pugi::xml_named_node_iterator&)
 	{
 		return std::bidirectional_iterator_tag();
 	}

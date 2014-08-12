@@ -16,7 +16,7 @@
 #include "platform/Log.h"
 
 //datastructure
-#include "LinkedList.h"
+#include "datastructure/LinkedList.h"
 
 //jsoncpp
 #include "jsoncpp/json.h"

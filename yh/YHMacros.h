@@ -26,4 +26,8 @@
 #define YH_SAFE_RELEASE_NULL(p)        do { if(p) { (p)->release(); (p) = 0; } } while(0)
 #define YH_SAFE_RETAIN(p)            do { if(p) { (p)->retain(); } } while(0)
 
+//macro to string
+#define YH_TO_STRING(s) YH_TO_STRING_JOIN(s)
+#define YH_TO_STRING_JOIN(s) #s
+
 #endif //YH_YHMACROS_H_

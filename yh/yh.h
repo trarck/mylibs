@@ -7,7 +7,6 @@
 #include "base/Internals.h"
 #include "base/Object.h"
 #include "base/RefPtr.h"
-#include "base/RefCount.h"
 
 //platform
 #include "platform/PlatformConfig.h"
@@ -32,5 +31,8 @@
 #include "io/Buffer.h"
 #include "io/InputStream.h"
 #include "io/OutputStream.h"
+
+//sp
+#include "smartpointer/smart_ptr.h"
 
 #endif //YH_YH_H_

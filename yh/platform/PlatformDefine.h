@@ -68,15 +68,11 @@ Class &operator =(const Class &);
 
 //dll export
 #if YH_TARGET_PLATFORM == YH_PLATFORM_WIN32
-	#ifdef __MINGW32__
-	#include <string.h>
+	#if defined(_USRDLL)
+	    #define YH_DLL     __declspec(dllexport)
+	#else         /* use a DLL library */
+	    #define YH_DLL     __declspec(dllimport)
 	#endif
-
-	//#if defined(_USRDLL)
-	//    #define YH_DLL     __declspec(dllexport)
-	//#else         /* use a DLL library */
-	//    #define YH_DLL     __declspec(dllimport)
-	//#endif
 
 	#define YH_DLL
 #elif YH_TARGET_PLATFORM == YH_PLATFORM_LINUX

@@ -6,6 +6,10 @@
 
 #include <float.h>
 
+#ifdef __MINGW32__
+	#include <string.h>
+#endif
+
 // for math.h on win32 platform
 #ifndef __MINGW32__
 

@@ -36,7 +36,6 @@ Class &operator =(const Class &);
 
 //assert
 #if YH_DISABLE_ASSERT > 0
-    #error  "Cannot 1"
 	#define YH_ASSERT(cond)
 #else //YH_DISABLE_ASSERT > 0
 #if YH_TARGET_PLATFORM == YH_PLATFORM_ANDROID

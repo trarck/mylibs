@@ -1,4 +1,4 @@
-#ifndef YH_BASE_INTERNALS_H_
+﻿#ifndef YH_BASE_INTERNALS_H_
 #define YH_BASE_INTERNALS_H_
 
 #include "../YHMacros.h"
@@ -88,7 +88,7 @@ union _TypeConvertUnion{
 
 template <typename From, typename To>
 static inline To bitwise_cast(From from) {
-    YHASSERT((sizeof(From) == sizeof(To)), "TypeSizeNotEqual");
+    //YHASSERT((sizeof(From) == sizeof(To)), "TypeSizeNotEqual");
     
     union _TypeConvertUnion<From,To> u;
     u.from = from;

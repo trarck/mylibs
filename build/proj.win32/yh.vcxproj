@@ -39,8 +39,9 @@
     <ClInclude Include="..\..\yh\platform\Log.h" />
     <ClInclude Include="..\..\yh\platform\PlatformConfig.h" />
     <ClInclude Include="..\..\yh\platform\PlatformDefine.h" />
-    <ClInclude Include="..\..\yh\platform\win32\stdint.h" />
-    <ClInclude Include="..\..\yh\platform\win32\Win32StdC.h" />
+    <ClInclude Include="..\..\yh\platform\PlatformMacros.h" />
+    <ClInclude Include="..\..\yh\platform\win32\PlatformDefine-win32.h" />
+    <ClInclude Include="..\..\yh\platform\win32\StdC-win32.h" />
     <ClInclude Include="..\..\yh\platform\YHStdC.h" />
     <ClInclude Include="..\..\yh\pugixml\pugiconfig.hpp" />
     <ClInclude Include="..\..\yh\pugixml\pugixml.hpp" />
@@ -67,8 +68,8 @@
     <ClCompile Include="..\..\yh\jsoncpp\json_reader.cpp" />
     <ClCompile Include="..\..\yh\jsoncpp\json_value.cpp" />
     <ClCompile Include="..\..\yh\jsoncpp\json_writer.cpp" />
-    <ClCompile Include="..\..\yh\platform\win32\Log.cpp" />
-    <ClCompile Include="..\..\yh\platform\win32\Win32StdC.cpp" />
+    <ClCompile Include="..\..\yh\platform\Log.cpp" />
+    <ClCompile Include="..\..\yh\platform\win32\StdC-win32.cpp" />
     <ClCompile Include="..\..\yh\pugixml\pugixml.cpp" />
     <ClCompile Include="..\..\yh\sqlite\Column.cpp" />
     <ClCompile Include="..\..\yh\sqlite\SqliteDriver.cpp" />

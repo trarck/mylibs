@@ -94,12 +94,6 @@
     <ClInclude Include="..\..\yh\platform\YHStdC.h">
       <Filter>yh\platform</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\yh\platform\win32\stdint.h">
-      <Filter>yh\platform\win32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\platform\win32\Win32StdC.h">
-      <Filter>yh\platform\win32</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\yh\sqlite\Column.h">
       <Filter>yh\sqlite</Filter>
     </ClInclude>
@@ -169,6 +163,15 @@
     <ClInclude Include="..\..\yh\datastructure\LinkedList-implement.h">
       <Filter>yh\datastructure</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\yh\platform\win32\PlatformDefine-win32.h">
+      <Filter>yh\platform\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\platform\win32\StdC-win32.h">
+      <Filter>yh\platform\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\platform\PlatformMacros.h">
+      <Filter>yh\platform</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\yh\base\Object.cpp">
@@ -192,9 +195,6 @@
     <ClCompile Include="..\..\yh\jsoncpp\json_writer.cpp">
       <Filter>yh\jsoncpp</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\yh\platform\win32\Win32StdC.cpp">
-      <Filter>yh\platform\win32</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\yh\sqlite\Column.cpp">
       <Filter>yh\sqlite</Filter>
     </ClCompile>
@@ -207,9 +207,6 @@
     <ClCompile Include="..\..\yh\sqlite\Transaction.cpp">
       <Filter>yh\sqlite</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\yh\platform\win32\Log.cpp">
-      <Filter>yh\platform\win32</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\yh\io\IeeeHalfPrecision.cpp">
       <Filter>yh\io</Filter>
     </ClCompile>
@@ -221,6 +218,12 @@
     </ClCompile>
     <ClCompile Include="..\..\yh\pugixml\pugixml.cpp">
       <Filter>yh\pugixml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\platform\Log.cpp">
+      <Filter>yh\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\platform\win32\StdC-win32.cpp">
+      <Filter>yh\platform\win32</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

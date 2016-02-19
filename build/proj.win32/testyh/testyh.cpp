@@ -77,9 +77,9 @@ int _tmain(int argc, _TCHAR* argv[])
 		if (*iter==4)
 		{
 			
-			funa();
-			
-			funb();
+			//funa();
+			//
+			//funb();
 		}
 		
 		//iter=next;

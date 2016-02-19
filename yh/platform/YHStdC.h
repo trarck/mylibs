@@ -4,34 +4,19 @@
 #include "PlatformConfig.h"
 
 #include "nullptr.h"
-
-//stdc 
-#if YH_TARGET_PLATFORM == YH_PLATFORM_WIN32
-
-    #include "win32/Win32StdC.h"
-
-#else //stdc other platforms
-
-    #include <float.h>
-    #include <math.h>
-    #include <string.h>
-    #include <stdarg.h>
-    #include <stdio.h>
-    #include <stdlib.h>
-    #include <time.h>
-    #include <sys/time.h>
-    #include <stdint.h>
-
-    #ifndef MIN
-    #define MIN(x,y) (((x) > (y)) ? (y) : (x))
-    #endif  // MIN
-
-    #ifndef MAX
-    #define MAX(x,y) (((x) < (y)) ? (y) : (x))
-    #endif  // MAX
-
-#endif //stdc
-
+#if YH_TARGET_PLATFORM == YH_PLATFORM_MAC
+#include "./mac/StdC-mac.h"
+#elif YH_TARGET_PLATFORM == YH_PLATFORM_IOS
+#include "./ios/StdC-ios.h"
+#elif YH_TARGET_PLATFORM == YH_PLATFORM_ANDROID
+#include "./android/StdC-android.h"
+#elif YH_TARGET_PLATFORM == YH_PLATFORM_WIN32
+#include "./win32/StdC-win32.h"
+#elif YH_TARGET_PLATFORM == YH_PLATFORM_WINRT
+#include "./winrt/StdC-winrt.h"
+#elif YH_TARGET_PLATFORM == YH_PLATFORM_LINUX
+#include "./linux/StdC-linux.h"
+#endif
 
 #endif  // YH_PLATFORM_YHSTDC_H_
 

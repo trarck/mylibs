@@ -1,4 +1,7 @@
-#include "Win32StdC.h"
+#include "../PlatformConfig.h"
+#if YH_TARGET_PLATFORM == YH_PLATFORM_WIN32
+#include "../../NSMacros.h"
+#include "../YHStdC.h"
 
 #ifndef __MINGW32__
 
@@ -20,3 +23,5 @@ int gettimeofday(struct timeval * val, struct timezone *)
 NS_YH_END
 
 #endif // __MINGW32__
+
+#endif // YH_TARGET_PLATFORM == YH_PLATFORM_WIN32

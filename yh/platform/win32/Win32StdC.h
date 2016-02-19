@@ -58,7 +58,7 @@
 #if _MSC_VER >= 1600 || defined(__MINGW32__)
     #include <stdint.h>
 #else
-    #include "../platform/win32/stdint.h"
+    #include "./stdint.h"
 #endif
 
 #define _WINSOCKAPI_

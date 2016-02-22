@@ -1,7 +1,7 @@
 #include "YHString.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include <yh/platform/Log.h>
+#include "../platform/Log.h"
 
 NS_YH_BEGIN
 

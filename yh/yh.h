@@ -21,6 +21,7 @@
 #include "jsoncpp/json.h"
 
 //pugixml
+#define PUGIXML_NO_EXCEPTIONS
 #include "pugixml/pugixml.hpp"
 
 //plist

@@ -3,7 +3,7 @@
 
 using namespace std;
 
-NS_CC_BEGIN
+NS_YH_BEGIN
 
 // -----------------------------------------------------------------------
 // DictElement
@@ -578,4 +578,4 @@ __Dictionary* __Dictionary::clone() const
     return newDict;
 }
 
-NS_CC_END
+NS_YH_END

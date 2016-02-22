@@ -1,9 +1,9 @@
 #ifndef YH_PLIST_PLIST_H_
 #define YH_PLIST_PLIST_H_
 
-#include <yh/base/Object.h>
-#include <yh/jsoncpp/json.h>
-#include <yh/pugixml/pugixml.hpp>
+#include "../base/Object.h"
+#include "../jsoncpp/json.h"
+#include "../pugixml/pugixml.hpp"
 
 NS_YH_BEGIN
 

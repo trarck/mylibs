@@ -35,6 +35,9 @@
     <Filter Include="yh\datastructure">
       <UniqueIdentifier>{c7b7573f-da7b-47fa-94fe-6161a1d2ee21}</UniqueIdentifier>
     </Filter>
+    <Filter Include="yh\securesqlite3">
+      <UniqueIdentifier>{ef679d68-51d7-4fd3-9705-db7301a4412d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\yh\base\Internals.h">
@@ -172,6 +175,12 @@
     <ClInclude Include="..\..\yh\platform\PlatformMacros.h">
       <Filter>yh\platform</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\yh\securesqlite3\sqlite3.h">
+      <Filter>yh\securesqlite3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\securesqlite3\sqlite3ext.h">
+      <Filter>yh\securesqlite3</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\yh\base\Object.cpp">
@@ -224,6 +233,9 @@
     </ClCompile>
     <ClCompile Include="..\..\yh\platform\win32\StdC-win32.cpp">
       <Filter>yh\platform\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\securesqlite3\sqlite3secure.c">
+      <Filter>yh\securesqlite3</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

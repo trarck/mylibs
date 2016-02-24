@@ -45,6 +45,8 @@
     <ClInclude Include="..\..\yh\platform\YHStdC.h" />
     <ClInclude Include="..\..\yh\pugixml\pugiconfig.hpp" />
     <ClInclude Include="..\..\yh\pugixml\pugixml.hpp" />
+    <ClInclude Include="..\..\yh\securesqlite3\sqlite3.h" />
+    <ClInclude Include="..\..\yh\securesqlite3\sqlite3ext.h" />
     <ClInclude Include="..\..\yh\sqlite\Column.h" />
     <ClInclude Include="..\..\yh\sqlite\SqliteDriver.h" />
     <ClInclude Include="..\..\yh\sqlite\SqliteMacros.h" />
@@ -71,6 +73,7 @@
     <ClCompile Include="..\..\yh\platform\Log.cpp" />
     <ClCompile Include="..\..\yh\platform\win32\StdC-win32.cpp" />
     <ClCompile Include="..\..\yh\pugixml\pugixml.cpp" />
+    <ClCompile Include="..\..\yh\securesqlite3\sqlite3secure.c" />
     <ClCompile Include="..\..\yh\sqlite\Column.cpp" />
     <ClCompile Include="..\..\yh\sqlite\SqliteDriver.cpp" />
     <ClCompile Include="..\..\yh\sqlite\Statement.cpp" />
@@ -113,7 +116,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_WINDOWS;YH_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;SQLITE_HAS_CODEC;_DEBUG;_LIB;_WINDOWS;YH_DEBUG;SQLITE_HAS_CODEC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\;$(ProjectDir)..\..\deps\sqlite3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -133,7 +136,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\deps\sqlite3\libraries\win32\*.*" "$(OutDir)"</C
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;SQLITE_HAS_CODEC;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>

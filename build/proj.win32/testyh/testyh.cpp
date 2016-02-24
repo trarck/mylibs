@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <tchar.h>
+#include "gtest/gtest.h"
 #include <yh/yh.h>
 
 #include "yh/securesqlite3/sqlite3.h"
@@ -176,13 +177,13 @@ void testSecSqlite()
 }
 
 
-int _tmain(int argc, _TCHAR* argv[])
+GTEST_API_ int main(int argc, char **argv)
 {
-    YHDEBUG("hello world");
-	testSecSqlite();
-	
-    
-    getchar();
-    return 0;
+	printf("Running main() from gtest_main.cc\n");
+	testing::InitGoogleTest(&argc, argv);
+	int r=RUN_ALL_TESTS();
+	getchar();
+	return r;
 }
+
 

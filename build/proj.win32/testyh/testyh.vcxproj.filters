@@ -5,8 +5,32 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="tests">
+      <UniqueIdentifier>{27353ab8-a3e0-476f-bba2-dfd363711e8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests\ds">
+      <UniqueIdentifier>{72d33b8a-6201-45c1-899b-99da81d68055}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests\io">
+      <UniqueIdentifier>{dab73b1a-bd4f-4096-b159-2d796a873b33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests\xml">
+      <UniqueIdentifier>{1be514cd-d8e6-437b-ae91-26333dd08a03}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\tests\io\buffer_unittest.cpp">
+      <Filter>tests\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\tests\io\stream_unittest.cpp">
+      <Filter>tests\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\tests\xml\xml_unittest.cpp">
+      <Filter>tests\xml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\tests\ds\list_unittest.cpp">
+      <Filter>tests\ds</Filter>
+    </ClCompile>
     <ClCompile Include="testyh.cpp">
       <Filter>win32</Filter>
     </ClCompile>

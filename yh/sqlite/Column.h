@@ -1,7 +1,7 @@
 #ifndef YH_SQLITE_COLUMN_H_
 #define YH_SQLITE_COLUMN_H_
 
-#include <sqlite3.h>
+#include "../securesqlite3/sqlite3.h"
 #include "SqliteMacros.h"
 #include "Statement.h"
 

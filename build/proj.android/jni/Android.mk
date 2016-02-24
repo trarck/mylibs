@@ -4,7 +4,7 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE := mylibs_android
 
-LOCAL_MODULE_FILENAME := libmylibs_android
+LOCAL_MODULE_FILENAME := libmylibs
 
 LOCAL_SRC_FILES := main.cpp 
 

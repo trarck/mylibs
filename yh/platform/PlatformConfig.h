@@ -19,6 +19,7 @@
 #define YH_PLATFORM_EMSCRIPTEN        10
 #define YH_PLATFORM_TIZEN             11
 #define YH_PLATFORM_QT5               12
+#define YH_PLATFORM_WINRT             13
 
 // Determine target platform by compile environment macro.
 #define YH_TARGET_PLATFORM             YH_PLATFORM_UNKNOWN
@@ -112,6 +113,12 @@
 #if defined(YH_TARGET_QT5)
     #undef  YH_TARGET_PLATFORM
     #define YH_TARGET_PLATFORM     YH_PLATFORM_QT5
+#endif
+
+// WinRT (Windows 8.1 Store/Phone App)
+#if defined(WINRT)
+#undef  YH_TARGET_PLATFORM
+#define YH_TARGET_PLATFORM          YH_PLATFORM_WINRT
 #endif
 
 //////////////////////////////////////////////////////////////////////////

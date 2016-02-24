@@ -1,11 +1,11 @@
 #ifndef YH_PLATFORM_STDC_WINRT_H_
 #define YH_PLATFORM_STDC_WINRT_H_
 
-#include "../CCPlatformConfig.h"
+#include "../PlatformConfig.h"
 #if YH_TARGET_PLATFORM == YH_PLATFORM_WINRT
 
 
-#include "../CCPlatformMacros.h"
+#include "../PlatformMacros.h"
 #include <float.h>
 #include <BaseTsd.h>
 

@@ -6,6 +6,13 @@ NS_YH_BEGIN
 
 #define MAX_LOG_LENGTH         kMaxLogLen
 
+ScriptDeubgFuncPtr ScriptDebug = nullptr;
+
+void SetScriptDeubgFuncPtr(ScriptDeubgFuncPtr fp)
+{
+	ScriptDebug = fp;
+}
+
 static void _log(const char *format, va_list args)
 {
 	int bufferSize = MAX_LOG_LENGTH;
@@ -28,6 +35,12 @@ static void _log(const char *format, va_list args)
 			break;
 
 	} while (true);
+
+#if defined(YH_USE_SCRIPT_LOG)
+	if (ScriptDebug != nullptr) {
+		ScriptDebug(buf);
+	}
+#endif
 
 	strcat(buf, "\n");
 
@@ -61,7 +74,6 @@ static void _log(const char *format, va_list args)
 	fprintf(stdout, "%s", buf);
 	fflush(stdout);
 #endif
-
 	delete[] buf;
 }
 
@@ -72,5 +84,9 @@ void log(const char * format, ...)
 	_log(format, args);
 	va_end(args);
 }
+
+
+
+
 
 NS_YH_END

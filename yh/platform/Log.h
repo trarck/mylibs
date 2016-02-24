@@ -49,6 +49,11 @@ void log(const char * pszFormat, ...);
 #define YHERROR(...)  __YHLOGWITHFUNCTION(__VA_ARGS__)
 #endif // yh log
 
+//define func ptf
+typedef void(*ScriptDeubgFuncPtr)(const char *);
+
+void SetScriptDeubgFuncPtr(ScriptDeubgFuncPtr fp);
+
 NS_YH_END
 
 #endif // YH_BASE_LOG_H_

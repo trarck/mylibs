@@ -14,7 +14,7 @@ TEST(LinkedList, Default) {
         myList.push_back(i+1);
     }
     
-    for(ds::LinkedList<int>::Iterator iter=myList.begin();iter!=myList.end();++iter){
+    for(ds::LinkedList<int>::iterator iter=myList.begin();iter!=myList.end();++iter){
         printf("%d\n",*iter);
     }
     

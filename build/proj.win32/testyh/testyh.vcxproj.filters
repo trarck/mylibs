@@ -17,6 +17,9 @@
     <Filter Include="tests\xml">
       <UniqueIdentifier>{1be514cd-d8e6-437b-ae91-26333dd08a03}</UniqueIdentifier>
     </Filter>
+    <Filter Include="tests\sqlite">
+      <UniqueIdentifier>{d8436b3a-6708-404a-9bd8-03205f4edb4b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\tests\io\buffer_unittest.cpp">
@@ -33,6 +36,9 @@
     </ClCompile>
     <ClCompile Include="testyh.cpp">
       <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\tests\sqlite\sqlite_unittest.cpp">
+      <Filter>tests\sqlite</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

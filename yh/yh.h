@@ -36,4 +36,7 @@
 //sp
 #include "smartpointer/smart_ptr.h"
 
+//sqlite3
+#include "securesqlite3/sqlite3.h"
+
 #endif //YH_YH_H_

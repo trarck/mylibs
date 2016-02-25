@@ -24,8 +24,8 @@ LOCAL_SRC_FILES := \
     platform/Log.cpp \
     plist/Plist.cpp \
     pugixml/pugixml.cpp \
-    string/YHString.cpp 
-
+    string/YHString.cpp \
+    securesqlite3/sqlite3secure.c
 
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)
 

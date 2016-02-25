@@ -100,6 +100,7 @@
             './yh/string/utf8.h',
             './yh/string/YHString.cpp',
             './yh/string/YHString.h',
+            './yh/securesqlite3/sqlite3secure.c',
           ],
           'conditions': [
               ['OS=="win"', {

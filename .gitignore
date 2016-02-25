@@ -80,3 +80,4 @@ Device-Release/
 /deps/gtest/libraries/win32/gtest.lib
 
 /deps/gtest/libraries/win32/gtest_main.lib
+/deps/gtest/libraries

@@ -76,7 +76,10 @@ typedef SSIZE_T ssize_t;
 
 #include <WinSock2.h>
 
-NS_YH_BEGIN
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 struct timezone
 {
@@ -84,9 +87,11 @@ struct timezone
     int tz_dsttime;
 };
 
-int YH_DLL gettimeofday(struct timeval *, struct timezone *);
+int getTimeofday(struct timeval * val, struct timezone * timezone);
 
-NS_YH_END
+#ifdef __cplusplus
+}  /* end of the 'extern "C"' block */
+#endif
 
 #else
 

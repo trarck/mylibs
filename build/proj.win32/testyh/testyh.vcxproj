@@ -89,6 +89,7 @@
     <ClCompile Include="..\..\..\tests\ds\list_unittest.cpp" />
     <ClCompile Include="..\..\..\tests\io\buffer_unittest.cpp" />
     <ClCompile Include="..\..\..\tests\io\stream_unittest.cpp" />
+    <ClCompile Include="..\..\..\tests\plist\plist_unittest.cpp" />
     <ClCompile Include="..\..\..\tests\sqlite\sqlite_unittest.cpp" />
     <ClCompile Include="..\..\..\tests\xml\xml_unittest.cpp" />
     <ClCompile Include="testyh.cpp" />

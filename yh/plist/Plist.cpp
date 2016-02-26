@@ -1,5 +1,4 @@
 #include "Plist.h"
-#include <stdlib.h>
 
 NS_YH_BEGIN
 
@@ -29,11 +28,11 @@ Json::Value Plist::getDataFromContent(const std::string& content)
 }
 
 /*
- <plist version="1.0">
+ <Plist version="1.0">
  <array>
  
  </array>
- </plist>
+ </Plist>
  
  */
 Json::Value Plist::getDataFromDocument(const pugi::xml_document& doc)
@@ -41,8 +40,8 @@ Json::Value Plist::getDataFromDocument(const pugi::xml_document& doc)
     
     Json::Value root;
     
-    //xml first element is plist
-    //plist only have one child array|dict
+    //xml first element is Plist
+    //Plist only have one child array|dict
     
     pugi::xml_node rootNode=doc.first_child().first_child();
     
@@ -50,10 +49,27 @@ Json::Value Plist::getDataFromDocument(const pugi::xml_document& doc)
     
     if (rootName=="array") {
 
-        parseArray(rootNode, root);
+//        parseArray(rootNode, root);
+        addArray(rootNode, root);
         
     }else if (rootName=="dict"){
-        parseDict(rootNode, root);
+//        parseDict(rootNode, root);
+        addDict(rootNode, root);
+    }
+    
+    while (elems.size()) {
+        
+        Elem ele=elems.back();
+        
+        elems.pop_back();
+        
+        if (ele.type==kArrayElement) {
+            
+            parseArray(ele.node, *(ele.value));
+            
+        }else if (ele.type==kDictElement){
+            parseDict(ele.node, *(ele.value));
+        }
     }
 
     return root;
@@ -110,10 +126,22 @@ void Plist::parseValue(pugi::xml_node &valueNode, Json::Value &outValue)
     }else if (valueName=="string" || valueName=="data" || valueName=="date"){
         outValue=Json::Value(text);
     }else if (valueName=="array"){
-        parseArray(valueNode, outValue);
+        addArray(valueNode, outValue);
     }else if (valueName=="dict"){
-        parseDict(valueNode, outValue);
+        addDict(valueNode, outValue);
     }
+}
+
+void Plist::addArray(pugi::xml_node& node,Json::Value& arrayValue)
+{
+    Elem ele={node,&arrayValue,kArrayElement};
+    elems.push_back(ele);
+}
+
+void Plist::addDict(pugi::xml_node& node,Json::Value& dictValue)
+{
+    Elem ele={node,&dictValue,kDictElement};
+    elems.push_back(ele);
 }
 
 NS_YH_END

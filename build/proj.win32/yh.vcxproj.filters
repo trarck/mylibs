@@ -41,6 +41,9 @@
     <Filter Include="yh\collections">
       <UniqueIdentifier>{ab2469f5-108e-4b4d-877b-7fbcd8bce8b8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="yh\plist">
+      <UniqueIdentifier>{48d952ae-563f-4678-ac33-3460b75a264d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\yh\base\Internals.h">
@@ -193,6 +196,12 @@
     <ClInclude Include="..\..\yh\collections\Vector.h">
       <Filter>yh\collections</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\yh\plist\Plist.h">
+      <Filter>yh\plist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\plist\PlistRecursion.h">
+      <Filter>yh\plist</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\yh\base\Object.cpp">
@@ -251,6 +260,12 @@
     </ClCompile>
     <ClCompile Include="..\..\yh\collections\ObjectValue.cpp">
       <Filter>yh\collections</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\plist\Plist.cpp">
+      <Filter>yh\plist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\plist\PlistRecursion.cpp">
+      <Filter>yh\plist</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

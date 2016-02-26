@@ -2,10 +2,10 @@
   'targets': [
       {
           'target_name': 'libyh',
-          'type': '<(library)',
+          'type': '<(yh_library)',
           
           'defines':[
-            '_USRDLL'
+            
           ],
 
           'include_dirs': [
@@ -23,17 +23,9 @@
             './yh/base/RefCount.h',
             './yh/base/RefPtr.cpp',
             './yh/base/RefPtr.h',
-            './yh/collections/Array.cpp',
-            './yh/collections/Array.h',
-            './yh/collections/BaseArray.h',
-            './yh/collections/BaseDictionary.h',
-            './yh/collections/Dictionary.cpp',
-            './yh/collections/Dictionary.h',
             './yh/collections/Map.h',
             './yh/collections/ObjectValue.cpp',
             './yh/collections/ObjectValue.h',
-            './yh/collections/SimpleValue.cpp',
-            './yh/collections/SimpleValue.h',
             './yh/collections/Vector.h',
             './yh/datastructure/DataStructureMacros.h',
             './yh/datastructure/Iterator-implement.h',
@@ -55,12 +47,9 @@
             './yh/jsoncpp/forwards.h',
             './yh/jsoncpp/json.h',
             './yh/jsoncpp/json_batchallocator.h',
-            './yh/jsoncpp/json_internalarray.inl',
-            './yh/jsoncpp/json_internalmap.inl',
             './yh/jsoncpp/json_macros.h',
             './yh/jsoncpp/json_reader.cpp',
             './yh/jsoncpp/json_value.cpp',
-            './yh/jsoncpp/json_valueiterator.inl',
             './yh/jsoncpp/json_writer.cpp',
             './yh/jsoncpp/reader.h',
             './yh/jsoncpp/value.h',
@@ -74,8 +63,6 @@
             './yh/platform/YHStdC.h',
             './yh/plist/Plist.cpp',
             './yh/plist/Plist.h',
-            './yh/plist/Plist2.cpp',
-            './yh/plist/Plist2.h',
             './yh/pugixml/pugiconfig.hpp',
             './yh/pugixml/pugixml.cpp',
             './yh/pugixml/pugixml.hpp',
@@ -166,6 +153,14 @@
                     './yh/platform/winrt/StdC-winrt.cpp',
                     './yh/platform/winrt/StdC-winrt.h',
                   ]
+                }
+             ],
+             ['yh_library=="static_library"',{
+                  'defines':['YH_STATIC'],
+                }
+             ],
+             ['yh_library=="shared_library"',{
+                  'defines':['_USRDLL'],
                 }
              ]
          ],

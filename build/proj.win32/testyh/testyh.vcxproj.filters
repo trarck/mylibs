@@ -20,6 +20,9 @@
     <Filter Include="tests\sqlite">
       <UniqueIdentifier>{d8436b3a-6708-404a-9bd8-03205f4edb4b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="tests\plist">
+      <UniqueIdentifier>{3f7a10f8-87d3-4024-853b-e8538e255844}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\tests\io\buffer_unittest.cpp">
@@ -39,6 +42,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\tests\sqlite\sqlite_unittest.cpp">
       <Filter>tests\sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\tests\plist\plist_unittest.cpp">
+      <Filter>tests\plist</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

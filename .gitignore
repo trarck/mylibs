@@ -81,3 +81,4 @@ Device-Release/
 
 /deps/gtest/libraries/win32/gtest_main.lib
 /deps/gtest/libraries
+/build/gyp

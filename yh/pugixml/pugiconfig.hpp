@@ -24,7 +24,7 @@
 // #define PUGIXML_NO_STL
 
 // Uncomment this to disable exceptions
-// #define PUGIXML_NO_EXCEPTIONS
+ #define PUGIXML_NO_EXCEPTIONS
 
 // Set this to control attributes for public classes/functions, i.e.:
 // #define PUGIXML_API __declspec(dllexport) // to export all public symbols from DLL
@@ -40,8 +40,8 @@
 //use header only for release
 #ifndef YH_DEBUG
 // Uncomment this to switch to header-only version
- #define PUGIXML_HEADER_ONLY
- #include "pugixml.cpp"
+ //#define PUGIXML_HEADER_ONLY
+ //#include "pugixml.cpp"
 #endif //YH_DEBUG
 
 // Uncomment this to enable long long support

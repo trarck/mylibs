@@ -15,6 +15,9 @@
     <ClInclude Include="..\..\yh\base\Object.h" />
     <ClInclude Include="..\..\yh\base\RefCount.h" />
     <ClInclude Include="..\..\yh\base\RefPtr.h" />
+    <ClInclude Include="..\..\yh\collections\Map.h" />
+    <ClInclude Include="..\..\yh\collections\ObjectValue.h" />
+    <ClInclude Include="..\..\yh\collections\Vector.h" />
     <ClInclude Include="..\..\yh\datastructure\DataStructureMacros.h" />
     <ClInclude Include="..\..\yh\datastructure\Iterator-implement.h" />
     <ClInclude Include="..\..\yh\datastructure\Iterator.h" />
@@ -63,6 +66,7 @@
     <ClCompile Include="..\..\yh\base\Object.cpp" />
     <ClCompile Include="..\..\yh\base\RefCount.cpp" />
     <ClCompile Include="..\..\yh\base\RefPtr.cpp" />
+    <ClCompile Include="..\..\yh\collections\ObjectValue.cpp" />
     <ClCompile Include="..\..\yh\io\Buffer.cpp" />
     <ClCompile Include="..\..\yh\io\IeeeHalfPrecision.cpp" />
     <ClCompile Include="..\..\yh\io\InputStream.cpp" />

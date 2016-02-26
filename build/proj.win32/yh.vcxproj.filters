@@ -38,6 +38,9 @@
     <Filter Include="yh\securesqlite3">
       <UniqueIdentifier>{ef679d68-51d7-4fd3-9705-db7301a4412d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="yh\collections">
+      <UniqueIdentifier>{ab2469f5-108e-4b4d-877b-7fbcd8bce8b8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\yh\base\Internals.h">
@@ -181,6 +184,15 @@
     <ClInclude Include="..\..\yh\securesqlite3\sqlite3ext.h">
       <Filter>yh\securesqlite3</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\yh\collections\Map.h">
+      <Filter>yh\collections</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\collections\ObjectValue.h">
+      <Filter>yh\collections</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\collections\Vector.h">
+      <Filter>yh\collections</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\yh\base\Object.cpp">
@@ -236,6 +248,9 @@
     </ClCompile>
     <ClCompile Include="..\..\yh\securesqlite3\sqlite3secure.c">
       <Filter>yh\securesqlite3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\collections\ObjectValue.cpp">
+      <Filter>yh\collections</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

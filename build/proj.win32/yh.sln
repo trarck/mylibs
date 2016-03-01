@@ -14,21 +14,16 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
 		Release|Win32 = Release|Win32
-		Share_Debug|Win32 = Share_Debug|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{BBF5AD04-3068-49C7-B002-EAB1649E9961}.Debug|Win32.ActiveCfg = Debug|Win32
 		{BBF5AD04-3068-49C7-B002-EAB1649E9961}.Debug|Win32.Build.0 = Debug|Win32
 		{BBF5AD04-3068-49C7-B002-EAB1649E9961}.Release|Win32.ActiveCfg = Release|Win32
 		{BBF5AD04-3068-49C7-B002-EAB1649E9961}.Release|Win32.Build.0 = Release|Win32
-		{BBF5AD04-3068-49C7-B002-EAB1649E9961}.Share_Debug|Win32.ActiveCfg = Share_Debug|Win32
-		{BBF5AD04-3068-49C7-B002-EAB1649E9961}.Share_Debug|Win32.Build.0 = Share_Debug|Win32
 		{3088BD65-E892-48BF-BE4B-11705280D0DA}.Debug|Win32.ActiveCfg = Debug|Win32
 		{3088BD65-E892-48BF-BE4B-11705280D0DA}.Debug|Win32.Build.0 = Debug|Win32
 		{3088BD65-E892-48BF-BE4B-11705280D0DA}.Release|Win32.ActiveCfg = Release|Win32
 		{3088BD65-E892-48BF-BE4B-11705280D0DA}.Release|Win32.Build.0 = Release|Win32
-		{3088BD65-E892-48BF-BE4B-11705280D0DA}.Share_Debug|Win32.ActiveCfg = Share_Debug|Win32
-		{3088BD65-E892-48BF-BE4B-11705280D0DA}.Share_Debug|Win32.Build.0 = Share_Debug|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

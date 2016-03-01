@@ -72,6 +72,7 @@
             './yh/smartpointer/SmartPointerMacros.h',
             './yh/smartpointer/smart_ptr.h',
             './yh/smartpointer/smart_ptr_inherit.h',
+            './yh/securesqlite3/sqlite3secure.c',
             './yh/sqlite/Column.cpp',
             './yh/sqlite/Column.h',
             './yh/sqlite/SqliteDriver.cpp',
@@ -87,7 +88,7 @@
             './yh/string/utf8.h',
             './yh/string/YHString.cpp',
             './yh/string/YHString.h',
-            './yh/securesqlite3/sqlite3secure.c',
+            
           ],
           'conditions': [
               ['OS=="win"', {

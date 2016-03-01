@@ -35,7 +35,13 @@
 //sp
 #include "smartpointer/smart_ptr.h"
 
-//sqlite3
+//sqlite3 c
 #include "securesqlite3/sqlite3.h"
+
+//Sqlite Class
+#include "sqlite/Column.h"
+#include "sqlite/Statement.h"
+#include "sqlite/Transaction.h"
+#include "sqlite/SqliteDriver.h"
 
 #endif //YH_YH_H_

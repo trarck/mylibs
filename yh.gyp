@@ -93,7 +93,7 @@
           'conditions': [
               ['OS=="win"', {
                   'defines': [
-                    '_WINDOWS','WIN32','_DEBUG','YH_DEBUG'
+                    
                   ],
                   'sources': [
                     './yh/platform/win32/compat/stdint.h',

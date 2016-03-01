@@ -31,7 +31,7 @@ public:
      */
     void connect(const std::string& dbPath,const int flag = SQLITE_OPEN_READONLY);
     
-    
+	void connect(const std::string& dbPath, const std::string& password, const int flag = SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE);
     /**
      * @brief close database connet
      */

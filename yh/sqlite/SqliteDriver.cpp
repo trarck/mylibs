@@ -32,10 +32,28 @@ void SqliteDriver::connect(const std::string& dbPath,const int flag)
     int ret = sqlite3_open_v2(dbPath.c_str(), &m_db, flag, NULL);
     if (SQLITE_OK != ret)
     {
-        std::string strerr = sqlite3_errmsg(m_db);
+		const char* strerr = sqlite3_errmsg(m_db);
+		YHERROR(strerr);
         sqlite3_close(m_db); // close is required even in case of error on opening
 //        throw SQLite::Exception(strerr);
     }
+}
+
+void SqliteDriver::connect(const std::string& dbPath, const std::string& password ,const int flag)
+{
+	int ret = sqlite3_open_v2(dbPath.c_str(), &m_db, flag, NULL);
+	if(SQLITE_OK == ret)
+	{
+		ret = sqlite3_key(m_db, (const void *)password.c_str(), password.length);
+		if (SQLITE_OK == ret) {
+			return;
+		}
+	}
+
+	//show error
+	const char* strerr = sqlite3_errmsg(m_db);
+	YHERROR(strerr);
+	sqlite3_close(m_db); // close is required even in case of error on opening
 }
 
 void SqliteDriver::close()

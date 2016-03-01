@@ -160,9 +160,15 @@
                 }
              ],
              ['yh_library=="shared_library"',{
-                  'defines':['_USRDLL'],
+                  'defines':['_USRDLL'],                  
                 }
-             ]
+             ],
+             #['OS=="win" and yh_library=="shared_library"', {
+             #     'defines': [
+             #       'SQLITE_API=__declspec(dllexport)'
+             #     ]
+             #   }
+             #]
          ],
          'configurations': {
             'Debug': {

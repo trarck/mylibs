@@ -11,7 +11,7 @@
 #if defined(YH_STATIC)
     #define YH_DLL
 #else
-#if defined(_USRDLL)
+#if defined(YH_USRDLL)
     #define YH_DLL     __declspec(dllexport)
 #else         /* use a DLL library */
     #define YH_DLL     __declspec(dllimport)

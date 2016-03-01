@@ -8,7 +8,7 @@
     'default_configuration': 'Debug',
     'configurations': {
       'Debug': {
-        'defines': [ 'DEBUG', '_DEBUG','YH_DEBUG' ],
+        'defines': [ 'DEBUG', '_DEBUG'],
         'cflags': [ '-g', '-O0', '-fwrapv' ],
         'msvs_settings': {
           'VCCLCompilerTool': {

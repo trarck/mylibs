@@ -161,7 +161,7 @@
                 }
              ],
              ['yh_library=="shared_library"',{
-                  'defines':['_USRDLL'],                  
+                  'defines':['YH_USRDLL'],                  
                 }
              ],
              #['OS=="win" and yh_library=="shared_library"', {
@@ -173,7 +173,7 @@
          ],
          'configurations': {
             'Debug': {
-                'defines': [ 'YH_USE_SCRIPT_LOG'],
+                'defines': [ 'YH_USE_SCRIPT_LOG','YH_DEBUG'],
             }
          },
       }

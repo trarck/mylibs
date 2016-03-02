@@ -4,16 +4,17 @@
 #include "../PlatformConfig.h"
 #if YH_TARGET_PLATFORM == YH_PLATFORM_WINRT
 
-#if defined(YH_STATIC)
-#define YH_DLL
-#else
-#if defined(_USRDLL)
-#define YH_DLL     __declspec(dllexport)
-#else         /* use a DLL library */
-#define YH_DLL		__declspec(dllimport)
-#endif  
-#endif
-
+#ifndef YH_DLL
+	#if defined(YH_STATIC)
+		#define YH_DLL
+	#else
+		#if defined(YH_USRDLL)
+			#define YH_DLL     __declspec(dllexport)
+		#else         /* use a DLL library */
+			#define YH_DLL		__declspec(dllimport)
+		#endif  
+	#endif
+#endif //YH_DLL
 
 
 #include <assert.h>

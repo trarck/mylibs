@@ -8,32 +8,35 @@
 #include <string.h>
 #endif
 
-#if defined(YH_STATIC)
-    #define YH_DLL
-#else
-#if defined(YH_USRDLL)
-    #define YH_DLL     __declspec(dllexport)
-#else         /* use a DLL library */
-    #define YH_DLL     __declspec(dllimport)
-#endif
-#endif
+#ifndef YH_DLL
+	#if defined(YH_STATIC)
+		#define YH_DLL
+	#else
+		#if defined(YH_USRDLL)
+			#define YH_DLL     __declspec(dllexport)
+		#else         /* use a DLL library */
+			#define YH_DLL     __declspec(dllimport)
+		#endif
+	#endif
+#endif //YH_DLL
 
 #include <assert.h>
 
 #if YH_DISABLE_ASSERT > 0
-#define YH_ASSERT(cond)
+	#define YH_ASSERT(cond)
 #else
-#define YH_ASSERT(cond)    assert(cond)
+	#define YH_ASSERT(cond)    assert(cond)
 #endif
+
 #define YH_UNUSED_PARAM(unusedparam) (void)unusedparam
 
 /* Define NULL pointer value */
 #ifndef NULL
-#ifdef __cplusplus
-#define NULL    0
-#else
-#define NULL    ((void *)0)
-#endif
+	#ifdef __cplusplus
+		#define NULL    0
+	#else
+		#define NULL    ((void *)0)
+	#endif
 #endif
 
 #endif //YH_TARGET_PLATFORM == YH_PLATFORM_WIN32

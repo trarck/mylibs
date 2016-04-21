@@ -44,7 +44,7 @@ void SqliteDriver::connect(const std::string& dbPath, const std::string& passwor
 	int ret = sqlite3_open_v2(dbPath.c_str(), &m_db, flag, NULL);
 	if(SQLITE_OK == ret)
 	{
-		ret = sqlite3_key(m_db, (const void *)password.c_str(), password.length);
+		ret = sqlite3_key(m_db, password.c_str(), password.length());
 		if (SQLITE_OK == ret) {
 			return;
 		}

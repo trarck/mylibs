@@ -3,46 +3,47 @@
 #include <string.h>
 #include <pthread.h>
 
-#include "base/ccUTF8.h"
-
 #define  LOG_TAG    "JniHelper"
 #define  LOGD(...)  __android_log_print(ANDROID_LOG_DEBUG,LOG_TAG,__VA_ARGS__)
 #define  LOGE(...)  __android_log_print(ANDROID_LOG_ERROR,LOG_TAG,__VA_ARGS__)
 
 static pthread_key_t g_key;
 
-jclass _getClassID(const char *className) {
+jclass _getClassID(JNIEnv* env,const char *className) {
+
     if (NULL == className) {
         return NULL;
     }
 
-    JNIEnv* env = JniHelper::getEnv();
-
     if(env==NULL)
         return NULL;
 
-    jstring _jstrClassName = env->NewStringUTF(className);
+	jclass _clazz = NULL;
 
-    jclass _clazz = (jclass) env->CallObjectMethod(JniHelper::classloader,
-                                                   JniHelper::loadclassMethod_methodID,
-                                                   _jstrClassName);
+	if (yh::JniHelper::classloader) {
+		jstring _jstrClassName = env->NewStringUTF(className);
+
+		_clazz = (jclass)env->CallObjectMethod(yh::JniHelper::classloader,
+			yh::JniHelper::loadclassMethod_methodID,
+			_jstrClassName);
+		env->DeleteLocalRef(_jstrClassName);
+	}
 
     if (NULL == _clazz) {
-        _clazz = pEnv->FindClass(className);
+        _clazz = env->FindClass(className);
         if (!_clazz)
         {
             LOGE("Classloader failed to find class of %s", className);
             env->ExceptionClear();
         }       
-    }
-
-    env->DeleteLocalRef(_jstrClassName);
+    } 
         
     return _clazz;
 }
 
+
 void _detachCurrentThread(void* a) {
-    YH::JniHelper::getJavaVM()->DetachCurrentThread();
+    yh::JniHelper::getJavaVM()->DetachCurrentThread();
 }
 
 NS_YH_BEGIN
@@ -105,39 +106,42 @@ NS_YH_BEGIN
         return _env;
     }
 
+    
+	bool JniHelper::setClassLoaderFrom(JNIEnv* env,jobject activityinstance) {
+		JniMethodInfo _getclassloaderMethod;
+		if (!JniHelper::getMethodInfo_DefaultClassLoader(_getclassloaderMethod,
+			"android/content/Context",
+			"getClassLoader",
+			"()Ljava/lang/ClassLoader;")) {
+			return false;
+		}
+
+		JniMethodInfo _m;
+		if (!JniHelper::getMethodInfo_DefaultClassLoader(_m,
+			"java/lang/ClassLoader",
+			"loadClass",
+			"(Ljava/lang/String;)Ljava/lang/Class;")) {
+			return false;
+		}
+
+		jobject _c =env->CallObjectMethod(activityinstance,
+			_getclassloaderMethod.methodID);
+
+		if (NULL == _c) {
+			return false;
+		}
+		
+		JniHelper::classloader = env->NewGlobalRef(_c);
+		JniHelper::loadclassMethod_methodID = _m.methodID;
+		env->DeleteLocalRef(_c);
+		return true;
+	}
+
     bool JniHelper::setClassLoaderFrom(jobject activityinstance) {
-        JniMethodInfo _getclassloaderMethod;
-        if (!JniHelper::getMethodInfo_DefaultClassLoader(_getclassloaderMethod,
-                                                         "android/content/Context",
-                                                         "getClassLoader",
-                                                         "()Ljava/lang/ClassLoader;")) {
-            return false;
-        }
-
-        JniMethodInfo _m;
-        if (!JniHelper::getMethodInfo_DefaultClassLoader(_m,
-                                                         "java/lang/ClassLoader",
-                                                         "loadClass",
-                                                         "(Ljava/lang/String;)Ljava/lang/Class;")) {
-            return false;
-        }
-
-        jobject _c = JniHelper::getEnv()->CallObjectMethod(activityinstance,
-                                                                    _getclassloaderMethod.methodID);
-
-        if (NULL == _c) {
-            return false;
-        }
-
-
-        JniHelper::classloader = JniHelper::getEnv()->NewGlobalRef(_c);
-        JniHelper::loadclassMethod_methodID = _m.methodID;
-
-        JniHelper::getEnv()->DeleteLocalRef(_c);
-        return true;
+		return setClassLoaderFrom(JniHelper::getEnv(), activityinstance);
     }
 
-    bool JniHelper::getStaticMethodInfo(JniMethodInfo &methodinfo,
+    bool JniHelper::getStaticMethodInfo(JNIEnv *env,JniMethodInfo &methodinfo,
                                         const char *className, 
                                         const char *methodName,
                                         const char *paramCode) {
@@ -147,13 +151,12 @@ NS_YH_BEGIN
             return false;
         }
 
-        JNIEnv *env = JniHelper::getEnv();
         if (!env) {
             LOGE("Failed to get JNIEnv");
             return false;
         }
             
-        jclass classID = _getClassID(className);
+        jclass classID = _getClassID(env,className);
         if (! classID) {
             LOGE("Failed to find class %s", className);
             env->ExceptionClear();
@@ -174,7 +177,23 @@ NS_YH_BEGIN
         return true;
     }
 
-    bool JniHelper::getMethodInfo_DefaultClassLoader(JniMethodInfo &methodinfo,
+	bool JniHelper::getStaticMethodInfo(JniMethodInfo &methodinfo,
+		const char *className,
+		const char *methodName,
+		const char *paramCode) 
+	{
+		if ((NULL == className) ||
+			(NULL == methodName) ||
+			(NULL == paramCode)) {
+			return false;
+		}
+		else
+		{
+			return getStaticMethodInfo(getEnv(), methodinfo, className, methodName, paramCode);
+		}
+	}
+
+    bool JniHelper::getMethodInfo_DefaultClassLoader(JNIEnv *env ,JniMethodInfo &methodinfo,
                                                      const char *className,
                                                      const char *methodName,
                                                      const char *paramCode) {
@@ -184,7 +203,6 @@ NS_YH_BEGIN
             return false;
         }
 
-        JNIEnv *env = JniHelper::getEnv();
         if (!env) {
             return false;
         }
@@ -211,7 +229,22 @@ NS_YH_BEGIN
         return true;
     }
 
-    bool JniHelper::getMethodInfo(JniMethodInfo &methodinfo,
+	bool JniHelper::getMethodInfo_DefaultClassLoader(JniMethodInfo &methodinfo,
+		const char *className,
+		const char *methodName,
+		const char *paramCode) {
+		if ((NULL == className) ||
+			(NULL == methodName) ||
+			(NULL == paramCode)) {
+			return false;
+		}
+		else
+		{
+			return getMethodInfo_DefaultClassLoader(getEnv(), methodinfo, className, methodName, paramCode);
+		}
+	}
+
+    bool JniHelper::getMethodInfo(JNIEnv *env ,JniMethodInfo &methodinfo,
                                   const char *className,
                                   const char *methodName,
                                   const char *paramCode) {
@@ -221,12 +254,11 @@ NS_YH_BEGIN
             return false;
         }
 
-        JNIEnv *env = JniHelper::getEnv();
         if (!env) {
             return false;
         }
 
-        jclass classID = _getClassID(className);
+        jclass classID = _getClassID(env,className);
         if (! classID) {
             LOGE("Failed to find class %s", className);
             env->ExceptionClear();
@@ -247,6 +279,36 @@ NS_YH_BEGIN
 
         return true;
     }
+
+	bool JniHelper::getMethodInfo(JniMethodInfo &methodinfo,
+		const char *className,
+		const char *methodName,
+		const char *paramCode) {
+		if ((NULL == className) ||
+			(NULL == methodName) ||
+			(NULL == paramCode)) {
+			return false;
+		}
+		else
+		{
+			return getMethodInfo(getEnv(), methodinfo, className, methodName, paramCode);
+		}
+	}
+
+	std::string JniHelper::jstring2string(JNIEnv *env,jstring jstr) {
+		if (jstr == NULL) {
+			return "";
+		}
+
+		if (!env) {
+			return "";
+		}
+
+		const char* chars = env->GetStringUTFChars(jstr, NULL);
+		std::string strValue(chars);
+		env->ReleaseStringUTFChars(jstr, chars);
+		return strValue;
+	}
 
     std::string JniHelper::jstring2string(jstring jstr) {
         if (jstr == NULL) {

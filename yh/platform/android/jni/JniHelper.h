@@ -38,17 +38,29 @@ public:
     static JavaVM* getJavaVM();
     static JNIEnv* getEnv();
 
-    static bool setClassLoaderFrom(jobject activityInstance);
-    static bool getStaticMethodInfo(JniMethodInfo &methodinfo,
-                                    const char *className,
-                                    const char *methodName,
-                                    const char *paramCode);
-    static bool getMethodInfo(JniMethodInfo &methodinfo,
-                              const char *className,
-                              const char *methodName,
-                              const char *paramCode);
+    static bool setClassLoaderFrom(JNIEnv* env, jobject activityInstance);
+	static bool setClassLoaderFrom(jobject activityInstance);
 
-    static std::string jstring2string(jstring str);
+	static bool getStaticMethodInfo(JNIEnv* env, JniMethodInfo &methodinfo,
+		const char *className,
+		const char *methodName,
+		const char *paramCode);
+	static bool getStaticMethodInfo(JniMethodInfo &methodinfo,
+		const char *className,
+		const char *methodName,
+		const char *paramCode);
+
+	static bool getMethodInfo(JNIEnv* env, JniMethodInfo &methodinfo,
+		const char *className,
+		const char *methodName,
+		const char *paramCode);
+	static bool getMethodInfo(JniMethodInfo &methodinfo,
+		const char *className,
+		const char *methodName,
+		const char *paramCode);
+
+	static std::string jstring2string(JNIEnv* env, jstring str);
+	static std::string jstring2string(jstring str);
 
     static jmethodID loadclassMethod_methodID;
     static jobject classloader;
@@ -56,6 +68,10 @@ public:
 private:
     static JNIEnv* cacheEnv(JavaVM* jvm);
 
+    static bool getMethodInfo_DefaultClassLoader(JniMethodInfo &methodinfo,
+		const char *className,
+		const char *methodName,
+		const char *paramCode);
     static bool getMethodInfo_DefaultClassLoader(JniMethodInfo &methodinfo,
                                                  const char *className,
                                                  const char *methodName,

@@ -13,12 +13,12 @@
 #include <sstream>
 #include <vector>
 
-#include "../base/Object.h"
+#include "../base/Ref.h"
 
 NS_YH_BEGIN
 
 
-class YHString : public Object
+class YHString : public Ref
 {
 public:
 
@@ -103,7 +103,7 @@ public:
     /* override functions 
      * 
      */
-    virtual bool isEqual(const Object* pObject);
+    virtual bool isEqual(const Ref* pObject);
 
     /** create a string with std string, you can also pass a c string pointer because the default constructor of std::string can access a c string pointer. 
      *  @return A YHString pointer which is an autorelease object pointer,

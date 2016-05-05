@@ -1,8 +1,8 @@
-#include "Object.h"
+#include "Ref.h"
 
 NS_YH_BEGIN
 
-Object::Object()
+Ref::Ref()
 :_referenceCount(1) // when the object is created, the reference count of it is 1
 {
     static unsigned int uObjectCount = 0;
@@ -10,12 +10,12 @@ Object::Object()
     _id = ++uObjectCount;
 }
 
-Object::~Object()
+Ref::~Ref()
 {
 
 }
 
-void Object::release()
+void Ref::release()
 {
     --_referenceCount;
     
@@ -25,12 +25,12 @@ void Object::release()
     }
 }
 
-unsigned int Object::getReferenceCount() const
+unsigned int Ref::getReferenceCount() const
 {
     return _referenceCount;
 }
 
-bool Object::isEqual(const Object *object)
+bool Ref::isEqual(const Ref *object)
 {
     return this == object;
 }

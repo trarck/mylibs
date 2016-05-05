@@ -1,8 +1,6 @@
 #ifndef YH_BASE_RCPTR_H_
 #define YH_BASE_RCPTR_H_
 
-#include "Object.h"
-
 NS_YH_BEGIN
 
 /**

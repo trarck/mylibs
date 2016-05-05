@@ -2,7 +2,7 @@
 #define YH_IO_BUFFER_H_
 
 #include "../YHMacros.h"
-#include "../base/Object.h"
+#include "../base/Ref.h"
 #include "../base/Internals.h"
 #include "../platform/YHStdC.h"
 #include "IeeeHalfPrecision.h"
@@ -18,7 +18,7 @@ NS_YH_BEGIN
 /**
  * 字节操作类
  */
-class Buffer:public Object
+class Buffer:public Ref
 {
 public:
     

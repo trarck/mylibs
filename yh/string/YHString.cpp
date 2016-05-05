@@ -176,7 +176,7 @@ std::vector<std::string> YHString::componentsSeparatedByString(const char *delim
     return result;
 }
 
-bool YHString::isEqual(const Object* pObject)
+bool YHString::isEqual(const Ref* pObject)
 {
     bool bRet = false;
     const YHString* pStr = dynamic_cast<const YHString*>(pObject);

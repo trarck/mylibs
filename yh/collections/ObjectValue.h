@@ -2,7 +2,7 @@
 #define YH_COLLECTIONS_OBJECT_VALUE_H_
 
 #include "../YHMacros.h"
-#include "../base/Object.h"
+#include "../base/Ref.h"
 #include "../string/YHString.h"
 #include "Vector.h"
 #include "Map.h"
@@ -20,7 +20,7 @@ return value;\
 return NULL;\
 }
 
-class ObjectValue:public Object
+class ObjectValue:public Ref
 {
 public:
     static const ObjectValue Null;

@@ -5,7 +5,7 @@
 #include "NSMacros.h"
 #include "YHMacros.h"
 #include "base/Internals.h"
-#include "base/Object.h"
+#include "base/Ref.h"
 #include "base/RefPtr.h"
 
 //platform

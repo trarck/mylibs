@@ -1,7 +1,7 @@
 #ifndef YH_PLIST_PLIST_H_
 #define YH_PLIST_PLIST_H_
 
-#include "../base/Object.h"
+#include "../base/Ref.h"
 #include "../jsoncpp/json.h"
 #include "../pugixml/pugixml.hpp"
 

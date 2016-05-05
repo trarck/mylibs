@@ -1,7 +1,7 @@
 #ifndef YH_BASE_REFPTR_H_
 #define YH_BASE_REFPTR_H_
 
-#include "Object.h"
+#include "Ref.h"
 
 NS_YH_BEGIN
 
@@ -21,7 +21,7 @@ public:
  * 普通指针包装成Object
  */
 template <class T,typename Deallocater= RefObjectDeallocater<T> >
-class RefPtr : public Object
+class RefPtr : public Ref
 {
 public:
 	inline RefPtr()

@@ -23,7 +23,7 @@ public:
  * 引用计数基类
  * 注意和RefCount不能同时使用
  */
-class Object
+class Ref
 {
 public:
     /**
@@ -32,13 +32,13 @@ public:
      * The object's reference count is 1 after construction.
      * @js NA
      */
-    Object();
+    Ref();
     
     /**
      * @js NA
      * @lua NA
      */
-    virtual ~Object();
+    virtual ~Ref();
     
     /**
      * Release the ownership immediately.
@@ -78,7 +78,7 @@ public:
      * @js NA
      * @lua NA
      */
-    virtual bool isEqual(const Object* object);
+    virtual bool isEqual(const Ref* object);
 
 public:
 	

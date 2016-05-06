@@ -16,7 +16,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\yh\base\Internals.h" />
-    <ClInclude Include="..\..\yh\base\Object.h" />
+    <ClInclude Include="..\..\yh\base\Ref.h" />
     <ClInclude Include="..\..\yh\base\RefCount.h" />
     <ClInclude Include="..\..\yh\base\RefPtr.h" />
     <ClInclude Include="..\..\yh\collections\Map.h" />
@@ -70,7 +70,7 @@
     <ClInclude Include="..\..\yh\YHMacros.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\yh\base\Object.cpp" />
+    <ClCompile Include="..\..\yh\base\Ref.cpp" />
     <ClCompile Include="..\..\yh\base\RefCount.cpp" />
     <ClCompile Include="..\..\yh\base\RefPtr.cpp" />
     <ClCompile Include="..\..\yh\collections\ObjectValue.cpp" />

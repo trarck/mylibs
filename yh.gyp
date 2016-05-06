@@ -5,7 +5,7 @@
           'type': '<(yh_library)',
           
           'defines':[
-            
+            'SQLITE_HAS_CODEC'
           ],
 
           'include_dirs': [
@@ -16,8 +16,8 @@
             'yh/NSMacros.h',
             'yh/YHMacros.h',
             './yh/base/Internals.h',
-            './yh/base/Object.cpp',
-            './yh/base/Object.h',
+            './yh/base/Ref.cpp',
+            './yh/base/Ref.h',
             './yh/base/RCPtr.h',
             './yh/base/RefCount.cpp',
             './yh/base/RefCount.h',

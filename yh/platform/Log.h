@@ -34,19 +34,19 @@ void log(const char * pszFormat, ...);
 #define YHDEBUG(...)   do {} while (0)
 #define YHINFO(...)  do {} while (0)
 #define YHWARN(format,...) yh::log(format, ##__VA_ARGS__)
-#define YHERROR(...)  __YHLOGWITHFUNCTION(__VA_ARGS__)
+#define YHERROR(format,...)  __YHLOGWITHFUNCTION(format,##__VA_ARGS__)
 
 #elif YH_LOG_LEVEL == YH_LOG_LEVEL_INFO
 #define YHDEBUG(...)   do {} while (0)
 #define YHINFO(format, ...)  yh::log(format, ##__VA_ARGS__)
 #define YHWARN(format,...) yh::log(format, ##__VA_ARGS__)
-#define YHERROR(...)  __YHLOGWITHFUNCTION(__VA_ARGS__)
+#define YHERROR(format,...)  __YHLOGWITHFUNCTION(format,##__VA_ARGS__)
 
 #elif YH_LOG_LEVEL > YH_LOG_LEVEL_INFO
 #define YHDEBUG(format, ...)      yh::log(format, ##__VA_ARGS__)
 #define YHINFO(format,...)   yh::log(format, ##__VA_ARGS__)
 #define YHWARN(format,...) yh::log(format, ##__VA_ARGS__)
-#define YHERROR(...)  __YHLOGWITHFUNCTION(__VA_ARGS__)
+#define YHERROR(format,...)  __YHLOGWITHFUNCTION(format,##__VA_ARGS__)
 #endif // yh log
 
 //define func ptf

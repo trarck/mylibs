@@ -29,14 +29,14 @@ bool SqliteDriver::init()
 
 void SqliteDriver::connect(const std::string& dbPath,const int flag)
 {
-    int ret = sqlite3_open_v2(dbPath.c_str(), &m_db, flag, NULL);
-    if (SQLITE_OK != ret)
-    {
+	int ret = sqlite3_open_v2(dbPath.c_str(), &m_db, flag, NULL);
+	if(SQLITE_OK != ret)
+	{
+		//show error
 		const char* strerr = sqlite3_errmsg(m_db);
 		YHERROR(strerr);
-        sqlite3_close(m_db); // close is required even in case of error on opening
-//        throw SQLite::Exception(strerr);
-    }
+		sqlite3_close(m_db); // close is required even in case of error on opening
+	}
 }
 
 void SqliteDriver::connect(const std::string& dbPath, const std::string& password ,const int flag)
@@ -44,10 +44,12 @@ void SqliteDriver::connect(const std::string& dbPath, const std::string& passwor
 	int ret = sqlite3_open_v2(dbPath.c_str(), &m_db, flag, NULL);
 	if(SQLITE_OK == ret)
 	{
+		#ifdef SQLITE_HAS_CODEC
 		ret = sqlite3_key(m_db, password.c_str(), password.length());
 		if (SQLITE_OK == ret) {
 			return;
 		}
+		#endif //SQLITE_HAS_CODEC
 	}
 
 	//show error
@@ -60,19 +62,27 @@ void SqliteDriver::close()
 {
     if (m_db) {
         int ret = sqlite3_close(m_db);
-        YHASSERT(SQLITE_OK==ret, sqlite3_errmsg(m_db));  // See SQLITECPP_ENABLE_ASSERT_HANDLER
+		if (ret != SQLITE_OK)
+		{
+			YHERROR("close error:%d,%s",ret, sqlite3_errmsg(m_db));
+		}
         m_db=NULL;
     }
 }
 
-int SqliteDriver::execute(const char* query)
+int SqliteDriver::execute(
+	const char* query,		/* SQL to be evaluated */
+	int(*callback)(void*, int, char**, char**),	 /* Callback function */
+	void * callbackFirstData,                                    /* 1st argument to callback */
+	char **errmsg                              /* Error msg written here */
+)
 {
-    int ret = sqlite3_exec(m_db, query, NULL, NULL, NULL);
-    
-    check(ret);
-    
-    // Return the number of rows modified by those SQL statements (INSERT, UPDATE or DELETE)
-    return sqlite3_changes(m_db);
+	int ret = sqlite3_exec(m_db, query, callback, callbackFirstData, errmsg);
+
+	check(ret);
+
+	// Return the number of rows modified by those SQL statements (INSERT, UPDATE or DELETE)
+	return sqlite3_changes(m_db);
 }
 
 Column SqliteDriver::fetchFirstColumn(const char* sqlStr)
@@ -95,7 +105,7 @@ void SqliteDriver::check(const int ret) const
 {
     if (SQLITE_OK != ret)
     {
-//        CCLOGERROR("SqliteDriver::check err:%s",sqlite3_errmsg(m_db));
+		YHERROR("SqliteDriver::check err:%s",sqlite3_errmsg(m_db));
     }
 }
 

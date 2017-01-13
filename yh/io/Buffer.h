@@ -1,4 +1,4 @@
-#ifndef YH_IO_BUFFER_H_
+﻿#ifndef YH_IO_BUFFER_H_
 #define YH_IO_BUFFER_H_
 
 #include "../YHMacros.h"
@@ -411,7 +411,7 @@ public:
      *
      * @return 读取的值
      */
-    inline float readDoubleLE(size_t position)
+    inline double readDoubleLE(size_t position)
     {
         YHASSERT(position+8<=m_size,"Buffer::readDoubleLE out index");
         return byteToFloat<double,kLittleEndian>(m_data+position);
@@ -425,7 +425,7 @@ public:
      *
      * @return 读取的值
      */
-    inline float readDoubleBE(size_t position)
+    inline double readDoubleBE(size_t position)
     {
         YHASSERT(position+8<=m_size,"Buffer::readDoubleBE out index");
         return byteToFloat<double,kBigEndian>(m_data+position);
@@ -445,7 +445,7 @@ public:
      */
     inline float readFixed8LE(size_t position)
     {
-        return readUInt16LE(position)/0x100;
+        return (float)readUInt16LE(position)/0x100;
     }
     
     /**
@@ -458,7 +458,7 @@ public:
      */
     inline float readFixed8BE(size_t position)
     {
-        return readUInt16BE(position)/0x100;
+        return (float)readUInt16BE(position)/0x100;
     }
     
     /**
@@ -471,7 +471,7 @@ public:
      */
     inline float readFixedLE(size_t position)
     {
-        return readUInt32LE(position)/0x10000;
+        return (float)readUInt32LE(position)/0x10000;
     }
     
     /**
@@ -484,7 +484,7 @@ public:
      */
     inline float readFixedBE(size_t position)
     {
-        return readUInt32BE(position)/0x10000;
+        return (float)readUInt32BE(position)/0x10000;
     }
     
     

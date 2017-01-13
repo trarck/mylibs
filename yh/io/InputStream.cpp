@@ -127,7 +127,7 @@ float InputStream::readFloat()
 
 double InputStream::readDouble()
 {
-    float ret= m_endianness==kLittleEndian?m_buffer->readDoubleLE(m_pos):m_buffer->readDoubleBE(m_pos);
+    double ret= m_endianness==kLittleEndian?m_buffer->readDoubleLE(m_pos):m_buffer->readDoubleBE(m_pos);
     m_pos+=_BUFFER_LONG_SIZE;
     
     return ret;

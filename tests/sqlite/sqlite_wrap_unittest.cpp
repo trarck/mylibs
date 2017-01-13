@@ -15,7 +15,7 @@ protected:
 	{
 		m_sqliteDriver = new SqliteDriver();
 		m_sqliteDriver->init();
-		m_sqliteDriver->connect("test2.db", SQLITE_OPEN_READWRITE, "abcd");
+		m_sqliteDriver->connect("test2.db", "abcd",SQLITE_OPEN_READWRITE);
 	}
 
 	virtual void TearDown()

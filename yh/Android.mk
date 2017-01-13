@@ -11,7 +11,7 @@ LOCAL_ARM_MODE := arm
 endif
 
 LOCAL_SRC_FILES := \
-	base/Object.cpp \
+	base/Ref.cpp \
     base/RefCount.cpp \
     base/RefPtr.cpp \
     io/Buffer.cpp \

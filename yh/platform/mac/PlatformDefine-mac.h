@@ -6,11 +6,13 @@
 
 #include <assert.h>
 
-#ifdef _USRDLL
-#define YH_DLL __attribute__ ((visibility("default"))) 
-#else
-#define YH_DLL
-#endif
+#ifndef YH_DLL
+	#ifdef _USRDLL
+	#define YH_DLL __attribute__((visibility("default"))) 
+	#else
+	#define YH_DLL
+	#endif //_USRDLL
+#endif //YH_DLL
 
 #if YH_DISABLE_ASSERT > 0
 #define YH_ASSERT(cond)

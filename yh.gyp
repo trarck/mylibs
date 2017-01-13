@@ -5,7 +5,7 @@
           'type': '<(yh_library)',
           
           'defines':[
-            
+            'SQLITE_HAS_CODEC'
           ],
 
           'include_dirs': [
@@ -16,8 +16,8 @@
             'yh/NSMacros.h',
             'yh/YHMacros.h',
             './yh/base/Internals.h',
-            './yh/base/Object.cpp',
-            './yh/base/Object.h',
+            './yh/base/Ref.cpp',
+            './yh/base/Ref.h',
             './yh/base/RCPtr.h',
             './yh/base/RefCount.cpp',
             './yh/base/RefCount.h',
@@ -72,6 +72,7 @@
             './yh/smartpointer/SmartPointerMacros.h',
             './yh/smartpointer/smart_ptr.h',
             './yh/smartpointer/smart_ptr_inherit.h',
+            './yh/securesqlite3/sqlite3secure.c',
             './yh/sqlite/Column.cpp',
             './yh/sqlite/Column.h',
             './yh/sqlite/SqliteDriver.cpp',
@@ -87,12 +88,12 @@
             './yh/string/utf8.h',
             './yh/string/YHString.cpp',
             './yh/string/YHString.h',
-            './yh/securesqlite3/sqlite3secure.c',
+            
           ],
           'conditions': [
               ['OS=="win"', {
                   'defines': [
-                    '_WINDOWS','WIN32','_DEBUG','YH_DEBUG'
+                    
                   ],
                   'sources': [
                     './yh/platform/win32/compat/stdint.h',
@@ -160,13 +161,19 @@
                 }
              ],
              ['yh_library=="shared_library"',{
-                  'defines':['_USRDLL'],
+                  'defines':['YH_USRDLL'],                  
                 }
-             ]
+             ],
+             #['OS=="win" and yh_library=="shared_library"', {
+             #     'defines': [
+             #       'SQLITE_API=__declspec(dllexport)'
+             #     ]
+             #   }
+             #]
          ],
          'configurations': {
             'Debug': {
-                'defines': [ 'YH_USE_SCRIPT_LOG'],
+                'defines': [ 'YH_USE_SCRIPT_LOG','YH_DEBUG'],
             }
          },
       }

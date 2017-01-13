@@ -49,9 +49,6 @@
     <ClInclude Include="..\..\yh\base\Internals.h">
       <Filter>yh\base</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\yh\base\Object.h">
-      <Filter>yh\base</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\yh\base\RefCount.h">
       <Filter>yh\base</Filter>
     </ClInclude>
@@ -202,11 +199,14 @@
     <ClInclude Include="..\..\yh\plist\PlistRecursion.h">
       <Filter>yh\plist</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\yh\string\YHString.h">
+      <Filter>yh\string</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\base\Ref.h">
+      <Filter>yh\base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\yh\base\Object.cpp">
-      <Filter>yh\base</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\yh\base\RefCount.cpp">
       <Filter>yh\base</Filter>
     </ClCompile>
@@ -266,6 +266,12 @@
     </ClCompile>
     <ClCompile Include="..\..\yh\plist\PlistRecursion.cpp">
       <Filter>yh\plist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\string\YHString.cpp">
+      <Filter>yh\string</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\base\Ref.cpp">
+      <Filter>yh\base</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

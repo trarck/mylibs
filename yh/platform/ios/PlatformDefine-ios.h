@@ -6,7 +6,9 @@
 
 #include <assert.h>
 
+#ifndef YH_DLL
 #define YH_DLL 
+#endif
 
 #define YH_ASSERT(cond) assert(cond)
 

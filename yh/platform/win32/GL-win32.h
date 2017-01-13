@@ -1,0 +1,13 @@
+#ifndef YH_PLATFORM_GL_WIN32_H_
+#define YH_PLATFORM_GL_WIN32_H_
+
+#include "../PlatformConfig.h"
+#if YH_TARGET_PLATFORM == YH_PLATFORM_WIN32
+
+#include "GL/glew.h"
+
+#define YH_GL_DEPTH24_STENCIL8      GL_DEPTH24_STENCIL8
+
+#endif // YH_TARGET_PLATFORM == YH_PLATFORM_WIN32
+
+#endif // YH_PLATFORM_GL_WIN32_H_

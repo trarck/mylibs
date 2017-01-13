@@ -9,10 +9,14 @@
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Share_Debug|Win32">
+      <Configuration>Share_Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\yh\base\Internals.h" />
-    <ClInclude Include="..\..\yh\base\Object.h" />
+    <ClInclude Include="..\..\yh\base\Ref.h" />
     <ClInclude Include="..\..\yh\base\RefCount.h" />
     <ClInclude Include="..\..\yh\base\RefPtr.h" />
     <ClInclude Include="..\..\yh\collections\Map.h" />
@@ -61,11 +65,12 @@
     <ClInclude Include="..\..\yh\string\utf8\checked.h" />
     <ClInclude Include="..\..\yh\string\utf8\core.h" />
     <ClInclude Include="..\..\yh\string\utf8\unchecked.h" />
+    <ClInclude Include="..\..\yh\string\YHString.h" />
     <ClInclude Include="..\..\yh\yh.h" />
     <ClInclude Include="..\..\yh\YHMacros.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\yh\base\Object.cpp" />
+    <ClCompile Include="..\..\yh\base\Ref.cpp" />
     <ClCompile Include="..\..\yh\base\RefCount.cpp" />
     <ClCompile Include="..\..\yh\base\RefPtr.cpp" />
     <ClCompile Include="..\..\yh\collections\ObjectValue.cpp" />
@@ -86,16 +91,24 @@
     <ClCompile Include="..\..\yh\sqlite\SqliteDriver.cpp" />
     <ClCompile Include="..\..\yh\sqlite\Statement.cpp" />
     <ClCompile Include="..\..\yh\sqlite\Transaction.cpp" />
+    <ClCompile Include="..\..\yh\string\YHString.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{BBF5AD04-3068-49C7-B002-EAB1649E9961}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>yh</RootNamespace>
     <ProjectName>libyh</ProjectName>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Share_Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -113,6 +126,9 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Share_Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
@@ -125,6 +141,25 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;YH_STATIC;SQLITE_HAS_CODEC;_DEBUG;_LIB;_WINDOWS;YH_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\;$(ProjectDir)..\..\deps\sqlite3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <PreLinkEvent>
+      <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
+xcopy /Y /Q "$(ProjectDir)..\..\deps\sqlite3\libraries\win32\*.*" "$(OutDir)"</Command>
+    </PreLinkEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Share_Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;SQLITE_HAS_CODEC;_DEBUG;_LIB;_WINDOWS;YH_DEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\;$(ProjectDir)..\..\deps\sqlite3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>

@@ -29,8 +29,10 @@ public:
      * @param[in] dbPath     UTF-8 path/uri to the database file ("filename" sqlite3 parameter)
      * @param[in] flag        SQLITE_OPEN_READONLY/SQLITE_OPEN_READWRITE/SQLITE_OPEN_CREATE...
      */
-    void connect(const std::string& dbPath,const int flag = SQLITE_OPEN_READONLY,const std::string& password="");
+    void connect(const std::string& dbPath,const int flag = SQLITE_OPEN_READONLY);
     
+	void connect(const std::string& dbPath, const std::string& password, const int flag = SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE);
+
     /**
      * @brief close database connet
      */

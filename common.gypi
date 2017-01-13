@@ -8,7 +8,7 @@
     'default_configuration': 'Debug',
     'configurations': {
       'Debug': {
-        'defines': [ 'DEBUG', '_DEBUG' ],
+        'defines': [ 'DEBUG', '_DEBUG'],
         'cflags': [ '-g', '-O0', '-fwrapv' ],
         'msvs_settings': {
           'VCCLCompilerTool': {
@@ -112,6 +112,7 @@
         'msvs_cygwin_shell': 0, # prevent actions from trying to use cygwin
         'defines': [
           'WIN32',
+          '_WINDOWS',
           # we don't really want VC++ warning us about
           # how dangerous C functions are...
           '_CRT_SECURE_NO_DEPRECATE',

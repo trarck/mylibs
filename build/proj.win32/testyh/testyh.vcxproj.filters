@@ -40,11 +40,14 @@
     <ClCompile Include="testyh.cpp">
       <Filter>win32</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\tests\sqlite\sqlite_unittest.cpp">
-      <Filter>tests\sqlite</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\tests\plist\plist_unittest.cpp">
       <Filter>tests\plist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\tests\sqlite\sqlite_wrap_unittest.cpp">
+      <Filter>tests\sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\tests\sqlite\sqlite_origin_unittest.cpp">
+      <Filter>tests\sqlite</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -29,8 +29,7 @@ public:
      * @param[in] dbPath     UTF-8 path/uri to the database file ("filename" sqlite3 parameter)
      * @param[in] flag        SQLITE_OPEN_READONLY/SQLITE_OPEN_READWRITE/SQLITE_OPEN_CREATE...
      */
-    void connect(const std::string& dbPath,const int flag = SQLITE_OPEN_READONLY);
-    
+    void connect(const std::string& dbPath,const int flag = SQLITE_OPEN_READONLY,const std::string& password="");
     
     /**
      * @brief close database connet
@@ -55,13 +54,43 @@ public:
      *
      * @throw SQLite::Exception in case of error
      */
-    int execute(const char* query);
+	inline int execute(const char* query)
+	{
+		return execute(query, NULL, NULL, NULL);
+	}
     
     inline int execute(const std::string& query)
     {
         return execute(query.c_str());
     }
+
+	int execute(const char* query, char** errmsg)
+	{
+		return execute(query, NULL, NULL, errmsg);;
+	}
+
+	inline int execute(const std::string& query, char** errmsg)
+	{
+		return execute(query.c_str(), errmsg);
+	}
     
+	int execute(
+		const char* query,		/* SQL to be evaluated */
+		int(*callback)(void*, int, char**, char**),	 /* Callback function */
+		void * callbackFirstData,                                    /* 1st argument to callback */
+		char **errmsg                              /* Error msg written here */
+	);
+
+	inline int execute(
+		const std::string& query,		/* SQL to be evaluated */
+		int(*callback)(void*, int, char**, char**),	 /* Callback function */
+		void * callbackFirstData,                                    /* 1st argument to callback */
+		char **errmsg                              /* Error msg written here */
+	)
+	{
+		return execute(query.c_str(), callback, callbackFirstData, errmsg);
+	}
+
     /**
      * @brief Shortcut to execute a one step query and fetch the first column of the result.
      *

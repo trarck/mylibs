@@ -205,8 +205,31 @@ public:
     {
         bind(name.c_str());
     }
-
-
+		
+	/**
+	 * bind parameter to index
+	 */
+	int bindParameterIndex(const char* name);
+	inline int bindParameterIndex(const std::string& name) 
+	{
+		bindParameterIndex(name.c_str());
+	}
+	
+	/**
+	 * get bind parameter name
+	 */
+	const char* bindParameterName(int index);
+	
+	/**
+	 * Number Of SQL Parameters
+	 */
+	int GetBindParameterCount();
+	
+	/**
+	 * clear all bindings
+	 */
+	void clearBinds();
+	
     ////////////////////////////////////////////////////////////////////////////
 
     /**

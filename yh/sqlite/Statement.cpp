@@ -150,7 +150,35 @@ void Statement::bind(const char* name) // throw(SQLite::Exception)
     check(ret);
 }
 
+int Statement::bindParameterIndex(const char* name)
+{
+	return sqlite3_bind_parameter_index(m_stmtPtr, name);
+}
 
+/**
+ * get bind parameter name
+ */
+const char* Statement::bindParameterName(int index)
+{
+	return sqlite3_bind_parameter_name(m_stmtPtr,index);
+}
+
+/**
+ * Number Of SQL Parameters
+ */
+int Statement::GetBindParameterCount()
+{
+	return sqlite3_bind_parameter_count(m_stmtPtr);
+}
+
+/**
+ * clear all bindings
+ */
+void Statement::clearBinds()
+{
+	sqlite3_clear_bindings(m_stmtPtr);
+}
+	
 // Execute a step of the query to fetch one row of results
 bool Statement::executeStep(void) // throw(SQLite::Exception)
 {

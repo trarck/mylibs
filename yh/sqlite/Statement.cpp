@@ -36,124 +36,125 @@ Statement::~Statement(void) // nothrow
 }
 
 // Reset the statement to make it ready for a new execution
-void Statement::reset(void) // throw(SQLite::Exception)
+bool Statement::reset(void) // throw(SQLite::Exception)
 {
     m_ok = false;
     m_done = false;
     int ret = sqlite3_reset(m_stmtPtr);
-    check(ret);
+    return check(ret);
 }
 
 // Bind an int value to a parameter "?", "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement
-void Statement::bind(const int index, const int& value) // throw(SQLite::Exception)
+bool Statement::bind(const int index, const int& value) // throw(SQLite::Exception)
 {
     int ret = sqlite3_bind_int(m_stmtPtr, index, value);
-    check(ret);
+    return check(ret);
 }
 
 // Bind a 64bits int value to a parameter "?", "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement
-void Statement::bind(const int index, const sqlite3_int64& value) // throw(SQLite::Exception)
+bool Statement::bind(const int index, const sqlite3_int64& value) // throw(SQLite::Exception)
 {
     int ret = sqlite3_bind_int64(m_stmtPtr, index, value);
-    check(ret);
+    return check(ret);
 }
 
 // Bind a double (64bits float) value to a parameter "?", "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement
-void Statement::bind(const int index, const double& value) // throw(SQLite::Exception)
+bool Statement::bind(const int index, const double& value) // throw(SQLite::Exception)
 {
     int ret = sqlite3_bind_double(m_stmtPtr, index, value);
-    check(ret);
+    return check(ret);
 }
 
 // Bind a string value to a parameter "?", "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement
-void Statement::bind(const int index, const std::string& value) // throw(SQLite::Exception)
+bool Statement::bind(const int index, const std::string& value) // throw(SQLite::Exception)
 {
     int ret = sqlite3_bind_text(m_stmtPtr, index, value.c_str(), static_cast<int>(value.size()), SQLITE_TRANSIENT);
-    check(ret);
+    return check(ret);
 }
 
 // Bind a text value to a parameter "?", "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement
-void Statement::bind(const int index, const char* apValue) // throw(SQLite::Exception)
+bool Statement::bind(const int index, const char* apValue) // throw(SQLite::Exception)
 {
     int ret = sqlite3_bind_text(m_stmtPtr, index, apValue, -1, SQLITE_TRANSIENT);
-    check(ret);
+    return check(ret);
 }
 
 // Bind a binary blob value to a parameter "?", "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement
-void Statement::bind(const int index, const void* apValue, const int aSize) // throw(SQLite::Exception)
+bool Statement::bind(const int index, const void* apValue, const int aSize) // throw(SQLite::Exception)
 {
     int ret = sqlite3_bind_blob(m_stmtPtr, index, apValue, aSize, SQLITE_TRANSIENT);
-    check(ret);
+    return check(ret);
 }
 
 // Bind a NULL value to a parameter "?", "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement
-void Statement::bind(const int index) // throw(SQLite::Exception)
+bool Statement::bind(const int index) // throw(SQLite::Exception)
 {
     int ret = sqlite3_bind_null(m_stmtPtr, index);
-    check(ret);
+    return check(ret);
 }
 
 
 // Bind an int value to a parameter "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement
-void Statement::bind(const char* name, const int& value) // throw(SQLite::Exception)
+bool Statement::bind(const char* name, const int& value) // throw(SQLite::Exception)
 {
     int index = sqlite3_bind_parameter_index(m_stmtPtr, name);
     int ret   = sqlite3_bind_int(m_stmtPtr, index, value);
-    check(ret);
+    return check(ret);
 }
 
 // Bind a 64bits int value to a parameter "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement
-void Statement::bind(const char* name, const sqlite3_int64& value) // throw(SQLite::Exception)
+bool Statement::bind(const char* name, const sqlite3_int64& value) // throw(SQLite::Exception)
 {
     int index = sqlite3_bind_parameter_index(m_stmtPtr, name);
     int ret   = sqlite3_bind_int64(m_stmtPtr, index, value);
-    check(ret);
+    return check(ret);
 }
 
 // Bind a double (64bits float) value to a parameter "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement
-void Statement::bind(const char* name, const double& value) // throw(SQLite::Exception)
+bool Statement::bind(const char* name, const double& value) // throw(SQLite::Exception)
 {
     int index = sqlite3_bind_parameter_index(m_stmtPtr, name);
     int ret   = sqlite3_bind_double(m_stmtPtr, index, value);
-    check(ret);
+    return check(ret);
 }
 
 // Bind a string value to a parameter "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement
-void Statement::bind(const char* name, const std::string& value) // throw(SQLite::Exception)
+bool Statement::bind(const char* name, const std::string& value) // throw(SQLite::Exception)
 {
     int index = sqlite3_bind_parameter_index(m_stmtPtr, name);
     int ret   = sqlite3_bind_text(m_stmtPtr, index, value.c_str(), static_cast<int>(value.size()), SQLITE_TRANSIENT);
-    check(ret);
+    return check(ret);
 }
 
 // Bind a text value to a parameter "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement
-void Statement::bind(const char* name, const char* apValue) // throw(SQLite::Exception)
+bool Statement::bind(const char* name, const char* apValue) // throw(SQLite::Exception)
 {
     int index = sqlite3_bind_parameter_index(m_stmtPtr, name);
     int ret   = sqlite3_bind_text(m_stmtPtr, index, apValue, -1, SQLITE_TRANSIENT);
-    check(ret);
+    return check(ret);
 }
 
 // Bind a binary blob value to a parameter "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement
-void Statement::bind(const char* name, const void* apValue, const int aSize) // throw(SQLite::Exception)
+bool Statement::bind(const char* name, const void* apValue, const int aSize) // throw(SQLite::Exception)
 {
     int index = sqlite3_bind_parameter_index(m_stmtPtr, name);
     int ret   = sqlite3_bind_blob(m_stmtPtr, index, apValue, aSize, SQLITE_TRANSIENT);
-    check(ret);
+    return check(ret);
 }
 
 // Bind a NULL value to a parameter "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement
-void Statement::bind(const char* name) // throw(SQLite::Exception)
+bool Statement::bind(const char* name) // throw(SQLite::Exception)
 {
     int index = sqlite3_bind_parameter_index(m_stmtPtr, name);
     int ret   = sqlite3_bind_null(m_stmtPtr, index);
-    check(ret);
+    return check(ret);
 }
 
 int Statement::bindParameterIndex(const char* name)
 {
 	return sqlite3_bind_parameter_index(m_stmtPtr, name);
 }
+
 
 /**
  * get bind parameter name
@@ -174,11 +175,12 @@ int Statement::GetBindParameterCount()
 /**
  * clear all bindings
  */
-void Statement::clearBinds()
+bool Statement::clearBinds()
 {
-	sqlite3_clear_bindings(m_stmtPtr);
+	int ret=sqlite3_clear_bindings(m_stmtPtr);
+	return check(ret);
 }
-	
+
 // Execute a step of the query to fetch one row of results
 bool Statement::executeStep(void) // throw(SQLite::Exception)
 {
@@ -278,12 +280,14 @@ bool Statement::isColumnNull(const int index) const // throw(SQLite::Exception)
 }
 
 // Check if aRet equal SQLITE_OK, else throw a SQLite::Exception with the SQLite error message
-void Statement::check(const int aRet) const // throw(SQLite::Exception)
+bool Statement::check(const int aRet) const // throw(SQLite::Exception)
 {
     if (SQLITE_OK != aRet)
     {
-//        CCLOGERROR("%s",sqlite3_errmsg(m_stmtPtr));
+		//CCLOGERROR("%s",sqlite3_errmsg(m_stmtPtr));
+		return false;
     }
+	return true;
 }
 
 
@@ -347,7 +351,10 @@ Statement::Ptr::~Ptr(void) throw() // nothrow
         // as no Statement not Column objet use it anymore
         int ret = sqlite3_finalize(m_stmt);
         // Never throw an exception in a destructor
-        YHASSERT(SQLITE_OK == ret, sqlite3_errmsg(m_db));  // See SQLITECPP_ENABLE_ASSERT_HANDLER
+		if(SQLITE_OK!=ret)
+		{
+			sqlite3_errmsg(m_db);// See SQLITECPP_ENABLE_ASSERT_HANDLER
+		}
 
         // and delete the reference counter
         delete m_refCount;
@@ -356,5 +363,6 @@ Statement::Ptr::~Ptr(void) throw() // nothrow
     }
     // else, the finalization will be done later, by the last object
 }
+
 
 NS_YH_SQLITE_END

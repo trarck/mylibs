@@ -61,7 +61,7 @@ public:
     /**
      * @brief Reset the statement to make it ready for a new execution.
      */
-    void reset(void); // throw(SQLite::Exception);
+    bool reset(void); // throw(SQLite::Exception);
 
     ////////////////////////////////////////////////////////////////////////////
     // Bind a value to a parameter of the SQL statement,
@@ -82,92 +82,91 @@ public:
     /**
      * @brief Bind an int value to a parameter "?", "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement (index >= 1)
      */
-    void bind(const int index, const int&           value)  ; // throw(SQLite::Exception);
+    bool bind(const int index, const int&           value)  ; // throw(SQLite::Exception);
     /**
      * @brief Bind a 64bits int value to a parameter "?", "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement (index >= 1)
      */
-    void bind(const int index, const sqlite3_int64& value)  ; // throw(SQLite::Exception);
+    bool bind(const int index, const sqlite3_int64& value)  ; // throw(SQLite::Exception);
     /**
      * @brief Bind a double (64bits float) value to a parameter "?", "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement (index >= 1)
      */
-    void bind(const int index, const double&        value)  ; // throw(SQLite::Exception);
+    bool bind(const int index, const double&        value)  ; // throw(SQLite::Exception);
     /**
      * @brief Bind a string value to a parameter "?", "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement (index >= 1)
      *
      * @note This uses the SQLITE_TRANSIENT flag, making a copy of the data, for SQLite internal use
      */
-    void bind(const int index, const std::string&   value)  ; // throw(SQLite::Exception);
+    bool bind(const int index, const std::string&   value)  ; // throw(SQLite::Exception);
     /**
      * @brief Bind a text value to a parameter "?", "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement (index >= 1)
      *
      * @note This uses the SQLITE_TRANSIENT flag, making a copy of the data, for SQLite internal use
      */
-    void bind(const int index, const char*          value) ; // throw(SQLite::Exception);
+    bool bind(const int index, const char*          value) ; // throw(SQLite::Exception);
     /**
      * @brief Bind a binary blob value to a parameter "?", "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement (index >= 1)
      *
      * @note This uses the SQLITE_TRANSIENT flag, making a copy of the data, for SQLite internal use
      */
-    void bind(const int index, const void*          value, const int aSize) ; // throw(SQLite::Exception);
+    bool bind(const int index, const void*          value, const int aSize) ; // throw(SQLite::Exception);
     /**
      * @brief Bind a NULL value to a parameter "?", "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement (index >= 1)
      */
-    void bind(const int index); // throw(SQLite::Exception);
+    bool bind(const int index); // throw(SQLite::Exception);
 
     /**
      * @brief Bind an int value to a named parameter "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement (index >= 1)
      */
-    void bind(const char* name, const int&            value)  ; // throw(SQLite::Exception);
+    bool bind(const char* name, const int&            value)  ; // throw(SQLite::Exception);
     /**
      * @brief Bind a 64bits int value to a named parameter "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement (index >= 1)
      */
-    void bind(const char* name, const sqlite3_int64&  value)  ; // throw(SQLite::Exception);
+    bool bind(const char* name, const sqlite3_int64&  value)  ; // throw(SQLite::Exception);
     /**
      * @brief Bind a double (64bits float) value to a named parameter "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement (index >= 1)
      */
-    void bind(const char* name, const double&         value)  ; // throw(SQLite::Exception);
+    bool bind(const char* name, const double&         value)  ; // throw(SQLite::Exception);
     /**
      * @brief Bind a string value to a named parameter "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement (index >= 1)
      *
      * @note This uses the SQLITE_TRANSIENT flag, making a copy of the data, for SQLite internal use
      */
-    void bind(const char* name, const std::string&    value)  ; // throw(SQLite::Exception);
+    bool bind(const char* name, const std::string&    value)  ; // throw(SQLite::Exception);
     /**
      * @brief Bind a text value to a named parameter "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement (index >= 1)
      *
      * @note This uses the SQLITE_TRANSIENT flag, making a copy of the data, for SQLite internal use
      */
-    void bind(const char* name, const char*           value) ; // throw(SQLite::Exception);
+    bool bind(const char* name, const char*           value) ; // throw(SQLite::Exception);
     /**
      * @brief Bind a binary blob value to a named parameter "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement (index >= 1)
      *
      * @note This uses the SQLITE_TRANSIENT flag, making a copy of the data, for SQLite internal use
      */
-    void bind(const char* name, const void*           value, const int aSize) ; // throw(SQLite::Exception);
+    bool bind(const char* name, const void*           value, const int aSize) ; // throw(SQLite::Exception);
     /**
      * @brief Bind a NULL value to a named parameter "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement (index >= 1)
      */
-    void bind(const char* name); // throw(SQLite::Exception); // bind NULL value
-
+    bool bind(const char* name); // throw(SQLite::Exception); // bind NULL value
 
     /**
      * @brief Bind an int value to a named parameter "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement (index >= 1)
      */
-    inline void bind(const std::string& name, const int&            value) // throw(SQLite::Exception);
+    inline bool bind(const std::string& name, const int&            value) // throw(SQLite::Exception);
     {
         bind(name.c_str(), value);
     }
     /**
      * @brief Bind a 64bits int value to a named parameter "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement (index >= 1)
      */
-    inline void bind(const std::string& name, const sqlite3_int64&  value) // throw(SQLite::Exception);
+    inline bool bind(const std::string& name, const sqlite3_int64&  value) // throw(SQLite::Exception);
     {
         bind(name.c_str(), value);
     }
     /**
      * @brief Bind a double (64bits float) value to a named parameter "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement (index >= 1)
      */
-    inline void bind(const std::string& name, const double&         value) // throw(SQLite::Exception);
+    inline bool bind(const std::string& name, const double&         value) // throw(SQLite::Exception);
     {
         bind(name.c_str(), value);
     }
@@ -176,7 +175,7 @@ public:
      *
      * @note This uses the SQLITE_TRANSIENT flag, making a copy of the data, for SQLite internal use
      */
-    inline void bind(const std::string& name, const std::string&    value) // throw(SQLite::Exception);
+    inline bool bind(const std::string& name, const std::string&    value) // throw(SQLite::Exception);
     {
         bind(name.c_str(), value);
     }
@@ -185,7 +184,7 @@ public:
      *
      * @note This uses the SQLITE_TRANSIENT flag, making a copy of the data, for SQLite internal use
      */
-    inline void bind(const std::string& name, const char*           value) // throw(SQLite::Exception);
+    inline bool bind(const std::string& name, const char*           value) // throw(SQLite::Exception);
     {
         bind(name.c_str(), value);
     }
@@ -194,18 +193,18 @@ public:
      *
      * @note This uses the SQLITE_TRANSIENT flag, making a copy of the data, for SQLite internal use
      */
-    inline void bind(const std::string& name, const void*           value, const int aSize) // throw(SQLite::Exception);
+    inline bool bind(const std::string& name, const void*           value, const int aSize) // throw(SQLite::Exception);
     {
         bind(name.c_str(), value, aSize);
     }
     /**
      * @brief Bind a NULL value to a named parameter "?NNN", ":VVV", "@VVV" or "$VVV" in the SQL prepared statement (index >= 1)
      */
-    inline void bind(const std::string& name) // throw(SQLite::Exception); // bind NULL value
+    inline bool bind(const std::string& name) // throw(SQLite::Exception); // bind NULL value
     {
         bind(name.c_str());
     }
-		
+
 	/**
 	 * bind parameter to index
 	 */
@@ -214,7 +213,7 @@ public:
 	{
 		bindParameterIndex(name.c_str());
 	}
-	
+
 	/**
 	 * get bind parameter name
 	 */
@@ -228,8 +227,8 @@ public:
 	/**
 	 * clear all bindings
 	 */
-	void clearBinds();
-	
+	bool clearBinds();
+
     ////////////////////////////////////////////////////////////////////////////
 
     /**
@@ -416,7 +415,7 @@ private:
      *
      * @param[in] SQLite return code to test against the SQLITE_OK expected value
      */
-    void check(const int aRet) const; // throw(SQLite::Exception);
+    bool check(const int aRet) const; // throw(SQLite::Exception);
 
 private:
     std::string     m_query;         //!< UTF-8 SQL Query
@@ -425,6 +424,7 @@ private:
     bool            m_ok;           //!< true when a row has been fetched with executeStep()
     bool            m_done;         //!< true when the last executeStep() had no more row to fetch
 };
+
 
 NS_YH_SQLITE_END
 

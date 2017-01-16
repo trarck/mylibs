@@ -27,7 +27,7 @@ bool SqliteDriver::init()
     return true;
 }
 
-void SqliteDriver::connect(const std::string& dbPath,const int flag)
+bool SqliteDriver::connect(const std::string& dbPath,const int flag)
 {
 	int ret = sqlite3_open_v2(dbPath.c_str(), &m_db, flag, NULL);
 	if(SQLITE_OK != ret)
@@ -36,10 +36,12 @@ void SqliteDriver::connect(const std::string& dbPath,const int flag)
 		const char* strerr = sqlite3_errmsg(m_db);
 		YHERROR(strerr);
 		sqlite3_close(m_db); // close is required even in case of error on opening
+		return false;
 	}
+	return true;
 }
 
-void SqliteDriver::connect(const std::string& dbPath, const std::string& password ,const int flag)
+bool SqliteDriver::connect(const std::string& dbPath, const std::string& password ,const int flag)
 {
 	int ret = sqlite3_open_v2(dbPath.c_str(), &m_db, flag, NULL);
 	if(SQLITE_OK == ret)
@@ -47,7 +49,7 @@ void SqliteDriver::connect(const std::string& dbPath, const std::string& passwor
 		#ifdef SQLITE_HAS_CODEC
 		ret = sqlite3_key(m_db, password.c_str(), password.length());
 		if (SQLITE_OK == ret) {
-			return;
+			return true;
 		}
 		#endif //SQLITE_HAS_CODEC
 	}
@@ -56,6 +58,7 @@ void SqliteDriver::connect(const std::string& dbPath, const std::string& passwor
 	const char* strerr = sqlite3_errmsg(m_db);
 	YHERROR(strerr);
 	sqlite3_close(m_db); // close is required even in case of error on opening
+	return false;
 }
 
 void SqliteDriver::close()

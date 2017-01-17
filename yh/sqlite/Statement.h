@@ -247,7 +247,7 @@ public:
      *
      * @throw SQLite::Exception in case of error
      */
-    bool executeStep(void); // throw(SQLite::Exception);
+    bool step(void); // throw(SQLite::Exception);
 
     /**
      * @brief Execute a one-step query with no expected result.
@@ -270,6 +270,7 @@ public:
      */
     int execute(void); // throw(SQLite::Exception);
 
+	int GetChanges();
     ////////////////////////////////////////////////////////////////////////////
 
     /**

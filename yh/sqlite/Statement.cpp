@@ -182,7 +182,7 @@ bool Statement::clearBinds()
 }
 
 // Execute a step of the query to fetch one row of results
-bool Statement::executeStep(void) // throw(SQLite::Exception)
+bool Statement::step(void) // throw(SQLite::Exception)
 {
     if (false == m_done)
     {
@@ -214,34 +214,12 @@ bool Statement::executeStep(void) // throw(SQLite::Exception)
 // Execute a one-step query with no expected result
 int Statement::execute(void) // throw(SQLite::Exception)
 {
-    if (false == m_done)
-    {
-        int ret = sqlite3_step(m_stmtPtr);
-        if (SQLITE_DONE == ret) // the statement has finished executing successfully
-        {
-            m_ok = false;
-            m_done = true;
-        }
-        else if (SQLITE_ROW == ret)
-        {
-            m_ok = false;
-            m_done = false;
-//            CCLOGERROR("exec() does not expect results");
-        }
-        else
-        {
-            m_ok = false;
-            m_done = false;
-//            CCLOGERROR("Statement::exec err:%s",sqlite3_errmsg(m_stmtPtr));
-        }
-    }
-    else
-    {
-//        CCLOGERROR("Statement need to be reseted");
-    }
+	return step();
+}
 
-    // Return the number of rows modified by those SQL statements (INSERT, UPDATE or DELETE)
-    return sqlite3_changes(m_stmtPtr);
+int Statement::GetChanges()
+{
+	return sqlite3_changes(m_stmtPtr);
 }
 
 // Return a copy of the column data specified by its index starting at 0

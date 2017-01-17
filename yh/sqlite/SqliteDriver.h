@@ -36,7 +36,7 @@ public:
     /**
      * @brief close database connet
      */
-    void close();
+    bool close();
 
 
     /**
@@ -56,41 +56,43 @@ public:
      *
      * @throw SQLite::Exception in case of error
      */
-	inline int execute(const char* query)
+	inline bool execute(const char* query)
 	{
-		return execute(query, NULL, NULL, NULL);
+		return execute(query, NULL, NULL, NULL, NULL);
 	}
     
-    inline int execute(const std::string& query)
+    inline bool execute(const std::string& query)
     {
         return execute(query.c_str());
     }
 
-	int execute(const char* query, char** errmsg)
+	inline bool execute(const char* query,int* changes)
 	{
-		return execute(query, NULL, NULL, errmsg);;
+		return execute(query, changes, NULL, NULL, NULL);
 	}
 
-	inline int execute(const std::string& query, char** errmsg)
+	inline bool execute(const std::string& query, int* changes)
 	{
-		return execute(query.c_str(), errmsg);
+		return execute(query.c_str(),changes);
 	}
     
-	int execute(
+	bool execute(
 		const char* query,		/* SQL to be evaluated */
+		int* changes,					/* when execute sql effect database rows*/
 		int(*callback)(void*, int, char**, char**),	 /* Callback function */
 		void * callbackFirstData,                                    /* 1st argument to callback */
 		char **errmsg                              /* Error msg written here */
 	);
 
-	inline int execute(
+	inline bool execute(
 		const std::string& query,		/* SQL to be evaluated */
+		int* changes,							/* when execute sql effect database rows*/
 		int(*callback)(void*, int, char**, char**),	 /* Callback function */
 		void * callbackFirstData,                                    /* 1st argument to callback */
 		char **errmsg                              /* Error msg written here */
 	)
 	{
-		return execute(query.c_str(), callback, callbackFirstData, errmsg);
+		return execute(query.c_str(), changes,callback, callbackFirstData, errmsg);
 	}
 
     /**
@@ -214,6 +216,10 @@ public:
         return m_db;
     }
     
+	inline bool isConnecting()
+	{
+		return m_connecting;
+	}
 private:
     /// @{ Database must be non-copyable
     SqliteDriver(const SqliteDriver&);
@@ -230,6 +236,7 @@ private:
     //数据库指针
     sqlite3* m_db;
     
+	bool m_connecting;
     //数据库路径
     std::string m_dbPath;
 };

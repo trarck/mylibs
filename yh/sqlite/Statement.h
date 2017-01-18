@@ -58,6 +58,7 @@ public:
      */
     virtual ~Statement(void); // nothrow
 
+	bool isPrepared();
     /**
      * @brief Reset the statement to make it ready for a new execution.
      */
@@ -394,6 +395,11 @@ public:
             return m_stmt;
         }
 
+		inline bool isPrepared() const
+		{
+			return m_prepared;
+		}
+
     private:
         /// @{ Unused/forbidden copy operator
         Ptr& operator=(const Ptr& aPtr);
@@ -403,6 +409,7 @@ public:
         sqlite3*        m_db;   //!< Pointer to SQLite Database Connection Handle
         sqlite3_stmt*   m_stmt;     //!< Pointer to SQLite Statement Object
         unsigned int*   m_refCount; //!< Pointer to the heap allocated reference counter of the sqlite3_stmt (to share it with Column objects)
+		bool m_prepared;
     };
 
 private:

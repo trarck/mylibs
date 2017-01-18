@@ -35,6 +35,12 @@ Statement::~Statement(void) // nothrow
     // the finalization will be done by the destructor of the last shared pointer
 }
 
+//check the statement is prepare
+bool Statement::isPrepared()
+{
+	return m_stmtPtr.isPrepared();
+}
+
 // Reset the statement to make it ready for a new execution
 bool Statement::reset(void) // throw(SQLite::Exception)
 {
@@ -184,6 +190,11 @@ bool Statement::clearBinds()
 // Execute a step of the query to fetch one row of results
 bool Statement::step(void) // throw(SQLite::Exception)
 {
+	if (!isPrepared())
+	{
+		return false;
+	}
+
     if (false == m_done)
     {
         int ret = sqlite3_step(m_stmtPtr);
@@ -200,12 +211,12 @@ bool Statement::step(void) // throw(SQLite::Exception)
         {
             m_ok = false;
             m_done = false;
-//            CCLOGERROR("Statement::executeStep err:%s",sqlite3_errmsg(m_stmtPtr));
+	        YHERROR("Statement::executeStep err:%s",sqlite3_errmsg(m_stmtPtr));
         }
     }
     else
     {
-//        CCLOGERROR("Statement need to be reseted");
+		YHERROR("Statement need to be reseted");
     }
 
     return m_ok; // true only if one row is accessible by getColumn(N)
@@ -247,11 +258,11 @@ bool Statement::isColumnNull(const int index) const // throw(SQLite::Exception)
 {
     if (false == m_ok)
     {
-//        CCLOGERROR("No row to get a column from");
+		YHERROR("No row to get a column from");
     }
     else if ((index < 0) || (index >= m_columnCount))
     {
-//        CCLOGERROR("Column index out of range");
+		YHERROR("Column index out of range");
     }
 
     return (SQLITE_NULL == sqlite3_column_type(m_stmtPtr, index));
@@ -262,7 +273,7 @@ bool Statement::check(const int aRet) const // throw(SQLite::Exception)
 {
     if (SQLITE_OK != aRet)
     {
-		//CCLOGERROR("%s",sqlite3_errmsg(m_stmtPtr));
+		YHERROR("Statement error[%d]:%s",aRet,sqlite3_errmsg(m_stmtPtr));
 		return false;
     }
 	return true;
@@ -282,13 +293,15 @@ bool Statement::check(const int aRet) const // throw(SQLite::Exception)
 Statement::Ptr::Ptr(sqlite3* apSQLite, std::string& aQuery) :
     m_db(apSQLite),
     m_stmt(NULL),
-    m_refCount(NULL)
+    m_refCount(NULL),
+	m_prepared(false)
 {
     int ret = sqlite3_prepare_v2(apSQLite, aQuery.c_str(), static_cast<int>(aQuery.size()), &m_stmt, NULL);
     if (SQLITE_OK != ret)
     {
-//        CCLOGERROR("%s",sqlite3_errmsg(m_db));
+        YHERROR("Statement ptr init for preapre:%d,%s", ret,sqlite3_errmsg(m_db));
     }
+	m_prepared = true;
     // Initialize the reference counter of the sqlite3_stmt :
     // used to share the m_stmtPtr between Statement and Column objects;
     // This is needed to enable Column objects to live longer than the Statement objet it refers to.
@@ -303,7 +316,8 @@ Statement::Ptr::Ptr(sqlite3* apSQLite, std::string& aQuery) :
 Statement::Ptr::Ptr(const Statement::Ptr& aPtr) :
     m_db(aPtr.m_db),
     m_stmt(aPtr.m_stmt),
-    m_refCount(aPtr.m_refCount)
+    m_refCount(aPtr.m_refCount),
+	m_prepared(aPtr.m_prepared)
 {
     assert(NULL != m_refCount);
     assert(0 != *m_refCount);
@@ -331,7 +345,7 @@ Statement::Ptr::~Ptr(void) throw() // nothrow
         // Never throw an exception in a destructor
 		if(SQLITE_OK!=ret)
 		{
-			sqlite3_errmsg(m_db);// See SQLITECPP_ENABLE_ASSERT_HANDLER
+			sqlite3_errmsg(m_db);
 		}
 
         // and delete the reference counter

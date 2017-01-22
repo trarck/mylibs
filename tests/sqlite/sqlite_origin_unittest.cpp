@@ -96,6 +96,8 @@ TEST_F(SqliteOriginTest, InsertData) {
 
 	CheckError(result);
 
+	result = sqlite3_exec(m_db, "select * from MyTable", NULL, NULL, &error);
+
 	result = sqlite3_prepare_v2(m_db, "select * from MyTable", -1, &statement, NULL);
 
 

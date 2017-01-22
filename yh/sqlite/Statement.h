@@ -328,6 +328,14 @@ public:
      *          and use or copy this data for any later usage.
      */
     void getColumn(const int index,Column** column);
+
+	int getColumnIndex(const char* name);
+
+	Column  getColumn(const char* name);
+	void getColumn(const char* name, Column** column);
+
+
+
     /**
      * @brief Test if the column value is NULL
      *
@@ -425,10 +433,13 @@ private:
      */
     bool check(const int aRet) const; // throw(SQLite::Exception);
 
+	typedef std::map<std::string, int> TColumnNames;
+
 private:
     std::string     m_query;         //!< UTF-8 SQL Query
     Ptr             m_stmtPtr;       //!< Shared Pointer to the prepared SQLite Statement Object
     int             m_columnCount;   //!< Number of columns in the result of the prepared statement
+	mutable TColumnNames m_columnNames; //!< Map of columns index by name (mutable so getColumnIndex can be const)
     bool            m_ok;           //!< true when a row has been fetched with executeStep()
     bool            m_done;         //!< true when the last executeStep() had no more row to fetch
 };

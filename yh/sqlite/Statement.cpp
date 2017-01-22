@@ -211,7 +211,7 @@ bool Statement::step(void) // throw(SQLite::Exception)
         {
             m_ok = false;
             m_done = false;
-	        YHERROR("Statement::executeStep err:%s",sqlite3_errmsg(m_stmtPtr));
+	        YHERROR("Statement::step err:%s",sqlite3_errmsg(m_stmtPtr));
         }
     }
     else
@@ -225,7 +225,42 @@ bool Statement::step(void) // throw(SQLite::Exception)
 // Execute a one-step query with no expected result
 int Statement::execute(void) // throw(SQLite::Exception)
 {
-	return step();
+	if (!isPrepared())
+	{
+		return false;
+	}
+
+	if (false == m_done)
+	{
+		int ret = sqlite3_step(m_stmtPtr);
+		if (SQLITE_ROW == ret) // one row is ready : call getColumn(N) to access it
+		{
+			m_ok = true;
+			YHERROR("Statement::execute not expect results.Use step");
+		}
+		else if (SQLITE_DONE == ret) // no (more) row ready : the query has finished executing
+		{
+			m_ok = false;
+			m_done = true;
+		}
+		else
+		{
+			m_ok = false;
+			m_done = false;
+			YHERROR("Statement::execute err:%s", sqlite3_errmsg(m_stmtPtr));
+		}
+	}
+	else
+	{
+		YHERROR("Statement need to be reseted");
+	}
+
+	if (m_done)
+	{
+		return sqlite3_changes(m_stmtPtr);
+	}
+
+	return 0;
 }
 
 int Statement::GetChanges()
@@ -251,6 +286,37 @@ void  Statement::getColumn(const int index,Column** column)
     YHASSERT(index >=0 && index < m_columnCount, "Column index out of range");
     
     *column=new Column(m_stmtPtr,index);
+}
+
+int Statement::getColumnIndex(const char* name)
+{
+	if (m_columnNames.empty())
+	{
+		for (int i = 0; i < m_columnCount; ++i)
+		{
+			const char* colName = sqlite3_column_name(m_stmtPtr, i);
+			m_columnNames[colName] = i;
+		}
+	}
+
+	const TColumnNames::const_iterator Iter = m_columnNames.find(name);
+	if (Iter != m_columnNames.end())
+	{
+		return Iter->second;
+	}
+	return -1;
+}
+
+Column  Statement::getColumn(const char* name)
+{
+	const int index = getColumnIndex(name);
+	return Column(m_stmtPtr, index);
+}
+
+void Statement::getColumn(const char* name, Column** column)
+{
+	const int index = getColumnIndex(name);
+	*column = new Column(m_stmtPtr, index);
 }
 
 // Test if the column is NULL

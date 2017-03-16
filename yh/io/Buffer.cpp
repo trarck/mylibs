@@ -16,7 +16,7 @@ Buffer::Buffer(size_t size)
 ,m_data(NULL)
 ,m_dataOwner(true)
 {
-    m_data=(unsigned char*) malloc( size * sizeof(unsigned char));
+    m_data=(unsigned char*) malloc( size);
 }
 
 Buffer::Buffer(unsigned char* data,size_t size)
@@ -29,10 +29,17 @@ Buffer::Buffer(unsigned char* data,size_t size)
 
 Buffer::Buffer(unsigned char* data,size_t size,bool dataOwner)
 :m_size(size)
-,m_data(data)
 ,m_dataOwner(dataOwner)
 {
-    
+	if (dataOwner) 
+	{
+		m_data = (unsigned char*)malloc(size);
+		memcpy(m_data, data, size);
+	}
+	else
+	{
+		m_data = data;
+	}
 }
 
 Buffer::~Buffer()
@@ -206,6 +213,36 @@ unsigned char* Buffer::slice(size_t start,size_t* size)
     }
     
     return m_data+start;
+}
+
+void Buffer::setData(unsigned char* data, size_t size,bool dataOwner = true)
+{
+	//remove old data
+	if (m_data && m_dataOwner)
+	{
+		delete m_data;
+	}
+
+	//set new data
+	m_dataOwner = dataOwner;
+	m_size = size;
+
+	if (size > 0)
+	{
+		if (dataOwner)
+		{
+			m_data = (unsigned char*)malloc(size);
+			memcpy(m_data, data, size);
+		}
+		else
+		{
+			m_data = data;
+		}
+	}
+	else
+	{
+		m_data = NULL;
+	}
 }
 
 NS_YH_END

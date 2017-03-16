@@ -1,5 +1,5 @@
-﻿#ifndef YH_IO_BUFFER_H_
-#define YH_IO_BUFFER_H_
+﻿#ifndef YH_IO_RING_BUFFER_H_
+#define YH_IO_RING_BUFFER_H_
 
 #include "../YHMacros.h"
 #include "../base/Ref.h"
@@ -9,68 +9,42 @@
 
 NS_YH_BEGIN
 
-#define _BUFFER_BYTE_SIZE 1
-#define _BUFFER_SHORT_SIZE 2
-#define _BUFFER_INT_SIZE 4
-#define _BUFFER_LONG_SIZE 8
+#define RING_BUFFER_BYTE_SIZE 1
+#define RING_BUFFER_SHORT_SIZE 2
+#define RING_BUFFER_INT_SIZE 4
+#define RING_BUFFER_LONG_SIZE 8
 
 
 /**
  * 字节操作类
  */
-class Buffer:public Ref
+class RingBuffer:public Ref
 {
 public:
     
-    Buffer();
+	RingBuffer();
     
-    Buffer(size_t size);
+	RingBuffer(size_t capacity);
     
-    Buffer(unsigned char* data,size_t size);
-    
-    Buffer(unsigned char* data,size_t size,bool dataOwner);
-    
-    ~Buffer();
+    ~RingBuffer();
     
     /**
      * @brief 读取一段数据
      * 是其它读取方法的基础
      *
-     * @param position 要读取的偏移位置，从开头算起。
      * @param buf 读取后要放入的地方
      * @param size 要读取的数据大小
      *
      * @return 实际读取的大小。如果大小为0，则读取错误
      */
-    size_t readBytes(size_t position,void* buf,size_t size);
-
-    /**
-     * @brief 不安全的读取一段数据
-     * 主要是使用memcpy代替memmove
-     *
-     * @param position 要读取的偏移位置，从开头算起。
-     * @param buf 读取后要放入的地方
-     * @param size 要读取的数据大小
-     *
-     * @return 实际读取的大小。如果大小为0，则读取错误
-     */
-    inline size_t readBytesUnSafe(size_t position,void* buf,size_t size)
+    size_t readBytes(void* buf,size_t size);
+   
+    inline unsigned char readByte()
     {
-        YHASSERT(position+size<=m_size,"Buffer::readBytesSafe out index");
-        
-		if (position+size>m_size) {
-			size=m_size-position;
-		}
-        
-        memcpy(buf,m_data+position,size);
-        
-        return size;
-    }
-    
-    inline unsigned char readByte(size_t position)
-    {
-        YHASSERT(position<m_size, "Buffer::readByte out index");
-        return *(m_data+position);
+		YHASSERT(getSize(), "RingBuffer::readByte out index");
+		unsigned char* start = m_data + m_headPosition;
+		moveHeadPosition(RING_BUFFER_BYTE_SIZE);
+		return *(start);
     }
 
     ////////////////////////////////////////////////////////////////
@@ -80,78 +54,43 @@ public:
     /**
      * @brief 读取无符号的8位整型
      *
-     * @param position 要读取的偏移位置，从开头算起。
-     *
      * @return 读取的值
      */
-    inline uint8_t readUInt8(size_t position)
+    inline uint8_t readUInt8()
     {
-        YHASSERT(position<m_size,"Buffer::readUInt8 out index");
-        return *(m_data+position);
+        YHASSERT(getSize(),"RingBuffer::readUInt8 out index");
+		unsigned char* start = m_data + m_headPosition;
+		moveHeadPosition(RING_BUFFER_BYTE_SIZE);
+        return *(start);
     }
     
     /**
      * @brief 读取无符号的16位整型
      * 数据在data中使用小端保存
      *
-     * @param position 要读取的偏移位置，从开头算起。
-     *
      * @return 读取的值
      */
-    inline uint16_t readUInt16LE(size_t position)
-    {
-        YHASSERT(position+_BUFFER_SHORT_SIZE<=m_size,"Buffer::readUInt16LE out index");
-        return (*(m_data+position+1) << 8) | *(m_data+position);
-    }
+	uint16_t readUInt16LE();
 
     /**
      * @brief 读取无符号的16位整型
      * 数据在data中使用大端保存
      *
-     * @param position 要读取的偏移位置，从开头算起。
-     *
      * @return 读取的值
      */
-    inline uint16_t readUInt16BE(size_t position)
-    {
-        YHASSERT(position+_BUFFER_SHORT_SIZE<=m_size,"Buffer::readUInt16BE out index");
-        return (*(m_data+position) << 8) | *(m_data+position+1);
-    }
+	uint16_t readUInt16BE();
 
     /**
      * @brief 读取无符号的32位整型
      * 数据在data中使用小端保存
      *
-     * @param position 要读取的偏移位置，从开头算起。
-     *
      * @return 读取的值
      */
-    inline uint32_t readUInt32LE(size_t position)
-    {
-        YHASSERT(position+_BUFFER_INT_SIZE<=m_size,"Buffer::readUInt32LE out index");
-
-        unsigned char* start=m_data+position;
-
-        uint32_t val = (uint32_t)*(start+3) << 24;
-        val |= (uint32_t)*(start+2) << 16;
-        val |= (uint32_t)*(start+1) << 8;
-        val |= *(start);
-
-        return val;
-    }
+	uint32_t readUInt32LE();
     
     //使用字节转换来读取数据，比直接计算要慢20%左右。性能估计还是消耗在memcpy上。
     //所以还是直接使用数值运算快
-    inline uint32_t readUInt32LE2(size_t position)
-    {
-        YHASSERT(position+_BUFFER_INT_SIZE<=m_size,"Buffer::readUInt32BE out index");
-        
-        unsigned char buf[4];
-        
-        readBytesUnSafe(position, buf, 4);
-        
-        return *((uint32_t*)buf);
-    }
+	uint32_t readUInt32LE2();
 
     /**
      * @brief 读取无符号的32位整型
@@ -161,19 +100,7 @@ public:
      *
      * @return 读取的值
      */
-    inline uint32_t readUInt32BE(size_t position)
-    {
-        YHASSERT(position+_BUFFER_INT_SIZE<=m_size,"Buffer::readUInt32BE out index");
-                
-        unsigned char* start=m_data+position;
-
-        uint32_t val = (uint32_t)*(start) << 24;
-        val |= (uint32_t)*(start+1) << 16;
-        val |= (uint32_t)*(start+2) << 8;
-        val |= *(start+3);
-
-        return val;
-    }
+	uint32_t readUInt32BE();
     
     /**
      * @brief 读取无符号的64位整型
@@ -183,7 +110,7 @@ public:
      *
      * @return 读取的值
      */
-    uint64_t readUInt64LE(size_t position);
+    uint64_t readUInt64LE();
     
     /**
      * @brief 读取无符号的64位整型
@@ -193,7 +120,7 @@ public:
      *
      * @return 读取的值
      */
-    uint64_t readUInt64BE(size_t position);
+    uint64_t readUInt64BE();
     
     ////////////////////////////////////////////////////////////////
     // signed
@@ -206,11 +133,9 @@ public:
      *
      * @return 读取的值
      */
-    inline int8_t readInt8(size_t position)
+    inline int8_t readInt8()
     {
-        YHASSERT(position<m_size,"Buffer::readInt8 out index");
-        
-        return (int8_t)(*(m_data+position));
+        return (int8_t)(readUInt8());
 //        uint8_t val=readUInt8(position);
 //        return (val & 0x80)?val:(0xff-val+1)*-1;
     }
@@ -224,11 +149,9 @@ public:
      *
      * @return 读取的值
      */
-    inline int16_t readInt16LE(size_t position)
+    inline int16_t readInt16LE()
     {
-        YHASSERT(position+_BUFFER_SHORT_SIZE<=m_size,"Buffer::readInt16 out index");
-        
-        return (int16_t)readUInt16LE(position);
+        return (int16_t)readUInt16LE();
     }
     
     /**
@@ -240,11 +163,9 @@ public:
      *
      * @return 读取的值
      */
-    inline int16_t readInt16BE(size_t position)
+    inline int16_t readInt16BE()
     {
-        YHASSERT(position+_BUFFER_SHORT_SIZE<=m_size,"Buffer::readInt16BE out index");
-        
-        return (int16_t)readUInt16BE(position);
+        return (int16_t)readUInt16BE();
     }
     
     /**
@@ -256,11 +177,9 @@ public:
      *
      * @return 读取的值
      */
-    inline int32_t readInt32LE(size_t position)
+    inline int32_t readInt32LE()
     {
-        YHASSERT(position+_BUFFER_INT_SIZE<=m_size,"Buffer::readInt32 out index");
-        
-        return (int32_t)readUInt32LE(position);
+        return (int32_t)readUInt32LE();
     }
     
     /**
@@ -272,11 +191,9 @@ public:
      *
      * @return 读取的值
      */
-    inline int32_t readInt32BE(size_t position)
+    inline int32_t readInt32BE()
     {
-        YHASSERT(position+_BUFFER_INT_SIZE<=m_size,"Buffer::readInt32 out index");
-        
-        return (int32_t)readUInt32BE(position);
+        return (int32_t)readUInt32BE();
     }
     
     /**
@@ -288,11 +205,9 @@ public:
      *
      * @return 读取的值
      */
-    inline int64_t readInt64LE(size_t position)
+    inline int64_t readInt64LE()
     {
-        YHASSERT(position+_BUFFER_LONG_SIZE<=m_size,"Buffer::readInt64 out index");
-        
-        return (int64_t)readUInt64LE(position);
+        return (int64_t)readUInt64LE();
     }
     
     /**
@@ -304,11 +219,9 @@ public:
      *
      * @return 读取的值
      */
-    inline int64_t readInt64BE(size_t position)
+    inline int64_t readInt64BE()
     {
-        YHASSERT(position+_BUFFER_LONG_SIZE<=m_size,"Buffer::readInt64 out index");
-        
-        return (int64_t)readUInt64BE(position);
+        return (int64_t)readUInt64BE();
     }
 
     
@@ -323,19 +236,11 @@ public:
      *
      * @return 读取的值
      */
-    inline float readFloat16LE(size_t position)
+    inline float readFloat16LE()
     {
-        YHASSERT(position+_BUFFER_SHORT_SIZE<=m_size,"Buffer::readFloat16LE out index");
-//        uint16_t halfInt=readUInt16LE(position);
-//        
-//        uint32_t singleInt=0;
-//        
-//        //半精度转单精度
-//        halfp2singlesTyped(&singleInt, &halfInt);
-//        
-//        return bitwise_cast<uint32_t,float>(singleInt);
+        YHASSERT(position+RING_BUFFER_SHORT_SIZE<=m_size,"Buffer::readFloat16LE out index");
         
-        uint16_t halfInt=readUInt16LE(position);
+        uint16_t halfInt=readUInt16LE();
         
         float val;
         
@@ -355,7 +260,7 @@ public:
      */
     inline float readFloat16BE(size_t position)
     {
-        YHASSERT(position+_BUFFER_SHORT_SIZE<=m_size,"Buffer::readFloat16BE out index");
+        YHASSERT(position+RING_BUFFER_SHORT_SIZE<=m_size,"Buffer::readFloat16BE out index");
 //        uint16_t halfInt=readUInt16BE(position);
 //        
 //        uint32_t singleInt=0;
@@ -385,7 +290,7 @@ public:
      */
     inline float readFloatLE(size_t position)
     {
-        YHASSERT(position+_BUFFER_INT_SIZE<=m_size,"Buffer::readFloatLE out index");
+        YHASSERT(position+RING_BUFFER_INT_SIZE<=m_size,"Buffer::readFloatLE out index");
         return byteToFloat<float,kLittleEndian>(m_data+position);
     }
     
@@ -399,7 +304,7 @@ public:
      */
     inline float readFloatBE(size_t position)
     {
-        YHASSERT(position+_BUFFER_INT_SIZE<=m_size,"Buffer::readFloatBE out index");
+        YHASSERT(position+RING_BUFFER_INT_SIZE<=m_size,"Buffer::readFloatBE out index");
         return byteToFloat<float,kBigEndian>(m_data+position);
     }
     
@@ -560,7 +465,7 @@ public:
         
         *(m_data+position)=value;
         
-        return _BUFFER_BYTE_SIZE;
+        return RING_BUFFER_BYTE_SIZE;
     }
     
     /**
@@ -576,7 +481,7 @@ public:
         
         *(m_data+position)=value;
         
-        return _BUFFER_BYTE_SIZE;
+        return RING_BUFFER_BYTE_SIZE;
     }
     
     /**
@@ -589,14 +494,14 @@ public:
      */
     inline size_t writeUInt16LE(uint16_t value,size_t position)
     {
-        YHASSERT(position+_BUFFER_SHORT_SIZE<=m_size,"Buffer::writeUInt16LE out index");
+        YHASSERT(position+RING_BUFFER_SHORT_SIZE<=m_size,"Buffer::writeUInt16LE out index");
         
         unsigned char* start=m_data+position;
         
         *(start) = value & 0x00FF;
         *(start+1) = (value & 0xFF00) >> 8;
         
-        return _BUFFER_SHORT_SIZE;
+        return RING_BUFFER_SHORT_SIZE;
     }
     
     /**
@@ -609,14 +514,14 @@ public:
      */
     inline size_t writeUInt16BE(uint16_t value,size_t position)
     {
-        YHASSERT(position+_BUFFER_SHORT_SIZE<=m_size,"Buffer::writeUInt16BE out index");
+        YHASSERT(position+RING_BUFFER_SHORT_SIZE<=m_size,"Buffer::writeUInt16BE out index");
         
         unsigned char* start=m_data+position;
         
         *(start) = (value & 0xFF00) >> 8;
         *(start+1) = value & 0x00FF;
         
-        return _BUFFER_SHORT_SIZE;
+        return RING_BUFFER_SHORT_SIZE;
     }
     
     /**
@@ -629,7 +534,7 @@ public:
      */
     inline size_t writeUInt32LE(uint32_t value,size_t position)
     {
-        YHASSERT(position+_BUFFER_INT_SIZE<=m_size,"Buffer::writeUInt32LE out index");
+        YHASSERT(position+RING_BUFFER_INT_SIZE<=m_size,"Buffer::writeUInt32LE out index");
         
         unsigned char* start=m_data+position;
         
@@ -638,7 +543,7 @@ public:
         *(start+2) = (value >> 16 ) & 0xFF;
         *(start+3) = (value >> 24 ) & 0xFF;
         
-        return _BUFFER_INT_SIZE;
+        return RING_BUFFER_INT_SIZE;
     }
     
     /**
@@ -651,7 +556,7 @@ public:
      */
     inline size_t writeUInt32BE(uint32_t value,size_t position)
     {
-        YHASSERT(position+_BUFFER_INT_SIZE<=m_size,"Buffer::writeUInt32BE out index");
+        YHASSERT(position+RING_BUFFER_INT_SIZE<=m_size,"Buffer::writeUInt32BE out index");
         
         unsigned char* start=m_data+position;
         
@@ -660,7 +565,7 @@ public:
         *(start+2) = (value >> 8 ) & 0xFF;
         *(start+3) = value & 0xFF;
         
-        return _BUFFER_INT_SIZE;
+        return RING_BUFFER_INT_SIZE;
     }
     
     /**
@@ -972,37 +877,39 @@ public:
      * @return 截取段的开始指针。注意不是副本。也就是说不用删除。
      */
     unsigned char* slice(size_t start,size_t* size);
-    
-	void setData(unsigned char* data, size_t size,bool dataOwner=true);
-
+	size_t getSize();
 public:
-        
-    inline size_t getSize()
-    {
-        return m_size;
-    }
     
     inline unsigned char* getData()
     {
         return m_data;
     }
-    
-    inline bool isDataOwner()
-    {
-        return m_dataOwner;
-    }
-    
+
 protected:
-    
-    size_t m_size;
-    
-    unsigned char* m_data;
-    
-	//表明data是否是由当前buffer创建，如果是则在buffer销毁时把data删除。
-	//主要用于读取大data数据时，不想重复分配内存，而buffer不会长时间存在
-    bool m_dataOwner;
+	inline void moveHeadPosition(size_t offset)
+	{
+		m_headPosition += offset;
+		if (m_headPosition >=m_capacity)
+		{
+			m_headPosition -= m_capacity;
+		}
+	}
+
+	inline void moveTailPosition(size_t offset)
+	{
+		m_tailPosition += offset;
+		if (m_tailPosition >= m_capacity)
+		{
+			m_tailPosition -= m_capacity;
+		}
+	}
+protected:
+	size_t m_capacity;
+	unsigned char* m_data;
+	size_t m_headPosition;
+	size_t m_tailPosition;
 };
 
 NS_YH_END
 
-#endif // YH_IO_BUFFER_H_
+#endif // YH_IO_RING_BUFFER_H_

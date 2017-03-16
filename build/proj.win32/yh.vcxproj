@@ -32,6 +32,7 @@
     <ClInclude Include="..\..\yh\io\InputStream.h" />
     <ClInclude Include="..\..\yh\io\IOMacros.h" />
     <ClInclude Include="..\..\yh\io\OutputStream.h" />
+    <ClInclude Include="..\..\yh\io\RingBuffer.h" />
     <ClInclude Include="..\..\yh\jsoncpp\autolink.h" />
     <ClInclude Include="..\..\yh\jsoncpp\config.h" />
     <ClInclude Include="..\..\yh\jsoncpp\features.h" />
@@ -78,6 +79,7 @@
     <ClCompile Include="..\..\yh\io\IeeeHalfPrecision.cpp" />
     <ClCompile Include="..\..\yh\io\InputStream.cpp" />
     <ClCompile Include="..\..\yh\io\OutputStream.cpp" />
+    <ClCompile Include="..\..\yh\io\RingBuffer.cpp" />
     <ClCompile Include="..\..\yh\jsoncpp\json_reader.cpp" />
     <ClCompile Include="..\..\yh\jsoncpp\json_value.cpp" />
     <ClCompile Include="..\..\yh\jsoncpp\json_writer.cpp" />

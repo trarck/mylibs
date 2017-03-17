@@ -5,7 +5,7 @@
 #include "../YHMacros.h"
 
 #ifndef USE_STD_UNORDERED_MAP
-#define USE_STD_UNORDERED_MAP 1
+#define USE_STD_UNORDERED_MAP 0
 #endif
 
 #if USE_STD_UNORDERED_MAP

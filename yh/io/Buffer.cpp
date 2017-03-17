@@ -215,7 +215,7 @@ unsigned char* Buffer::slice(size_t start,size_t* size)
     return m_data+start;
 }
 
-void Buffer::setData(unsigned char* data, size_t size,bool dataOwner = true)
+void Buffer::setData(unsigned char* data, size_t size,bool dataOwner)
 {
 	//remove old data
 	if (m_data && m_dataOwner)

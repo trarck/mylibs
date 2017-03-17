@@ -3,6 +3,7 @@
 
 #include "../securesqlite3/sqlite3.h"
 #include <string>
+#include <map>
 #include "SqliteMacros.h"
 
 NS_YH_SQLITE_BEGIN

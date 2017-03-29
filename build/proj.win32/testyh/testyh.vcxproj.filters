@@ -49,5 +49,8 @@
     <ClCompile Include="..\..\..\tests\sqlite\sqlite_origin_unittest.cpp">
       <Filter>tests\sqlite</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\tests\io\ringbuffer_unittest.cpp">
+      <Filter>tests\io</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

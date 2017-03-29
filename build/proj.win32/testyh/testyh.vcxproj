@@ -123,6 +123,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\tests\ds\list_unittest.cpp" />
     <ClCompile Include="..\..\..\tests\io\buffer_unittest.cpp" />
+    <ClCompile Include="..\..\..\tests\io\ringbuffer_unittest.cpp" />
     <ClCompile Include="..\..\..\tests\io\stream_unittest.cpp" />
     <ClCompile Include="..\..\..\tests\plist\plist_unittest.cpp" />
     <ClCompile Include="..\..\..\tests\sqlite\sqlite_origin_unittest.cpp" />

@@ -36,7 +36,7 @@ size_t RingBuffer::readBytes(unsigned char* buf,size_t size)
 	if (size > 0)
 	{
 		//由于size不超过data size,所以不用担心，会超过m_tailPosition.
-		if (m_headPosition + size < m_capacity)
+		if (m_headPosition + size <= m_capacity)
 		{
 			//直接复制
 			memcpy(buf, m_data + m_headPosition, size);
@@ -194,7 +194,7 @@ uint32_t RingBuffer::readUInt32BE()
 
 uint64_t RingBuffer::readUInt64LE()
 {
-    YHASSERT(getSize()>=RING_BUFFER_LONG_SIZE <,"RingBuffer::readUInt64LE out 64 index");
+    YHASSERT(getSize()>=RING_BUFFER_LONG_SIZE,"RingBuffer::readUInt64LE out 64 index");
 	uint64_t val = 0;
 	unsigned char* start = m_data + m_headPosition;
 
@@ -233,8 +233,6 @@ uint64_t RingBuffer::readUInt64BE()
 	if (m_headPosition + RING_BUFFER_LONG_SIZE <= m_capacity)
 	{
 		unsigned char* start = m_data + m_headPosition + RING_BUFFER_LONG_SIZE-1;
-
-		uint64_t val = 0;
 
 		for (int i = 0; i < RING_BUFFER_LONG_SIZE; i++)
 		{
@@ -304,29 +302,33 @@ float RingBuffer::readFloat16BE()
 float RingBuffer::readFloatLE()
 {
 	YHASSERT(getSize() >= RING_BUFFER_INT_SIZE, "Buffer::readFloatLE out index");
-	uint32_t floatBuffer = readUInt32LE();
-	return byteToFloat<float, kLittleEndian>((byte_t*)&floatBuffer);
+	unsigned char floatBuffer[4];
+	readBytes(floatBuffer, 4);
+	return byteToFloat<float, kLittleEndian>(floatBuffer);
 }
 
 float RingBuffer::readFloatBE()
 {
 	YHASSERT(getSize() >= RING_BUFFER_INT_SIZE, "Buffer::readFloatBE out index");
-	uint32_t floatBuffer = readUInt32BE();
-	return byteToFloat<float, kBigEndian>((byte_t*)&floatBuffer);
+	unsigned char floatBuffer[4];
+	readBytes(floatBuffer,4);
+	return byteToFloat<float, kBigEndian>(floatBuffer);
 }
 
 double RingBuffer::readDoubleLE()
 {
 	YHASSERT(getSize() >= RING_BUFFER_LONG_SIZE, "Buffer::readDoubleLE out index");
-	uint64_t floatBuffer = readUInt64LE();
-	return byteToFloat<double, kLittleEndian>((byte_t*)&floatBuffer);
+	unsigned char floatBuffer[8];
+	readBytes(floatBuffer, 8);
+	return byteToFloat<double, kLittleEndian>(floatBuffer);
 }
 
 double RingBuffer::readDoubleBE()
 {
 	YHASSERT(getSize() >= RING_BUFFER_LONG_SIZE, "Buffer::readDoubleBE out index");
-	uint64_t floatBuffer = readUInt64BE();
-	return byteToFloat<double, kBigEndian>((byte_t*)&floatBuffer);
+	unsigned char floatBuffer[8];
+	readBytes(floatBuffer, 8);
+	return byteToFloat<double, kBigEndian>(floatBuffer);
 }
 
 size_t RingBuffer::writeBytes(unsigned char* buf,size_t size)
@@ -337,7 +339,7 @@ size_t RingBuffer::writeBytes(unsigned char* buf,size_t size)
 
 	if (writeSize > 0)
 	{
-		if (m_tailPosition + writeSize < m_capacity)
+		if (m_tailPosition + writeSize <= m_capacity)
 		{
 			//未到达数据结束位置，直接copy
 			memcpy(m_data + m_tailPosition, buf, writeSize);
@@ -361,7 +363,7 @@ size_t RingBuffer::writeByte(unsigned char value)
 	YHASSERT(getEmptySize() >= RING_BUFFER_BYTE_SIZE, "Buffer::writeByte out index");
 
 	*(m_data + m_tailPosition) = value;
-
+	moveTailPosition(RING_BUFFER_BYTE_SIZE);
 	return RING_BUFFER_BYTE_SIZE;
 }
 
@@ -370,7 +372,7 @@ size_t RingBuffer::writeUInt8(uint8_t value)
 	YHASSERT(getEmptySize() >= RING_BUFFER_BYTE_SIZE, "Buffer::writeUInt8 out index");
 
 	*(m_data + m_tailPosition) = value;
-
+	moveTailPosition(RING_BUFFER_BYTE_SIZE);
 	return RING_BUFFER_BYTE_SIZE;
 }
 
@@ -644,6 +646,7 @@ size_t RingBuffer::getEmptySize()
 	{
 		size = m_headPosition - m_tailPosition;
 	}
+	return size;
 }
 
 NS_YH_END

@@ -31,6 +31,7 @@
 #include "io/Buffer.h"
 #include "io/InputStream.h"
 #include "io/OutputStream.h"
+#include "io/RingBuffer.h"
 
 //sp
 #include "smartpointer/smart_ptr.h"

@@ -17,7 +17,7 @@ NS_YH_BEGIN
 
 /**
  * 环形绥冲区
- * 是Stream，不是Buffer。
+ * 类似stream,有读写位置。
  */
 class RingBuffer:public Ref
 {

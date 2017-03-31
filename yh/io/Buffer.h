@@ -37,7 +37,7 @@ public:
      *
      * @return 实际读取的大小。如果大小为0，则读取错误
      */
-    size_t readBytes(size_t position,void* buf,size_t size);
+    size_t readBytes(size_t position, unsigned char* buf,size_t size);
 
     /**
      * @brief 不安全的读取一段数据
@@ -441,7 +441,7 @@ public:
      *
      * @return 实际写入的大小。如果大小为0，则写入错误
      */
-    size_t writeBytes(size_t position,void* buf,size_t size);
+    size_t writeBytes(size_t position, unsigned char* buf,size_t size);
     
     /**
      * @brief 不安全写入一段数据
@@ -452,7 +452,7 @@ public:
      *
      * @return 实际写入的大小。如果大小为0，则写入错误
      */
-    size_t writeBytesSafe(size_t position,void* buf,size_t size);
+    size_t writeBytesSafe(size_t position, unsigned char* buf,size_t size);
     
     /**
      * @brief 写入一个字节
@@ -463,11 +463,14 @@ public:
      */
     inline size_t writeByte(unsigned char value,size_t position)
     {
-        YHASSERT(position<m_size,"Buffer::writeByte out index");
+		if (position < m_size)
+		{
+			*(m_data + position) = value;
+
+			return YH_IO_BYTE_SIZE;
+		}
         
-        *(m_data+position)=value;
-        
-        return YH_IO_BYTE_SIZE;
+		return 0;
     }
     
     /**
@@ -478,12 +481,8 @@ public:
      * @return 实际写入的大小。如果大小为0，则写入错误
      */
     inline size_t writeUInt8(uint8_t value,size_t position)
-    {
-        YHASSERT(position<m_size,"Buffer::writeUInt8 out index");
-        
-        *(m_data+position)=value;
-        
-        return YH_IO_BYTE_SIZE;
+    {       
+        return writeByte(value,position);
     }
     
     /**

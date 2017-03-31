@@ -45,11 +45,11 @@ Buffer::Buffer(unsigned char* data,size_t size,bool dataOwner)
 Buffer::~Buffer()
 {
     if (m_data && m_dataOwner) {
-        delete m_data;
+        free(m_data);
     }
 }
 
-size_t Buffer::readBytes(size_t position,void* buf,size_t size)
+size_t Buffer::readBytes(size_t position, unsigned char* buf,size_t size)
 {
     YHASSERT(position<m_size,"Buffer::readBytes out index");
     
@@ -192,7 +192,7 @@ float Buffer::readFloat16BE(size_t position)
 	return val;
 }
 
-size_t Buffer::writeBytes(size_t position,void* buf,size_t size)
+size_t Buffer::writeBytes(size_t position, unsigned char* buf,size_t size)
 {
     YHASSERT(position<m_size,"Buffer::writeBytes out index");
     
@@ -205,7 +205,7 @@ size_t Buffer::writeBytes(size_t position,void* buf,size_t size)
     return size;
 }
 
-size_t Buffer::writeBytesSafe(size_t position,void* buf,size_t size)
+size_t Buffer::writeBytesSafe(size_t position, unsigned char* buf,size_t size)
 {
     YHASSERT(position+size<=m_size,"Buffer::writeBytes out index");
     

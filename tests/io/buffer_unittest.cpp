@@ -4,7 +4,7 @@
 #include <gtest/gtest.h>
 
 USING_NS_YH;
-
+USING_NS_YH_IO;
 //test read
 TEST(BufferTest, ReadBigEndian) {
     
@@ -125,8 +125,7 @@ TEST(BufferTest, ReadLittleEndian) {
 
 //test write
 TEST(BufferTest, writeBigEndian) {
-    
-    
+
     unsigned char buf[]={
         0x12,
         0x34,0x56,

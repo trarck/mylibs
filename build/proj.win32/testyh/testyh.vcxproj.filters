@@ -28,9 +28,6 @@
     <ClCompile Include="..\..\..\tests\io\buffer_unittest.cpp">
       <Filter>tests\io</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\tests\io\stream_unittest.cpp">
-      <Filter>tests\io</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\tests\xml\xml_unittest.cpp">
       <Filter>tests\xml</Filter>
     </ClCompile>
@@ -50,6 +47,12 @@
       <Filter>tests\sqlite</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\tests\io\ringbuffer_unittest.cpp">
+      <Filter>tests\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\tests\io\bufferstream_unittest.cpp">
+      <Filter>tests\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\tests\io\memorystream_unittest.cpp">
       <Filter>tests\io</Filter>
     </ClCompile>
   </ItemGroup>

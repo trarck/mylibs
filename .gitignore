@@ -8,6 +8,7 @@ Thumbs.db
 *.aps
 *.vcproj.*.user
 *.vcxproj.user
+*.csproj.user
 *.vspscc
 *_i.c
 *.i
@@ -22,18 +23,24 @@ Thumbs.db
 *.ilk
 *.log
 [Bb]in
-[Dd]ebug*/
+[Dd]ebug/
+[Dd]ebug.win32/
 *.sbr
 *.sdf
 obj/
-[Rr]elease*/
+[Rr]elease/
+[Rr]elease.win32/
 _ReSharper*/
 [Tt]est[Rr]esult*
 ipch/
 *.opensdf
+*.opendb
+SubmissionInfo
 Generated Files
 AppPackages
-*.hps
+BundleArtifacts
+.vs/
+*.VC.db
 
 # Ignore files build by ndk and eclipse
 libs/
@@ -54,16 +61,17 @@ build_*_vc10/
 *.mode*v*
 *.pbxuser
 *.xcbkptlist
-*.xcscheme
 *.xcworkspacedata
 *.xcuserstate
+*.xccheckout
 xcschememanagement.plist
-#build/
 .DS_Store
 ._.*
 xcuserdata/
 DerivedData/
-*.xccheckout
+
+# Ignore files built by AppCode
+.idea/
 
 # Ignore files built by bada
 .Simulator-Debug/
@@ -83,3 +91,5 @@ Device-Release/
 /deps/gtest/libraries
 /build/gyp
 /build/proj.win32/yh.VC.opendb
+/CMakeFiles
+/build/proj.win32/testyh

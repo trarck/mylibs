@@ -1,4 +1,5 @@
 #include "Plist.h"
+#include <stdlib.h>
 
 NS_YH_BEGIN
 

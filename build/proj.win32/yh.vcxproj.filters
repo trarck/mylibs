@@ -145,12 +145,6 @@
     <ClInclude Include="..\..\yh\io\IeeeHalfPrecision.h">
       <Filter>yh\io</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\yh\io\InputStream.h">
-      <Filter>yh\io</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\io\OutputStream.h">
-      <Filter>yh\io</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\yh\pugixml\pugiconfig.hpp">
       <Filter>yh\pugixml</Filter>
     </ClInclude>
@@ -222,6 +216,23 @@
     </ClInclude>
     <ClInclude Include="..\..\yh\message\MessageTarget.h">
       <Filter>yh\message</Filter>
+    <ClInclude Include="..\..\yh\io\RingBuffer.h">
+      <Filter>yh\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\io\BufferStream.h">
+      <Filter>yh\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\io\MemoryStream.h">
+      <Filter>yh\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\io\Stream.h">
+      <Filter>yh\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\io\BinaryReader.h">
+      <Filter>yh\io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\io\BinaryWriter.h">
+      <Filter>yh\io</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -256,12 +267,6 @@
       <Filter>yh\sqlite</Filter>
     </ClCompile>
     <ClCompile Include="..\..\yh\io\IeeeHalfPrecision.cpp">
-      <Filter>yh\io</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\yh\io\InputStream.cpp">
-      <Filter>yh\io</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\yh\io\OutputStream.cpp">
       <Filter>yh\io</Filter>
     </ClCompile>
     <ClCompile Include="..\..\yh\pugixml\pugixml.cpp">
@@ -302,6 +307,23 @@
     </ClCompile>
     <ClCompile Include="..\..\yh\message\MessageTarget.cpp">
       <Filter>yh\message</Filter>
+    <ClCompile Include="..\..\yh\io\RingBuffer.cpp">
+      <Filter>yh\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\io\BufferStream.cpp">
+      <Filter>yh\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\io\MemoryStream.cpp">
+      <Filter>yh\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\io\Stream.cpp">
+      <Filter>yh\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\io\BinaryReader.cpp">
+      <Filter>yh\io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\io\BinaryWriter.cpp">
+      <Filter>yh\io</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -31,7 +31,7 @@ protected:
 	{
 		Statement stmt(*m_sqliteDriver, "SELECT count(*) FROM sqlite_master WHERE type = 'table' AND name = 'MyTable'");
 
-		if (stmt.executeStep())
+		if (stmt.step())
 		{
 			Column col = stmt.getColumn(0);
 			int tableCount = col.getInt();
@@ -54,6 +54,8 @@ protected:
 	}
 };
 
+
+
 //test create
 TEST_F(SqliteWrapTest, CreateTable)
 {
@@ -62,7 +64,8 @@ TEST_F(SqliteWrapTest, CreateTable)
 
 	if (stmt.execute())
 	{
-		Column col = stmt.getColumn(0);
+		yh::sqlite::Column col = stmt.getColumn(0);
+
 		int tableCount = col.getInt();
 		if (tableCount == 0)
 		{
@@ -85,7 +88,7 @@ TEST_F(SqliteWrapTest, InsertData) {
 
 	Statement stmt(*m_sqliteDriver, "select * from MyTable");
 
-	if (stmt.executeStep())
+	if (stmt.step())
 	{
 		ASSERT_STREQ(stmt.getColumn(1).getText(), "aaa");
 	}

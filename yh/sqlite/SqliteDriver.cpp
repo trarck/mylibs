@@ -11,6 +11,7 @@ NS_YH_SQLITE_BEGIN
 
 SqliteDriver::SqliteDriver()
 :m_db(NULL)
+, m_connecting(false)
 ,m_dbPath("")
 {
     
@@ -27,7 +28,7 @@ bool SqliteDriver::init()
     return true;
 }
 
-void SqliteDriver::connect(const std::string& dbPath,const int flag)
+bool SqliteDriver::connect(const std::string& dbPath,const int flag)
 {
 	int ret = sqlite3_open_v2(dbPath.c_str(), &m_db, flag, NULL);
 	if(SQLITE_OK != ret)
@@ -36,42 +37,56 @@ void SqliteDriver::connect(const std::string& dbPath,const int flag)
 		const char* strerr = sqlite3_errmsg(m_db);
 		YHERROR(strerr);
 		sqlite3_close(m_db); // close is required even in case of error on opening
+		m_connecting = false;
+		return false;
 	}
+	m_connecting = true;
+	return true;
 }
 
-void SqliteDriver::connect(const std::string& dbPath, const std::string& password ,const int flag)
+bool SqliteDriver::connect(const std::string& dbPath, const std::string& password ,const int flag)
 {
 	int ret = sqlite3_open_v2(dbPath.c_str(), &m_db, flag, NULL);
 	if(SQLITE_OK == ret)
 	{
-		#ifdef SQLITE_HAS_CODEC
+#ifdef SQLITE_HAS_CODEC
 		ret = sqlite3_key(m_db, password.c_str(), password.length());
 		if (SQLITE_OK == ret) {
-			return;
+			m_connecting = true;
+			return true;
 		}
-		#endif //SQLITE_HAS_CODEC
+#else
+		m_connecting = true;
+		return true;
+#endif //SQLITE_HAS_CODEC
 	}
 
+	m_connecting = false;
 	//show error
 	const char* strerr = sqlite3_errmsg(m_db);
 	YHERROR(strerr);
 	sqlite3_close(m_db); // close is required even in case of error on opening
+	return false;
 }
 
-void SqliteDriver::close()
+bool SqliteDriver::close()
 {
     if (m_db) {
         int ret = sqlite3_close(m_db);
 		if (ret != SQLITE_OK)
 		{
 			YHERROR("close error:%d,%s",ret, sqlite3_errmsg(m_db));
+			return false;
 		}
+		m_connecting = false;
         m_db=NULL;
     }
+	return true;
 }
 
-int SqliteDriver::execute(
+bool SqliteDriver::execute(
 	const char* query,		/* SQL to be evaluated */
+	int* changes,					/* when execute sql effect database rows*/
 	int(*callback)(void*, int, char**, char**),	 /* Callback function */
 	void * callbackFirstData,                                    /* 1st argument to callback */
 	char **errmsg                              /* Error msg written here */
@@ -79,16 +94,22 @@ int SqliteDriver::execute(
 {
 	int ret = sqlite3_exec(m_db, query, callback, callbackFirstData, errmsg);
 
-	check(ret);
-
-	// Return the number of rows modified by those SQL statements (INSERT, UPDATE or DELETE)
-	return sqlite3_changes(m_db);
+	if (ret == SQLITE_OK)
+	{
+		if (changes)
+		{
+			// the number of rows modified by those SQL statements (INSERT, UPDATE or DELETE)
+			*changes=sqlite3_changes(m_db);
+		}		
+		return true;
+	}
+	return false;
 }
 
 Column SqliteDriver::fetchFirstColumn(const char* sqlStr)
 {
     Statement queryStmt(*this, sqlStr);
-    (void)queryStmt.executeStep(); // Can return false if no result, which will throw next line in getColumn()
+    (void)queryStmt.step(); // Can return false if no result, which will throw next line in getColumn()
     return queryStmt.getColumn(0);
 }
 
@@ -96,7 +117,7 @@ bool SqliteDriver::tableExists(const std::string& tableName)
 {
     Statement queryStmt(*this, "SELECT count(*) FROM sqlite_master WHERE type='table' AND name=?");
     queryStmt.bind(1, tableName);
-    (void)queryStmt.executeStep(); // Cannot return false, as the above query always return a result
+    (void)queryStmt.step(); // Cannot return false, as the above query always return a result
     int result = queryStmt.getColumn(0);
     return (1 == result);
 }

@@ -3,7 +3,8 @@
 #include <ctype.h>
 #include <stdarg.h>
 #include <assert.h>
-
+#include <string.h>
+#include <stdlib.h>
 
 using namespace yh;
 using namespace yh::cli;

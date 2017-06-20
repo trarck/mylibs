@@ -29,8 +29,12 @@
 //io
 #include "io/IOMacros.h"
 #include "io/Buffer.h"
-#include "io/InputStream.h"
-#include "io/OutputStream.h"
+#include "io/RingBuffer.h"
+#include "io/Stream.h"
+#include "io/MemoryStream.h"
+#include "io/BufferStream.h"
+#include "io/BinaryReader.h"
+#include "io/BinaryWriter.h"
 
 //sp
 #include "smartpointer/smart_ptr.h"

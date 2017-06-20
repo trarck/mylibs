@@ -93,7 +93,7 @@
           'conditions': [
               ['OS=="win"', {
                   'defines': [
-                    
+                    'WIN32','_WINDOWS'
                   ],
                   'sources': [
                     './yh/platform/win32/compat/stdint.h',
@@ -174,6 +174,9 @@
          'configurations': {
             'Debug': {
                 'defines': [ 'YH_USE_SCRIPT_LOG','YH_DEBUG'],
+            },
+			'Release': {
+                'defines': ['NODEBUG'],
             }
          },
       }

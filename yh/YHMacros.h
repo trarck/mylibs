@@ -5,6 +5,7 @@
 #include "platform/PlatformConfig.h"
 #include "platform/PlatformDefine.h"
 #include "platform/Log.h"
+#include "platform/YHStdC.h"
 
 #ifndef YHASSERT
 #if defined(YH_DEBUG)

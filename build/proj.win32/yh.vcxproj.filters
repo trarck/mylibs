@@ -44,6 +44,9 @@
     <Filter Include="yh\plist">
       <UniqueIdentifier>{48d952ae-563f-4678-ac33-3460b75a264d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="yh\message">
+      <UniqueIdentifier>{4fca2004-a08e-4506-8cfa-1caf02572cf5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\yh\base\Internals.h">
@@ -199,6 +202,20 @@
     <ClInclude Include="..\..\yh\base\Ref.h">
       <Filter>yh\base</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\yh\message\Message.h">
+      <Filter>yh\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\message\MessageHandler.h">
+      <Filter>yh\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\message\MessageManager.h">
+      <Filter>yh\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\message\MessageManagerInterface.h">
+      <Filter>yh\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\message\MessageTarget.h">
+      <Filter>yh\message</Filter>
     <ClInclude Include="..\..\yh\io\RingBuffer.h">
       <Filter>yh\io</Filter>
     </ClInclude>
@@ -279,6 +296,17 @@
     <ClCompile Include="..\..\yh\base\Ref.cpp">
       <Filter>yh\base</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\yh\message\Message.cpp">
+      <Filter>yh\message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\message\MessageHandler.cpp">
+      <Filter>yh\message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\message\MessageManager.cpp">
+      <Filter>yh\message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\message\MessageTarget.cpp">
+      <Filter>yh\message</Filter>
     <ClCompile Include="..\..\yh\io\RingBuffer.cpp">
       <Filter>yh\io</Filter>
     </ClCompile>

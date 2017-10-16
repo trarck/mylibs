@@ -23,6 +23,9 @@
     <Filter Include="tests\plist">
       <UniqueIdentifier>{3f7a10f8-87d3-4024-853b-e8538e255844}</UniqueIdentifier>
     </Filter>
+    <Filter Include="tests\message">
+      <UniqueIdentifier>{0c6c8304-bb0b-46f0-bf82-2668e701e2c7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\tests\io\buffer_unittest.cpp">

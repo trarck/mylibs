@@ -58,6 +58,11 @@
     <ClInclude Include="..\..\yh\jsoncpp\reader.h" />
     <ClInclude Include="..\..\yh\jsoncpp\value.h" />
     <ClInclude Include="..\..\yh\jsoncpp\writer.h" />
+    <ClInclude Include="..\..\yh\message\Message.h" />
+    <ClInclude Include="..\..\yh\message\MessageHandler.h" />
+    <ClInclude Include="..\..\yh\message\MessageManager.h" />
+    <ClInclude Include="..\..\yh\message\MessageManagerInterface.h" />
+    <ClInclude Include="..\..\yh\message\MessageTarget.h" />
     <ClInclude Include="..\..\yh\NSMacros.h" />
     <ClInclude Include="..\..\yh\platform\Log.h" />
     <ClInclude Include="..\..\yh\platform\PlatformConfig.h" />
@@ -101,6 +106,10 @@
     <ClCompile Include="..\..\yh\jsoncpp\json_reader.cpp" />
     <ClCompile Include="..\..\yh\jsoncpp\json_value.cpp" />
     <ClCompile Include="..\..\yh\jsoncpp\json_writer.cpp" />
+    <ClCompile Include="..\..\yh\message\Message.cpp" />
+    <ClCompile Include="..\..\yh\message\MessageHandler.cpp" />
+    <ClCompile Include="..\..\yh\message\MessageManager.cpp" />
+    <ClCompile Include="..\..\yh\message\MessageTarget.cpp" />
     <ClCompile Include="..\..\yh\platform\Log.cpp" />
     <ClCompile Include="..\..\yh\platform\win32\StdC-win32.cpp" />
     <ClCompile Include="..\..\yh\plist\Plist.cpp" />

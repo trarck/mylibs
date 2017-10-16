@@ -1,5 +1,5 @@
-#ifndef YH_BASE_LOG_H_
-#define YH_BASE_LOG_H_
+#ifndef YH_PLATFORM_LOG_H_
+#define YH_PLATFORM_LOG_H_
 
 #include "../NSMacros.h"
 
@@ -56,4 +56,4 @@ void SetScriptDeubgFuncPtr(ScriptDeubgFuncPtr fp);
 
 NS_YH_END
 
-#endif // YH_BASE_LOG_H_
+#endif // YH_PLATFORM_LOG_H_

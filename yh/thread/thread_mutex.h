@@ -1,5 +1,5 @@
-#ifndef YH_THREAD_THREAD_H_
-#define YH_THREAD_THREAD_H_
+#ifndef YH_THREAD_THREAD_MUTEX_H_
+#define YH_THREAD_THREAD_MUTEX_H_
 #if defined(_WIN32)
 
 	#include <windows.h> 
@@ -49,4 +49,4 @@
 
 #endif
 
-#endif //YH_THREAD_THREAD_H_
+#endif //YH_THREAD_THREAD_MUTEX_H_

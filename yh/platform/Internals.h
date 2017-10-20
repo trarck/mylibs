@@ -2,7 +2,7 @@
 #define YH_BASE_INTERNALS_H_
 
 #include "../YHMacros.h"
-#include "../platform/YHStdC.h"
+#include "YHStdC.h"
 
 NS_YH_BEGIN
 

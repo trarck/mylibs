@@ -1,6 +1,6 @@
 #include "BinaryReader.h"
 #include <string>
-#include "../base/Internals.h"
+#include "../platform/Internals.h"
 #include "IeeeHalfPrecision.h"
 
 NS_YH_IO_BEGIN

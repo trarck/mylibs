@@ -60,7 +60,7 @@
 // Includes -------------------------------------------------------------------
 
 #include "IeeeHalfPrecision.h"
-#include "../base/Internals.h"
+#include "../platform/Internals.h"
 
 NS_YH_BEGIN
 

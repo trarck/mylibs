@@ -3,7 +3,7 @@
 
 #include "../YHMacros.h"
 #include "../base/Ref.h"
-#include "../base/Internals.h"
+#include "../platform/Internals.h"
 #include "../platform/YHStdC.h"
 #include "IeeeHalfPrecision.h"
 

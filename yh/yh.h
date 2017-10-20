@@ -4,7 +4,6 @@
 //base
 #include "NSMacros.h"
 #include "YHMacros.h"
-#include "base/Internals.h"
 #include "base/Ref.h"
 #include "base/RefPtr.h"
 
@@ -13,6 +12,7 @@
 #include "platform/PlatformDefine.h"
 #include "platform/YHStdC.h"
 #include "platform/Log.h"
+#include "platform/Internals.h"
 
 //datastructure
 #include "datastructure/LinkedList.h"

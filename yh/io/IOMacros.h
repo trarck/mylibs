@@ -9,9 +9,9 @@
 
 #else
 
-#define NS_YH_BEGIN                     
-#define NS_YH_END                       
-#define USING_NS_YH
+#define NS_YH_IO_BEGIN                     
+#define NS_YH_IO_END                       
+#define USING_NS_YH_IO
 
 #endif
 

@@ -19,8 +19,6 @@
             './yh/base/Ref.cpp',
             './yh/base/Ref.h',
             './yh/base/RCPtr.h',
-            './yh/base/RefCount.cpp',
-            './yh/base/RefCount.h',
             './yh/base/RefPtr.cpp',
             './yh/base/RefPtr.h',
             './yh/collections/Map.h',

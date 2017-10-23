@@ -1,5 +1,5 @@
-#ifndef YH_BASE_OBJECT_H_
-#define YH_BASE_OBJECT_H_
+#ifndef YH_BASE_REF_H_
+#define YH_BASE_REF_H_
 
 #include "../YHMacros.h"
 
@@ -101,4 +101,4 @@ protected:
 
 NS_YH_END
 
-#endif // YH_BASE_OBJECT_H_
+#endif // YH_BASE_REF_H_

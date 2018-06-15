@@ -98,7 +98,6 @@
                     './yh/platform/win32/PlatformDefine-win32.h',
                     './yh/platform/win32/StdC-win32.cpp',
                     './yh/platform/win32/StdC-win32.h',
-                    './yh/platform/win32/Win32StdC.h',
                   ]
                 }
              ],

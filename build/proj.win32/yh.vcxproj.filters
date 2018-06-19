@@ -1,329 +1,236 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="yh">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="base">
+      <UniqueIdentifier>{558fa6af-27c5-494f-9835-a4c5ea84bdab}</UniqueIdentifier>
     </Filter>
-    <Filter Include="yh\base">
-      <UniqueIdentifier>{011e5769-cbc0-482b-9be0-85d4f8fd3d54}</UniqueIdentifier>
+    <Filter Include="collections">
+      <UniqueIdentifier>{75589494-aa92-41d0-8cfb-6b02584b5e9a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="yh\io">
-      <UniqueIdentifier>{69f0b834-c2f7-4830-a4f7-fd976204eab2}</UniqueIdentifier>
+    <Filter Include="datastructure">
+      <UniqueIdentifier>{de80db02-b8b2-4732-8a00-dc6213ff3ad2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="yh\jsoncpp">
-      <UniqueIdentifier>{d701611f-7022-49f6-ad13-10b8abe8a0aa}</UniqueIdentifier>
+    <Filter Include="io">
+      <UniqueIdentifier>{2bef30f7-0536-4b41-921f-854474dde44a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="yh\platform">
-      <UniqueIdentifier>{9f1892a7-4501-423b-863b-5b7a840fc747}</UniqueIdentifier>
+    <Filter Include="jsoncpp">
+      <UniqueIdentifier>{6581a91d-28a7-468b-8eb2-07ee2c5a04ba}</UniqueIdentifier>
     </Filter>
-    <Filter Include="yh\sqlite">
-      <UniqueIdentifier>{6c765c18-b167-436c-89cc-19c277b2f128}</UniqueIdentifier>
+    <Filter Include="math">
+      <UniqueIdentifier>{4b1947e6-43cf-46c5-9e27-4a7c6bb07595}</UniqueIdentifier>
     </Filter>
-    <Filter Include="yh\string">
-      <UniqueIdentifier>{eab36634-6699-4ba1-bfd2-dde34829785a}</UniqueIdentifier>
+    <Filter Include="platform">
+      <UniqueIdentifier>{dc79c159-ecb1-4d4d-bec0-ea01d2266fb6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="yh\platform\win32">
-      <UniqueIdentifier>{60de55a5-2720-47e5-a193-6654cf5a0231}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="yh\string\utf8">
-      <UniqueIdentifier>{4e7a19ab-bc85-4c8f-9d17-70df6750b6f5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="yh\pugixml">
-      <UniqueIdentifier>{7b9f5092-72d9-480b-b68d-afbf6a022448}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="yh\datastructure">
-      <UniqueIdentifier>{c7b7573f-da7b-47fa-94fe-6161a1d2ee21}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="yh\securesqlite3">
-      <UniqueIdentifier>{ef679d68-51d7-4fd3-9705-db7301a4412d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="yh\collections">
-      <UniqueIdentifier>{ab2469f5-108e-4b4d-877b-7fbcd8bce8b8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="yh\plist">
-      <UniqueIdentifier>{48d952ae-563f-4678-ac33-3460b75a264d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="yh\message">
-      <UniqueIdentifier>{4fca2004-a08e-4506-8cfa-1caf02572cf5}</UniqueIdentifier>
+    <Filter Include="platform\win32">
+      <UniqueIdentifier>{b87728e9-7ee8-4dc1-986e-e43922182689}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\yh\base\Internals.h">
-      <Filter>yh\base</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\base\RefCount.h">
-      <Filter>yh\base</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\base\RefPtr.h">
-      <Filter>yh\base</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\io\Buffer.h">
-      <Filter>yh\io</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\io\IOMacros.h">
-      <Filter>yh\io</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\jsoncpp\autolink.h">
-      <Filter>yh\jsoncpp</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\jsoncpp\config.h">
-      <Filter>yh\jsoncpp</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\jsoncpp\features.h">
-      <Filter>yh\jsoncpp</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\jsoncpp\forwards.h">
-      <Filter>yh\jsoncpp</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\jsoncpp\json.h">
-      <Filter>yh\jsoncpp</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\jsoncpp\json_batchallocator.h">
-      <Filter>yh\jsoncpp</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\jsoncpp\json_macros.h">
-      <Filter>yh\jsoncpp</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\jsoncpp\reader.h">
-      <Filter>yh\jsoncpp</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\jsoncpp\value.h">
-      <Filter>yh\jsoncpp</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\jsoncpp\writer.h">
-      <Filter>yh\jsoncpp</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\platform\PlatformConfig.h">
-      <Filter>yh\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\platform\PlatformDefine.h">
-      <Filter>yh\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\platform\YHStdC.h">
-      <Filter>yh\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\sqlite\Column.h">
-      <Filter>yh\sqlite</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\sqlite\SqliteDriver.h">
-      <Filter>yh\sqlite</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\sqlite\SqliteMacros.h">
-      <Filter>yh\sqlite</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\sqlite\Statement.h">
-      <Filter>yh\sqlite</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\sqlite\Transaction.h">
-      <Filter>yh\sqlite</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\string\utf8.h">
-      <Filter>yh\string</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\string\utf8\checked.h">
-      <Filter>yh\string\utf8</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\string\utf8\core.h">
-      <Filter>yh\string\utf8</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\string\utf8\unchecked.h">
-      <Filter>yh\string\utf8</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\platform\Log.h">
-      <Filter>yh\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\yh.h">
-      <Filter>yh</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\NSMacros.h">
-      <Filter>yh</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\YHMacros.h">
-      <Filter>yh</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\io\IeeeHalfPrecision.h">
-      <Filter>yh\io</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\pugixml\pugiconfig.hpp">
-      <Filter>yh\pugixml</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\pugixml\pugixml.hpp">
-      <Filter>yh\pugixml</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\datastructure\DataStructureMacros.h">
-      <Filter>yh\datastructure</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\datastructure\Iterator.h">
-      <Filter>yh\datastructure</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\datastructure\Iterator-implement.h">
-      <Filter>yh\datastructure</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\datastructure\LinkedList.h">
-      <Filter>yh\datastructure</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\datastructure\LinkedList-implement.h">
-      <Filter>yh\datastructure</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\platform\win32\PlatformDefine-win32.h">
-      <Filter>yh\platform\win32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\platform\win32\StdC-win32.h">
-      <Filter>yh\platform\win32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\platform\PlatformMacros.h">
-      <Filter>yh\platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\securesqlite3\sqlite3.h">
-      <Filter>yh\securesqlite3</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\securesqlite3\sqlite3ext.h">
-      <Filter>yh\securesqlite3</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\collections\Map.h">
-      <Filter>yh\collections</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\collections\ObjectValue.h">
-      <Filter>yh\collections</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\collections\Vector.h">
-      <Filter>yh\collections</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\plist\Plist.h">
-      <Filter>yh\plist</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\plist\PlistRecursion.h">
-      <Filter>yh\plist</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\string\YHString.h">
-      <Filter>yh\string</Filter>
+    <ClInclude Include="..\..\yh\base\RCPtr.h">
+      <Filter>base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\yh\base\Ref.h">
-      <Filter>yh\base</Filter>
+      <Filter>base</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\yh\message\Message.h">
-      <Filter>yh\message</Filter>
+    <ClInclude Include="..\..\yh\base\RefPtr.h">
+      <Filter>base</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\yh\message\MessageHandler.h">
-      <Filter>yh\message</Filter>
+    <ClInclude Include="..\..\yh\collections\Map.h">
+      <Filter>collections</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\yh\message\MessageManager.h">
-      <Filter>yh\message</Filter>
+    <ClInclude Include="..\..\yh\collections\ObjectValue.h">
+      <Filter>collections</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\yh\message\MessageManagerInterface.h">
-      <Filter>yh\message</Filter>
+    <ClInclude Include="..\..\yh\collections\Vector.h">
+      <Filter>collections</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\yh\message\MessageTarget.h">
-      <Filter>yh\message</Filter>
-    <ClInclude Include="..\..\yh\io\RingBuffer.h">
-      <Filter>yh\io</Filter>
+    <ClInclude Include="..\..\yh\datastructure\DataStructureMacros.h">
+      <Filter>datastructure</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\yh\io\BufferStream.h">
-      <Filter>yh\io</Filter>
+    <ClInclude Include="..\..\yh\datastructure\Iterator-implement.h">
+      <Filter>datastructure</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\yh\io\MemoryStream.h">
-      <Filter>yh\io</Filter>
+    <ClInclude Include="..\..\yh\datastructure\Iterator.h">
+      <Filter>datastructure</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\yh\io\Stream.h">
-      <Filter>yh\io</Filter>
+    <ClInclude Include="..\..\yh\datastructure\LinkedList-implement.h">
+      <Filter>datastructure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\datastructure\LinkedList.h">
+      <Filter>datastructure</Filter>
     </ClInclude>
     <ClInclude Include="..\..\yh\io\BinaryReader.h">
-      <Filter>yh\io</Filter>
+      <Filter>io</Filter>
     </ClInclude>
     <ClInclude Include="..\..\yh\io\BinaryWriter.h">
-      <Filter>yh\io</Filter>
+      <Filter>io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\io\Buffer.h">
+      <Filter>io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\io\BufferInputStream.h">
+      <Filter>io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\io\BufferOutputStream.h">
+      <Filter>io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\io\BufferStream.h">
+      <Filter>io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\io\IeeeHalfPrecision.h">
+      <Filter>io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\io\IOMacros.h">
+      <Filter>io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\io\MemoryStream.h">
+      <Filter>io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\io\RingBuffer.h">
+      <Filter>io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\io\Stream.h">
+      <Filter>io</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\jsoncpp\autolink.h">
+      <Filter>jsoncpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\jsoncpp\config.h">
+      <Filter>jsoncpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\jsoncpp\features.h">
+      <Filter>jsoncpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\jsoncpp\forwards.h">
+      <Filter>jsoncpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\jsoncpp\json.h">
+      <Filter>jsoncpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\jsoncpp\json_batchallocator.h">
+      <Filter>jsoncpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\jsoncpp\json_macros.h">
+      <Filter>jsoncpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\jsoncpp\reader.h">
+      <Filter>jsoncpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\jsoncpp\value.h">
+      <Filter>jsoncpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\jsoncpp\writer.h">
+      <Filter>jsoncpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\yh.h" />
+    <ClInclude Include="..\..\yh\YHMacros.h" />
+    <ClInclude Include="..\..\yh\NSMacros.h" />
+    <ClInclude Include="..\..\yh\math\Pow2Util.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\platform\win32\compat\stdint.h">
+      <Filter>platform\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\platform\win32\GL-win32.h">
+      <Filter>platform\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\platform\win32\PlatformDefine-win32.h">
+      <Filter>platform\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\platform\win32\StdC-win32.h">
+      <Filter>platform\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\platform\GL.h">
+      <Filter>platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\platform\Internals.h">
+      <Filter>platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\platform\Log.h">
+      <Filter>platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\platform\PlatformDefine.h">
+      <Filter>platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\platform\PlatformMacros.h">
+      <Filter>platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\platform\YHStdC.h">
+      <Filter>platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\platform\PlatformConfig.h">
+      <Filter>platform</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\yh\base\RefCount.cpp">
-      <Filter>yh\base</Filter>
+    <ClCompile Include="..\..\yh\base\Ref.cpp">
+      <Filter>base</Filter>
     </ClCompile>
     <ClCompile Include="..\..\yh\base\RefPtr.cpp">
-      <Filter>yh\base</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\yh\io\Buffer.cpp">
-      <Filter>yh\io</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\yh\jsoncpp\json_reader.cpp">
-      <Filter>yh\jsoncpp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\yh\jsoncpp\json_value.cpp">
-      <Filter>yh\jsoncpp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\yh\jsoncpp\json_writer.cpp">
-      <Filter>yh\jsoncpp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\yh\sqlite\Column.cpp">
-      <Filter>yh\sqlite</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\yh\sqlite\SqliteDriver.cpp">
-      <Filter>yh\sqlite</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\yh\sqlite\Statement.cpp">
-      <Filter>yh\sqlite</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\yh\sqlite\Transaction.cpp">
-      <Filter>yh\sqlite</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\yh\io\IeeeHalfPrecision.cpp">
-      <Filter>yh\io</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\yh\pugixml\pugixml.cpp">
-      <Filter>yh\pugixml</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\yh\platform\Log.cpp">
-      <Filter>yh\platform</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\yh\platform\win32\StdC-win32.cpp">
-      <Filter>yh\platform\win32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\yh\securesqlite3\sqlite3secure.c">
-      <Filter>yh\securesqlite3</Filter>
+      <Filter>base</Filter>
     </ClCompile>
     <ClCompile Include="..\..\yh\collections\ObjectValue.cpp">
-      <Filter>yh\collections</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\yh\plist\Plist.cpp">
-      <Filter>yh\plist</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\yh\plist\PlistRecursion.cpp">
-      <Filter>yh\plist</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\yh\string\YHString.cpp">
-      <Filter>yh\string</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\yh\base\Ref.cpp">
-      <Filter>yh\base</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\yh\message\Message.cpp">
-      <Filter>yh\message</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\yh\message\MessageHandler.cpp">
-      <Filter>yh\message</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\yh\message\MessageManager.cpp">
-      <Filter>yh\message</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\yh\message\MessageTarget.cpp">
-      <Filter>yh\message</Filter>
-    <ClCompile Include="..\..\yh\io\RingBuffer.cpp">
-      <Filter>yh\io</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\yh\io\BufferStream.cpp">
-      <Filter>yh\io</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\yh\io\MemoryStream.cpp">
-      <Filter>yh\io</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\yh\io\Stream.cpp">
-      <Filter>yh\io</Filter>
+      <Filter>collections</Filter>
     </ClCompile>
     <ClCompile Include="..\..\yh\io\BinaryReader.cpp">
-      <Filter>yh\io</Filter>
+      <Filter>io</Filter>
     </ClCompile>
     <ClCompile Include="..\..\yh\io\BinaryWriter.cpp">
-      <Filter>yh\io</Filter>
+      <Filter>io</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\yh\io\Buffer.cpp">
+      <Filter>io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\io\BufferInputStream.cpp">
+      <Filter>io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\io\BufferOutputStream.cpp">
+      <Filter>io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\io\BufferStream.cpp">
+      <Filter>io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\io\IeeeHalfPrecision.cpp">
+      <Filter>io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\io\MemoryStream.cpp">
+      <Filter>io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\io\RingBuffer.cpp">
+      <Filter>io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\io\Stream.cpp">
+      <Filter>io</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\jsoncpp\json_reader.cpp">
+      <Filter>jsoncpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\jsoncpp\json_value.cpp">
+      <Filter>jsoncpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\jsoncpp\json_writer.cpp">
+      <Filter>jsoncpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\math\Pow2Util.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\platform\win32\StdC-win32.cpp">
+      <Filter>platform\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\platform\Log.cpp">
+      <Filter>platform</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\yh\jsoncpp\json_internalarray.inl">
+      <Filter>jsoncpp</Filter>
+    </None>
+    <None Include="..\..\yh\jsoncpp\json_internalmap.inl">
+      <Filter>jsoncpp</Filter>
+    </None>
+    <None Include="..\..\yh\jsoncpp\json_valueiterator.inl">
+      <Filter>jsoncpp</Filter>
+    </None>
   </ItemGroup>
 </Project>

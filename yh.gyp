@@ -1,11 +1,18 @@
 {
+  'variables': { 
+    'with_json': 'false',
+    'with_xml': 'false',
+    'with_shell': 'false',
+    'with_sqlite': 'false'
+  },
+  
   'targets': [
       {
           'target_name': 'libyh',
           'type': '<(yh_library)',
           
           'defines':[
-            'SQLITE_HAS_CODEC'
+
           ],
 
           'include_dirs': [
@@ -15,7 +22,6 @@
             'yh/yh.h',
             'yh/NSMacros.h',
             'yh/YHMacros.h',
-            './yh/base/Internals.h',
             './yh/base/Ref.cpp',
             './yh/base/Ref.h',
             './yh/base/RCPtr.h',
@@ -30,28 +36,22 @@
             './yh/datastructure/Iterator.h',
             './yh/datastructure/LinkedList-implement.h',
             './yh/datastructure/LinkedList.h',
+            './yh/io/IOMacros.h',
             './yh/io/Buffer.cpp',
             './yh/io/Buffer.h',
             './yh/io/IeeeHalfPrecision.cpp',
             './yh/io/IeeeHalfPrecision.h',
-            './yh/io/InputStream.cpp',
-            './yh/io/InputStream.h',
-            './yh/io/IOMacros.h',
-            './yh/io/OutputStream.cpp',
-            './yh/io/OutputStream.h',
-            './yh/jsoncpp/autolink.h',
-            './yh/jsoncpp/config.h',
-            './yh/jsoncpp/features.h',
-            './yh/jsoncpp/forwards.h',
-            './yh/jsoncpp/json.h',
-            './yh/jsoncpp/json_batchallocator.h',
-            './yh/jsoncpp/json_macros.h',
-            './yh/jsoncpp/json_reader.cpp',
-            './yh/jsoncpp/json_value.cpp',
-            './yh/jsoncpp/json_writer.cpp',
-            './yh/jsoncpp/reader.h',
-            './yh/jsoncpp/value.h',
-            './yh/jsoncpp/writer.h',
+            './yh/io/Stream.cpp',
+            './yh/io/Stream.h',            
+            './yh/io/BufferStream.cpp',
+            './yh/io/BufferStream.h',
+            './yh/io/MemoryStream.cpp',
+            './yh/io/MemoryStream.h',
+            './yh/io/BinaryWriter.cpp',
+            './yh/io/BinaryWriter.h',
+            './yh/io/BinaryReader.cpp',
+            './yh/io/BinaryReader.h',
+            './yh/platform/Internals.h',
             './yh/platform/Log.cpp',
             './yh/platform/Log.h',
             './yh/platform/nullptr.h',
@@ -59,37 +59,81 @@
             './yh/platform/PlatformDefine.h',
             './yh/platform/PlatformMacros.h',
             './yh/platform/YHStdC.h',
-            './yh/plist/Plist.cpp',
-            './yh/plist/Plist.h',
-            './yh/pugixml/pugiconfig.hpp',
-            './yh/pugixml/pugixml.cpp',
-            './yh/pugixml/pugixml.hpp',
-            './yh/shell/OptionParser.cpp',
-            './yh/shell/OptionParser.h',
-            './yh/smartpointer/shared_ptr.h',
-            './yh/smartpointer/SmartPointerMacros.h',
-            './yh/smartpointer/smart_ptr.h',
-            './yh/smartpointer/smart_ptr_inherit.h',
-            './yh/securesqlite3/sqlite3secure.c',
-            './yh/sqlite/Column.cpp',
-            './yh/sqlite/Column.h',
-            './yh/sqlite/SqliteDriver.cpp',
-            './yh/sqlite/SqliteDriver.h',
-            './yh/sqlite/SqliteMacros.h',
-            './yh/sqlite/Statement.cpp',
-            './yh/sqlite/Statement.h',
-            './yh/sqlite/Transaction.cpp',
-            './yh/sqlite/Transaction.h',
             './yh/string/utf8/checked.h',
             './yh/string/utf8/core.h',
             './yh/string/utf8/unchecked.h',
             './yh/string/utf8.h',
             './yh/string/YHString.cpp',
-            './yh/string/YHString.h',
-            
+            './yh/string/YHString.h',            
           ],
           'conditions': [
-              ['OS=="win"', {
+             ['with_json=="true"',{
+                  'defines':[
+                    'YH_USE_JSON'
+                  ],
+                  'sources': [
+                    './yh/jsoncpp/autolink.h',
+                    './yh/jsoncpp/config.h',
+                    './yh/jsoncpp/features.h',
+                    './yh/jsoncpp/forwards.h',
+                    './yh/jsoncpp/json.h',
+                    './yh/jsoncpp/json_batchallocator.h',
+                    './yh/jsoncpp/json_macros.h',
+                    './yh/jsoncpp/json_reader.cpp',
+                    './yh/jsoncpp/json_value.cpp',
+                    './yh/jsoncpp/json_writer.cpp',
+                    './yh/jsoncpp/reader.h',
+                    './yh/jsoncpp/value.h',
+                    './yh/jsoncpp/writer.h',
+                  ]
+                }
+             ],
+             
+             ['with_xml=="true"',{
+                  'defines':[
+                    'YH_USE_XML'
+                  ],
+                  'sources': [
+                    './yh/plist/Plist.cpp',
+                    './yh/plist/Plist.h',
+                    './yh/pugixml/pugiconfig.hpp',
+                    './yh/pugixml/pugixml.cpp',
+                    './yh/pugixml/pugixml.hpp',
+                  ]
+                }
+             ],
+             
+             ['with_shell=="true"',{
+                  'defines':[
+                    'YH_USE_SHELL'
+                  ],
+                  'sources': [
+                      './yh/shell/OptionParser.cpp',
+                      './yh/shell/OptionParser.h',
+                  ]
+                }
+             ],
+             
+            ['with_sqlite=="true"',{
+                  'defines':[
+                    'YH_USE_SQLITE','SQLITE_HAS_CODEC',
+                  ],
+                  'sources': [
+                        './yh/securesqlite3/sqlite3secure.c',
+                        './yh/sqlite/Column.cpp',
+                        './yh/sqlite/Column.h',
+                        './yh/sqlite/SqliteDriver.cpp',
+                        './yh/sqlite/SqliteDriver.h',
+                        './yh/sqlite/SqliteMacros.h',
+                        './yh/sqlite/Statement.cpp',
+                        './yh/sqlite/Statement.h',
+                        './yh/sqlite/Transaction.cpp',
+                        './yh/sqlite/Transaction.h',
+                  ]
+                }
+             ],
+             
+             ['OS=="win"', {
                   'defines': [
                     'WIN32','_WINDOWS'
                   ],

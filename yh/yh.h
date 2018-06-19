@@ -18,13 +18,17 @@
 #include "datastructure/LinkedList.h"
 
 //jsoncpp
+#if defined(YH_USE_JSON)
 #include "jsoncpp/json.h"
+#endif
 
+#if defined(YH_USE_XML)
 //pugixml
 #include "pugixml/pugixml.hpp"
 
 //plist
 #include "plist/Plist.h"
+#endif
 
 //io
 #include "io/IOMacros.h"
@@ -37,8 +41,11 @@
 #include "io/BinaryWriter.h"
 
 //sp
+#if defined(YH_USE_SP)
 #include "smartpointer/smart_ptr.h"
+#endif
 
+#if defined(YH_USE_SQLITE)
 //sqlite3 c
 #include "securesqlite3/sqlite3.h"
 
@@ -47,5 +54,6 @@
 #include "sqlite/Statement.h"
 #include "sqlite/Transaction.h"
 #include "sqlite/SqliteDriver.h"
+#endif
 
 #endif //YH_YH_H_

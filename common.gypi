@@ -50,13 +50,6 @@
         ],
         'msvs_settings': {
           'VCCLCompilerTool': {
-            'target_conditions': [
-              ['yh_library=="static_library"', {
-                'RuntimeLibrary': 0, # static release
-              }, {
-                'RuntimeLibrary': 0, # debug release
-              }],
-            ],
             'Optimization': 3, # /Ox, full optimization
             'FavorSizeOrSpeed': 1, # /Ot, favour speed over size
             'InlineFunctionExpansion': 2, # /Ob2, inline anything eligible

@@ -51,6 +51,8 @@
             './yh/io/BinaryWriter.h',
             './yh/io/BinaryReader.cpp',
             './yh/io/BinaryReader.h',
+            './yh/io/RingBuffer.cpp',
+            './yh/io/RingBuffer.h',
             './yh/platform/Internals.h',
             './yh/platform/Log.cpp',
             './yh/platform/Log.h',
@@ -220,6 +222,40 @@
                 'defines': ['NODEBUG'],
             }
          },
-      }
+      },
+      
+      {
+          'dependencies': ['libyh'],
+          'target_name': 'testyh',
+          'type': 'executable',
+          'include_dirs': [
+            './',
+            './deps/gtest/include'
+          ],
+          'sources': [
+            './tests/gtest_main.cc',
+            './tests/ds/list_unittest.cpp',
+            './tests/io/buffer_unittest.cpp',
+            './tests/io/bufferstream_unittest.cpp',
+            './tests/io/memorystream_unittest.cpp',
+            './tests/io/ringbuffer_unittest.cpp',
+          ],
+          'conditions': [
+             ['OS=="win"', {
+                  'defines': [
+                    'WIN32','_WINDOWS'
+                  ],
+                  'library_dirs': [
+                    './deps/gtest/libraries/windows/x86/Debug',
+                  ],
+                  'link_settings': {
+                    'libraries': [
+                      '-lgtestd.lib',
+                    ],
+                  },
+                }
+             ],
+          ]
+    }
   ]
 }

@@ -2,7 +2,7 @@
 #define YH_PLATFORM_STDC_WIN32_H_
 
 #include "../PlatformConfig.h"
-#if YH_TARGET_PLATFORM == YH_PLATFORM_WIN32
+#if YH_TARGET_PLATFORM == YH_PLATFORM_WINOWS
 
 #include <BaseTsd.h>
 #ifndef __SSIZE_T
@@ -13,7 +13,7 @@ typedef SSIZE_T ssize_t;
 #include "../PlatformMacros.h"
 #include <float.h>
 
-// for math.h on win32 platform
+// for math.h on windows platform
 #ifndef __MINGW32__
 
 #if !defined(_USE_MATH_DEFINES)
@@ -45,7 +45,7 @@ typedef SSIZE_T ssize_t;
 #ifndef M_PI_2
   #define M_PI_2    1.57079632679
 #endif
-// for MIN MAX and sys/time.h on win32 platform
+// for MIN MAX and sys/time.h on windows platform
 #ifdef __MINGW32__
 #include <sys/time.h>
 #endif // __MINGW32__
@@ -116,7 +116,7 @@ inline errno_t strcpy_s(char *strDestination, size_t numberOfElements,
 #endif
 #endif // __MINGW32__
 
-#endif // YH_TARGET_PLATFORM == YH_PLATFORM_WIN32
+#endif // YH_TARGET_PLATFORM == YH_PLATFORM_WINOWS
 
 #endif  // YH_PLATFORM_STDC_WIN32_H_
 

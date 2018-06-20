@@ -2,7 +2,7 @@
 #define YH_PLATFORM_PLATFORMDEFINE_WIN32_H_
 
 #include "../PlatformConfig.h"
-#if YH_TARGET_PLATFORM == YH_PLATFORM_WIN32
+#if YH_TARGET_PLATFORM == YH_PLATFORM_WINOWS
 
 #ifdef __MINGW32__
 #include <string.h>
@@ -39,6 +39,6 @@
 	#endif
 #endif
 
-#endif //YH_TARGET_PLATFORM == YH_PLATFORM_WIN32
+#endif //YH_TARGET_PLATFORM == YH_PLATFORM_WINOWS
 
 #endif /* YH_PLATFORM_PLATFORMDEFINE_WIN32_H_*/

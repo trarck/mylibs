@@ -1,5 +1,5 @@
 #include "../PlatformConfig.h"
-#if YH_TARGET_PLATFORM == YH_PLATFORM_WIN32
+#if YH_TARGET_PLATFORM == YH_PLATFORM_WINOWS
 #include "../../NSMacros.h"
 #include "../YHStdC.h"
 
@@ -24,4 +24,4 @@ NS_YH_END
 
 #endif // __MINGW32__
 
-#endif // YH_TARGET_PLATFORM == YH_PLATFORM_WIN32
+#endif // YH_TARGET_PLATFORM == YH_PLATFORM_WINOWS

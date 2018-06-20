@@ -9,7 +9,7 @@
 #define YH_PLATFORM_UNKNOWN            0
 #define YH_PLATFORM_IOS                1
 #define YH_PLATFORM_ANDROID            2
-#define YH_PLATFORM_WIN32              3
+#define YH_PLATFORM_WINOWS              3
 #define YH_PLATFORM_MARMALADE          4
 #define YH_PLATFORM_LINUX              5
 #define YH_PLATFORM_BADA               6
@@ -61,10 +61,10 @@
     #define YH_TARGET_PLATFORM         YH_PLATFORM_ANDROID
 #endif
 
-// win32
+// windows
 #if defined(WIN32) && defined(_WINDOWS)
     #undef  YH_TARGET_PLATFORM
-    #define YH_TARGET_PLATFORM         YH_PLATFORM_WIN32
+    #define YH_TARGET_PLATFORM         YH_PLATFORM_WINOWS
 #endif
 
 // linux
@@ -130,11 +130,11 @@
     #error  "Cannot recognize the target platform; are you targeting an unsupported platform?"
 #endif 
 
-#if (YH_TARGET_PLATFORM == YH_PLATFORM_WIN32)
+#if (YH_TARGET_PLATFORM == YH_PLATFORM_WINOWS)
 #ifndef __MINGW32__
 #pragma warning (disable:4127) 
 #endif 
-#endif  // YH_PLATFORM_WIN32
+#endif  // YH_PLATFORM_WINOWS
 
 #endif  // YH_PLATFORM_PLATFORM_CONFIG_H_
 

@@ -47,7 +47,7 @@ static void _log(const char *format, va_list args)
 #if YH_TARGET_PLATFORM == YH_PLATFORM_ANDROID
 	__android_log_print(ANDROID_LOG_DEBUG, "yh:", "%s", buf);
 
-#elif YH_TARGET_PLATFORM ==  YH_PLATFORM_WIN32 || YH_TARGET_PLATFORM == YH_PLATFORM_WINRT
+#elif YH_TARGET_PLATFORM ==  YH_PLATFORM_WINOWS || YH_TARGET_PLATFORM == YH_PLATFORM_WINRT
 
 	int pos = 0;
 	int len = strlen(buf);

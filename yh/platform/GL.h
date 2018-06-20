@@ -10,8 +10,8 @@
 #include "./ios/GL-ios.h"
 #elif YH_TARGET_PLATFORM == YH_PLATFORM_ANDROID
 #include "./android/GL-android.h"
-#elif YH_TARGET_PLATFORM == YH_PLATFORM_WIN32
-#include "./win32/GL-win32.h"
+#elif YH_TARGET_PLATFORM == YH_PLATFORM_WINOWS
+#include "./windows/GL-windows.h"
 #elif YH_TARGET_PLATFORM == YH_PLATFORM_WINRT
 #include "./winrt/GL-winrt.h"
 #elif YH_TARGET_PLATFORM == YH_PLATFORM_LINUX

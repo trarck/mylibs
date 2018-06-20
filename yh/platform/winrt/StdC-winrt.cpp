@@ -16,7 +16,7 @@ int YH_DLL gettimeofday(struct timeval * val, struct timezone *)
         tTm.tm_sec      = wtm.wSecond;
         tTm.tm_isdst    = -1;
 
-        val->tv_sec     = (long)mktime(&tTm);       // time_t is 64-bit on win32
+        val->tv_sec     = (long)mktime(&tTm);       // time_t is 64-bit on windows
         val->tv_usec    = wtm.wMilliseconds * 1000;
     }
     return 0;

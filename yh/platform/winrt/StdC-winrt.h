@@ -14,7 +14,7 @@
 typedef SSIZE_T ssize_t;
 #endif // __SSIZE_T
 
-// for math.h on win32 platform
+// for math.h on windows platform
 
 #if !defined(_USE_MATH_DEFINES)
     #define _USE_MATH_DEFINES       // make M_PI can be use
@@ -45,7 +45,7 @@ typedef SSIZE_T ssize_t;
 #endif
 
 
-// for MIN MAX and sys/time.h on win32 platform
+// for MIN MAX and sys/time.h on windows platform
 #ifndef NOMINMAX
   #define NOMINMAX
 #endif

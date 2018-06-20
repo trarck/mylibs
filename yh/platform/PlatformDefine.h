@@ -9,8 +9,8 @@
 	#include "./ios/PlatformDefine-ios.h"
 #elif YH_TARGET_PLATFORM == YH_PLATFORM_ANDROID
 	#include "./android/PlatformDefine-android.h"
-#elif YH_TARGET_PLATFORM == YH_PLATFORM_WIN32
-	#include "./win32/PlatformDefine-win32.h"
+#elif YH_TARGET_PLATFORM == YH_PLATFORM_WINOWS
+	#include "./windows/PlatformDefine-windows.h"
 #elif YH_TARGET_PLATFORM == YH_PLATFORM_WINRT
 	#include "./winrt/PlatformDefine-winrt.h"
 #elif YH_TARGET_PLATFORM == YH_PLATFORM_LINUX

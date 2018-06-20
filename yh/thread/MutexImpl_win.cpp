@@ -9,7 +9,7 @@ MutexImpl::MutexImpl()
 
 MutexImpl::~MutexImpl()
 {
-  DeleteCriticalSection( &m_lock );
+    DeleteCriticalSection( &m_lock );
 }
 
 void MutexImpl::lock()
@@ -17,7 +17,7 @@ void MutexImpl::lock()
     EnterCriticalSection( &m_lock );
 }
 
-bool MutexImpl::trylock()
+bool MutexImpl::tryLock()
 {
     return TryEnterCriticalSection( &m_lock ) ? true : false;
 }

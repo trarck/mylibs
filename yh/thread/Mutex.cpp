@@ -3,29 +3,29 @@
 NS_YH_THREAD_BEGIN
 
 Mutex::Mutex()
-  : m_mutex( new MutexImpl() )
+  : m_mutexImpl( new MutexImpl() )
 {
     
 }
 
 Mutex::~Mutex()
 {
-  delete m_mutex;
+  delete m_mutexImpl;
 }
 
 void Mutex::lock()
 {
-  m_mutex->lock();
+	m_mutexImpl->lock();
 }
 
 bool Mutex::tryLock()
 {
-  return m_mutex->tryLock();
+  return m_mutexImpl->tryLock();
 }
 
 void Mutex::unlock()
 {
-  m_mutex->unlock();
+	m_mutexImpl->unlock();
 }
 
 NS_YH_THREAD_END

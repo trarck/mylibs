@@ -4,7 +4,7 @@
 #include "../platform/PlatformMacros.h"
 #include "ThreadMacros.h"
 
-#if defined(YH_WINOWS)
+#if defined(YH_WINDOWS)
 #include <windows.h>
 #elif defined(YH_POSIX)
 #include <pthread.h>

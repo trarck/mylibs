@@ -66,7 +66,13 @@
             './yh/string/utf8/unchecked.h',
             './yh/string/utf8.h',
             './yh/string/YHString.cpp',
-            './yh/string/YHString.h',            
+            './yh/string/YHString.h', 
+            './yh/thread/ThreadMacros.h',
+            './yh/thread/thread_mutex.h',
+            './yh/thread/Mutex.h',
+            './yh/thread/Mutex.cpp',
+            './yh/thread/MutexImpl.h',
+            './yh/thread/AutoLock.h',
           ],
           'conditions': [
              ['with_json=="true"',{
@@ -144,6 +150,7 @@
                     './yh/platform/windows/PlatformDefine-windows.h',
                     './yh/platform/windows/StdC-windows.cpp',
                     './yh/platform/windows/StdC-windows.h',
+                    './yh/thread/MutexImpl_win.cpp',
                   ]
                 }
              ],
@@ -154,6 +161,7 @@
                   'sources': [
                     './yh/platform/mac/PlatformDefine-mac.h',
                     './yh/platform/mac/StdC-mac.h',
+                    './yh/thread/MutexImpl_posix.cpp',
                   ]
                 }
              ],
@@ -165,6 +173,7 @@
                   'sources': [
                     './yh/platform/ios/PlatformDefine-ios.h',
                     './yh/platform/ios/StdC-ios.h',
+                    './yh/thread/MutexImpl_posix.cpp',
                   ]
                 }
              ],
@@ -175,6 +184,7 @@
                   'sources': [
                     './yh/platform/android/PlatformDefine-android.h',
                     './yh/platform/android/StdC-android.h',
+                    './yh/thread/MutexImpl_posix.cpp',
                   ]
                 }
              ],
@@ -185,6 +195,7 @@
                   'sources': [
                     './yh/platform/linux/PlatformDefine-linux.h',
                     './yh/platform/linux/StdC-linux.h',
+                    './yh/thread/MutexImpl_posix.cpp',
                   ]
                 }
              ],
@@ -196,6 +207,7 @@
                     './yh/platform/winrt/PlatformDefine-winrt.h',
                     './yh/platform/winrt/StdC-winrt.cpp',
                     './yh/platform/winrt/StdC-winrt.h',
+                    './yh/thread/MutexImpl_win.cpp',
                   ]
                 }
              ],

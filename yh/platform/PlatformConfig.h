@@ -62,7 +62,7 @@
 #endif
 
 // windows
-#if defined(WIN32) && defined(_WINDOWS)
+#if defined(_WINDOWS)
     #undef  YH_TARGET_PLATFORM
     #define YH_TARGET_PLATFORM         YH_PLATFORM_WINOWS
 #endif

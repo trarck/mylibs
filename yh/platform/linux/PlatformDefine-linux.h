@@ -23,6 +23,9 @@
 #endif
 #endif
 
+#ifndef YH_POSIX
+#define YH_POSIX 1
+#endif //YH_POSIX 
 
 #endif // YH_TARGET_PLATFORM == YH_PLATFORM_LINUX
 

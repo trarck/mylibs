@@ -39,6 +39,10 @@
 	#endif
 #endif
 
+#ifndef YH_WINDOWS
+#define YH_WINDOWS 1
+#endif //YH_WINDOWS 
+
 #endif //YH_TARGET_PLATFORM == YH_PLATFORM_WINOWS
 
 #endif /* YH_PLATFORM_PLATFORMDEFINE_WIN32_H_*/

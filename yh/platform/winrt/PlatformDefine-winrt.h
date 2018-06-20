@@ -26,6 +26,10 @@
 #endif
 #define YH_UNUSED_PARAM(unusedparam) (void)unusedparam
 
+#ifndef YH_WINDOWS
+#define YH_WINDOWS 1
+#endif //YH_WINDOWS 
+
 #endif // YH_TARGET_PLATFORM == YH_PLATFORM_WINRT
 
 #endif /* YH_PLATFORM_PLATFORM_DEFINE_WINRT_H_*/

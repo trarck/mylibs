@@ -140,10 +140,10 @@
                     'WIN32','_WINDOWS'
                   ],
                   'sources': [
-                    './yh/platform/win32/compat/stdint.h',
-                    './yh/platform/win32/PlatformDefine-win32.h',
-                    './yh/platform/win32/StdC-win32.cpp',
-                    './yh/platform/win32/StdC-win32.h',
+                    './yh/platform/windows/compat/stdint.h',
+                    './yh/platform/windows/PlatformDefine-windows.h',
+                    './yh/platform/windows/StdC-windows.cpp',
+                    './yh/platform/windows/StdC-windows.h',
                   ]
                 }
              ],

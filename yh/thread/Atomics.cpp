@@ -13,3 +13,5 @@ CAtomicSpinLock::~CAtomicSpinLock()
 {
   std::atomic_flag_clear(&m_Lock); // Unlock
 }
+
+NS_YH_THREAD_END

@@ -17,9 +17,7 @@ Ref::~Ref()
 
 void Ref::release()
 {
-    --_referenceCount;
-    
-    if (_referenceCount == 0)
+    if (--_referenceCount == 0)
     {
         delete this;
     }

@@ -73,6 +73,10 @@
             './yh/thread/Mutex.cpp',
             './yh/thread/MutexImpl.h',
             './yh/thread/AutoLock.h',
+            './yh/thread/AtomicRefCount.h',
+            './yh/thread/AtomicRefCount.cpp',
+            './yh/thread/ThreadSafeRef.h',
+            './yh/thread/ThreadSafeRef.cpp',
           ],
           'conditions': [
              ['with_json=="true"',{

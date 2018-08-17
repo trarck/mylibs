@@ -25,6 +25,12 @@
     <Filter Include="platform\win32">
       <UniqueIdentifier>{b87728e9-7ee8-4dc1-986e-e43922182689}</UniqueIdentifier>
     </Filter>
+    <Filter Include="net">
+      <UniqueIdentifier>{dcd5d95a-7b7c-4e01-a8ec-0579f1757408}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="net\tcp">
+      <UniqueIdentifier>{45d2567d-89ab-45bc-8d71-d286a834a74f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\yh\base\RCPtr.h">
@@ -162,6 +168,15 @@
     <ClInclude Include="..\..\yh\platform\PlatformConfig.h">
       <Filter>platform</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\yh\net\net.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\net\tcp\Client.h">
+      <Filter>net\tcp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\net\tcp\Server.h">
+      <Filter>net\tcp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\yh\base\Ref.cpp">
@@ -220,6 +235,12 @@
     </ClCompile>
     <ClCompile Include="..\..\yh\platform\Log.cpp">
       <Filter>platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\net\tcp\Client.cpp">
+      <Filter>net\tcp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\net\tcp\Server.cpp">
+      <Filter>net\tcp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

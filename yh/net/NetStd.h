@@ -1,3 +1,8 @@
+#ifndef YH_NET_NETSTD_H_
+#define YH_NET_NETSTD_H_
+
+#include "../platform/YHStdC.h"
+
 #if defined(_WINDOWS)
 #include <WS2tcpip.h>
 #include <WinSock2.h>
@@ -17,4 +22,9 @@ typedef SOCKET socket_t;
 #include <arpa/inet.h>
 #include <string.h>
 #include <netdb.h>
-#endif
+typedef int socket_t;
+#define INVALID_SOCKET			(-1)
+#define SOCKET_ERROR            (-1)
+#endif //defined(_WINDOWS)
+
+#endif //YH_NET_NETSTD_H_

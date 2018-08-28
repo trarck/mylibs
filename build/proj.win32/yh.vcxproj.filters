@@ -168,14 +168,20 @@
     <ClInclude Include="..\..\yh\platform\PlatformConfig.h">
       <Filter>platform</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\yh\net\net.h">
+    <ClInclude Include="..\..\yh\net\NetStd.h">
       <Filter>net</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\yh\net\tcp\Client.h">
+    <ClInclude Include="..\..\yh\net\NetMacros.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\net\tcp\ClientSocket.h">
       <Filter>net\tcp</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\yh\net\tcp\Server.h">
+    <ClInclude Include="..\..\yh\net\tcp\ServerSocket.h">
       <Filter>net\tcp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\net\NetEnvironment.h">
+      <Filter>net</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -236,11 +242,14 @@
     <ClCompile Include="..\..\yh\platform\Log.cpp">
       <Filter>platform</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\yh\net\tcp\Client.cpp">
+    <ClCompile Include="..\..\yh\net\tcp\ClientSocket.cpp">
       <Filter>net\tcp</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\yh\net\tcp\Server.cpp">
+    <ClCompile Include="..\..\yh\net\tcp\ServerSocket.cpp">
       <Filter>net\tcp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\net\NetEnvironment.cpp">
+      <Filter>net</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

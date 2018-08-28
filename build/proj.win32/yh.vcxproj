@@ -60,9 +60,11 @@
     <ClInclude Include="..\..\yh\jsoncpp\value.h" />
     <ClInclude Include="..\..\yh\jsoncpp\writer.h" />
     <ClInclude Include="..\..\yh\math\Pow2Util.h" />
-    <ClInclude Include="..\..\yh\net\net.h" />
-    <ClInclude Include="..\..\yh\net\tcp\Client.h" />
-    <ClInclude Include="..\..\yh\net\tcp\Server.h" />
+    <ClInclude Include="..\..\yh\net\NetEnvironment.h" />
+    <ClInclude Include="..\..\yh\net\NetMacros.h" />
+    <ClInclude Include="..\..\yh\net\NetStd.h" />
+    <ClInclude Include="..\..\yh\net\tcp\ClientSocket.h" />
+    <ClInclude Include="..\..\yh\net\tcp\ServerSocket.h" />
     <ClInclude Include="..\..\yh\NSMacros.h" />
     <ClInclude Include="..\..\yh\platform\GL.h" />
     <ClInclude Include="..\..\yh\platform\Internals.h" />
@@ -96,8 +98,9 @@
     <ClCompile Include="..\..\yh\jsoncpp\json_value.cpp" />
     <ClCompile Include="..\..\yh\jsoncpp\json_writer.cpp" />
     <ClCompile Include="..\..\yh\math\Pow2Util.cpp" />
-    <ClCompile Include="..\..\yh\net\tcp\Client.cpp" />
-    <ClCompile Include="..\..\yh\net\tcp\Server.cpp" />
+    <ClCompile Include="..\..\yh\net\NetEnvironment.cpp" />
+    <ClCompile Include="..\..\yh\net\tcp\ClientSocket.cpp" />
+    <ClCompile Include="..\..\yh\net\tcp\ServerSocket.cpp" />
     <ClCompile Include="..\..\yh\platform\Log.cpp" />
     <ClCompile Include="..\..\yh\platform\win32\StdC-win32.cpp" />
   </ItemGroup>

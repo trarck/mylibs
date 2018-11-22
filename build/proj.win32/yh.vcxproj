@@ -31,7 +31,7 @@
     <ClInclude Include="..\..\yh\base\Ref.h" />
     <ClInclude Include="..\..\yh\base\RefPtr.h" />
     <ClInclude Include="..\..\yh\collections\Map.h" />
-    <ClInclude Include="..\..\yh\collections\ObjectValue.h" />
+    <ClInclude Include="..\..\yh\collections\Value.h" />
     <ClInclude Include="..\..\yh\collections\Vector.h" />
     <ClInclude Include="..\..\yh\datastructure\DataStructureMacros.h" />
     <ClInclude Include="..\..\yh\datastructure\Iterator-implement.h" />
@@ -77,13 +77,15 @@
     <ClInclude Include="..\..\yh\platform\win32\PlatformDefine-win32.h" />
     <ClInclude Include="..\..\yh\platform\win32\StdC-win32.h" />
     <ClInclude Include="..\..\yh\platform\YHStdC.h" />
+    <ClInclude Include="..\..\yh\plist\PlistAscii.h" />
+    <ClInclude Include="..\..\yh\plist\PlistMacros.h" />
     <ClInclude Include="..\..\yh\yh.h" />
     <ClInclude Include="..\..\yh\YHMacros.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\yh\base\Ref.cpp" />
     <ClCompile Include="..\..\yh\base\RefPtr.cpp" />
-    <ClCompile Include="..\..\yh\collections\ObjectValue.cpp" />
+    <ClCompile Include="..\..\yh\collections\Value.cpp" />
     <ClCompile Include="..\..\yh\io\BinaryReader.cpp" />
     <ClCompile Include="..\..\yh\io\BinaryWriter.cpp" />
     <ClCompile Include="..\..\yh\io\Buffer.cpp" />
@@ -103,6 +105,7 @@
     <ClCompile Include="..\..\yh\net\tcp\ServerSocket.cpp" />
     <ClCompile Include="..\..\yh\platform\Log.cpp" />
     <ClCompile Include="..\..\yh\platform\win32\StdC-win32.cpp" />
+    <ClCompile Include="..\..\yh\plist\PlistAscii.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\yh\jsoncpp\json_internalarray.inl" />

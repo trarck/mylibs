@@ -31,6 +31,9 @@
     <Filter Include="net\tcp">
       <UniqueIdentifier>{45d2567d-89ab-45bc-8d71-d286a834a74f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="plist">
+      <UniqueIdentifier>{657ae7dd-e6a1-44bd-a8db-88bdbe73b86e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\yh\base\RCPtr.h">
@@ -43,9 +46,6 @@
       <Filter>base</Filter>
     </ClInclude>
     <ClInclude Include="..\..\yh\collections\Map.h">
-      <Filter>collections</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\collections\ObjectValue.h">
       <Filter>collections</Filter>
     </ClInclude>
     <ClInclude Include="..\..\yh\collections\Vector.h">
@@ -183,6 +183,15 @@
     <ClInclude Include="..\..\yh\net\NetEnvironment.h">
       <Filter>net</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\yh\plist\PlistAscii.h">
+      <Filter>plist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\plist\PlistMacros.h">
+      <Filter>plist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\collections\Value.h">
+      <Filter>collections</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\yh\base\Ref.cpp">
@@ -190,9 +199,6 @@
     </ClCompile>
     <ClCompile Include="..\..\yh\base\RefPtr.cpp">
       <Filter>base</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\yh\collections\ObjectValue.cpp">
-      <Filter>collections</Filter>
     </ClCompile>
     <ClCompile Include="..\..\yh\io\BinaryReader.cpp">
       <Filter>io</Filter>
@@ -250,6 +256,12 @@
     </ClCompile>
     <ClCompile Include="..\..\yh\net\NetEnvironment.cpp">
       <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\plist\PlistAscii.cpp">
+      <Filter>plist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\collections\Value.cpp">
+      <Filter>collections</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

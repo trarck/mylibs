@@ -52,6 +52,16 @@ public:
      */
     unsigned int uintValue() const;
 
+	/** convert to int64 value
+	*
+	*/
+	int64_t longValue() const;
+
+	/** convert to unsigned int64 value
+	*
+	*/
+	uint64_t ulongValue() const;
+
     /** convert to float value 
      * 
      */

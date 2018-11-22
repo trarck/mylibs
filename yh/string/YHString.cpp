@@ -85,6 +85,24 @@ unsigned int YHString::uintValue() const
     return (unsigned int)atoi(_string.c_str());
 }
 
+int64_t YHString::longValue() const
+{
+	if (length() == 0)
+	{
+		return 0;
+	}
+	return atoll(_string.c_str());
+}
+
+uint16_t YHString::ulongValue() const
+{
+	if (length() == 0)
+	{
+		return 0;
+	}
+	return (uint16_t)atoll(_string.c_str());
+}
+
 float YHString::floatValue() const
 {
     if (length() == 0)

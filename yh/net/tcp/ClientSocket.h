@@ -21,11 +21,14 @@ public:
 
 protected:
 
-	bool _connect4();
-	bool _connect6();
+	int _connectV4();
+	int _connectV6();
 
 protected:
 	socket_t _fd;
+	std::string _remoteIP;
+	int _remotePort;
+	bool _isIpV6;
 
 };
 

@@ -27,4 +27,6 @@ typedef int socket_t;
 #define SOCKET_ERROR            (-1)
 #endif //defined(_WINDOWS)
 
+#define Invalid_FD -1
+
 #endif //YH_NET_NETSTD_H_

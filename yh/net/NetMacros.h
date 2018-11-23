@@ -17,9 +17,9 @@
 
 #else
 
-#define NS_YH_IO_BEGIN
-#define NS_YH_IO_END
-#define USING_NS_YH_IO
+#define NS_YH_NET_BEGIN
+#define NS_YH_NET_END
+#define USING_NS_YH_NET
 
 #define NS_YH_NET_TCP_BEGIN
 #define NS_YH_NET_TCP_END

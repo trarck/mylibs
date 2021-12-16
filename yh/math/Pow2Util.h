@@ -16,6 +16,6 @@ int prevPow2(int n);
 // Nearest power of 2  
 int nearPow2(int n);
 
-NS_YH_BEGIN
+NS_YH_END
 
 #endif //YH_POW2UTIL_H_

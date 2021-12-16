@@ -13,7 +13,7 @@ ClientSocket::~ClientSocket()
 
 bool ClientSocket::init()
 {
-
+	return true;
 }
 
 bool ClientSocket::connect(const std::string& remoteIP, int remotePort)
@@ -79,10 +79,10 @@ int ClientSocket::_connectV6()
 
 bool ClientSocket::send(char* buf, unsigned int len)
 {
-
+	return true;
 }
 
 bool ClientSocket::recv(char* buf, unsigned int len) 
 {
-
+	return true;
 }

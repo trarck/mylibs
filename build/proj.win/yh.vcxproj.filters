@@ -22,9 +22,6 @@
     <Filter Include="platform">
       <UniqueIdentifier>{dc79c159-ecb1-4d4d-bec0-ea01d2266fb6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="platform\win32">
-      <UniqueIdentifier>{b87728e9-7ee8-4dc1-986e-e43922182689}</UniqueIdentifier>
-    </Filter>
     <Filter Include="net">
       <UniqueIdentifier>{dcd5d95a-7b7c-4e01-a8ec-0579f1757408}</UniqueIdentifier>
     </Filter>
@@ -33,6 +30,9 @@
     </Filter>
     <Filter Include="plist">
       <UniqueIdentifier>{657ae7dd-e6a1-44bd-a8db-88bdbe73b86e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="platform\windows">
+      <UniqueIdentifier>{b87728e9-7ee8-4dc1-986e-e43922182689}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -73,12 +73,6 @@
       <Filter>io</Filter>
     </ClInclude>
     <ClInclude Include="..\..\yh\io\Buffer.h">
-      <Filter>io</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\io\BufferInputStream.h">
-      <Filter>io</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\io\BufferOutputStream.h">
       <Filter>io</Filter>
     </ClInclude>
     <ClInclude Include="..\..\yh\io\BufferStream.h">
@@ -135,18 +129,6 @@
     <ClInclude Include="..\..\yh\math\Pow2Util.h">
       <Filter>math</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\yh\platform\win32\compat\stdint.h">
-      <Filter>platform\win32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\platform\win32\GL-win32.h">
-      <Filter>platform\win32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\platform\win32\PlatformDefine-win32.h">
-      <Filter>platform\win32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\yh\platform\win32\StdC-win32.h">
-      <Filter>platform\win32</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\yh\platform\GL.h">
       <Filter>platform</Filter>
     </ClInclude>
@@ -192,6 +174,18 @@
     <ClInclude Include="..\..\yh\collections\Value.h">
       <Filter>collections</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\yh\platform\windows\GL-winows.h">
+      <Filter>platform\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\platform\windows\PlatformDefine-windows.h">
+      <Filter>platform\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\platform\windows\StdC-windows.h">
+      <Filter>platform\windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\yh\platform\windows\compat\stdint.h">
+      <Filter>platform\windows</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\yh\base\Ref.cpp">
@@ -207,12 +201,6 @@
       <Filter>io</Filter>
     </ClCompile>
     <ClCompile Include="..\..\yh\io\Buffer.cpp">
-      <Filter>io</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\yh\io\BufferInputStream.cpp">
-      <Filter>io</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\yh\io\BufferOutputStream.cpp">
       <Filter>io</Filter>
     </ClCompile>
     <ClCompile Include="..\..\yh\io\BufferStream.cpp">
@@ -242,9 +230,6 @@
     <ClCompile Include="..\..\yh\math\Pow2Util.cpp">
       <Filter>math</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\yh\platform\win32\StdC-win32.cpp">
-      <Filter>platform\win32</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\yh\platform\Log.cpp">
       <Filter>platform</Filter>
     </ClCompile>
@@ -262,6 +247,9 @@
     </ClCompile>
     <ClCompile Include="..\..\yh\collections\Value.cpp">
       <Filter>collections</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\yh\platform\windows\StdC-windows.cpp">
+      <Filter>platform\windows</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

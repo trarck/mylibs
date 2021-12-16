@@ -47,4 +47,4 @@ int nearPow2(int n)
 		return nNext;
 }
 
-NS_YH_BEGIN
+NS_YH_END

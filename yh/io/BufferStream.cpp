@@ -10,9 +10,9 @@ BufferStream::BufferStream()
 }
 
 BufferStream::BufferStream(Buffer* buffer)
-: m_buffer(NULL)
+: m_buffer(buffer)
 {
-	setBuffer(buffer);
+	YH_SAFE_RETAIN(buffer);
 }
 	
 BufferStream::~BufferStream()

@@ -33,9 +33,14 @@ public:
     virtual bool eof();
    
 	unsigned char* getBuffer();
+
+private:
+    bool ensureCapacity(size_t capacity);
+
 protected:     
 	size_t m_length;
 	unsigned char* m_buffer;
+    size_t m_capacity;
 };
 
 NS_YH_IO_END

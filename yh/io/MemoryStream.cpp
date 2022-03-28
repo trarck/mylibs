@@ -5,23 +5,27 @@ NS_YH_IO_BEGIN
 
 MemoryStream::MemoryStream()
 :m_length(0)
-,m_buffer(NULL)
+,m_buffer(nullptr)
 {
     
 }
 
-MemoryStream::MemoryStream(size_t size)
-	: m_length(size)
+MemoryStream::MemoryStream(size_t capacity)
+	:m_capacity(capacity)
+	,m_length(0)
 {
-	m_buffer = (unsigned char*)malloc(size);
+	m_buffer = (unsigned char*)malloc(capacity);
 }
 
 
 MemoryStream::MemoryStream(unsigned char* data, size_t size)
-	:m_length(size)
+	:m_capacity(size)
+	,m_length(size)
 {
 	m_buffer = (unsigned char*)malloc(size);
-	memcpy(m_buffer, data, size);
+	if (m_buffer != nullptr && data!=nullptr) {
+		memcpy(m_buffer, data, size);
+	}
 }
 
 MemoryStream::~MemoryStream()
@@ -54,8 +58,13 @@ unsigned char MemoryStream::readByte()
 
 void MemoryStream::writeBytes(unsigned char* buf,size_t size)
 {
-	size_t dataSize = m_length - m_position;
-	size = MAX(0, MIN(dataSize, size));
+	size_t newSize = m_position + size;
+	if (newSize > m_length) {
+		if (newSize > m_capacity && ensureCapacity(newSize)) {
+
+		}
+	}
+
 	if (size > 0)
 	{
 		memcpy(m_buffer + m_position, buf,  size);
@@ -80,4 +89,29 @@ unsigned char* MemoryStream::getBuffer()
 {
 	return m_buffer;
 }
+
+bool MemoryStream::ensureCapacity(size_t size)
+{
+	if (size <= m_capacity) {
+		return false;
+	}
+
+	if (size < 0x100) {
+		size = 0x100;
+	}
+	if (size < m_capacity * 2) {
+		size = m_capacity * 2;
+	}
+
+	unsigned char* buffer= (unsigned char*)malloc(size);
+	if (buffer) {
+		memcpy(buffer, m_buffer, m_capacity);
+		free(m_buffer);
+		m_capacity = size;
+		return true;
+	}
+
+	return false;
+}
+
 NS_YH_IO_END

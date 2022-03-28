@@ -34,7 +34,9 @@ Buffer::Buffer(unsigned char* data,size_t size,bool dataOwner)
 	if (dataOwner) 
 	{
 		m_data = (unsigned char*)malloc(size);
-		memcpy(m_data, data, size);
+		if (m_data != nullptr) {
+			memcpy(m_data, data, size);
+		}
 	}
 	else
 	{
